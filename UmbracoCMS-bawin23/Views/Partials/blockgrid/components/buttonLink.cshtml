@@ -1,0 +1,20 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var buttonLinkText = Model?.Content.Value<string>("buttonLinkText");
+    var buttonLinkUrl = Model?.Content.Value<string>("buttonLinkUrl" ?? "#");
+    var buttonLinkColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("buttonLinkColor")?.Label.ToLower() ?? null;
+    var isExternal = (Model?.Content?.Value<bool>("isExternal") == true) ? "_blank" : "";
+}
+
+@if (!string.IsNullOrEmpty(buttonLinkColor))
+{
+    <a href="@buttonLinkUrl" class="btn btn-@buttonLinkColor" target="@isExternal" >@buttonLinkText</a>
+}
+else
+{
+    <a href="@buttonLinkUrl" class="btn" target="@isExternal" >@buttonLinkText</a>
+}

@@ -1,0 +1,40 @@
+//---Repeating sections
+@import "./repeatable-sections//header";
+@import "./repeatable-sections/footer";
+@import "./repeatable-sections//breadcrumbs";
+@import "./repeatable-sections//contact-details";
+@import "./repeatable-sections/our-services";
+@import "./repeatable-sections/brands";
+
+
+//---INDEX.HTML
+
+@import "./index/hero";
+@import "./index/about-us";
+@import "./index/trusted-company";
+@import "./index/success-stories";
+@import "./index/our-projects-index";
+
+//---ABOUT.HTML
+
+@import "./about/tina-fox-ceo";
+@import "./about/trusted-reviews";
+@import "./about/our-experts";
+
+//---SERVICES.HTML
+//Only repeating sections.
+
+//---SERVICE-DETAILS.HTML
+@import "./service-details/service-details";
+
+
+//---PROJECTS:HTML
+@import "./projects/our-projects";
+
+
+//---PROJECTS-DETAILS.HTML
+@import "./project-details/projects-details";
+
+
+//---CONTACT:HTML
+@import "./contact/contact";

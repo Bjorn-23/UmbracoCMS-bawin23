@@ -1,0 +1,39 @@
+.trusted-company {
+    max-height: 500px;
+    background-image: url(/img/dot-map1.png);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 2rem 0 0;
+
+    @include tablet {
+        max-height: 650px;
+        background-size: 60%;
+    }
+
+    @include desktop {
+        background-size: 1200px;
+        max-height: 930px;
+    }
+
+    .container {
+        .text-wrapper {
+            text-align: center;
+    
+            p {
+                font-size: 12px;
+            }       
+        }
+    
+        a {
+            margin: 2rem 0 2rem;
+        }
+    
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+    }
+}

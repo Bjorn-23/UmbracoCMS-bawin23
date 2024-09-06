@@ -1,0 +1,15 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    var blockGrid = Model?.Value<BlockGridModel>("pageLayout");
+}
+
+@if (blockGrid != null)
+{
+    @await Html.GetBlockGridHtmlAsync(blockGrid);
+
+}

@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var headingContent2 = Model?.Content.Value<string>("headingContent2") ?? null;
+    var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";
+    
+    if (Model?.Content.Value<bool>("alignCenter") == false)
+    {
+        textAlign = (Model?.Content.Value<bool>("alignLeft") == true) ? "text-align-start" : "";
+    }
+}
+
+@if(!string.IsNullOrEmpty(headingContent2))
+{
+    <h2 class="@textAlign">@headingContent2</h2>
+}

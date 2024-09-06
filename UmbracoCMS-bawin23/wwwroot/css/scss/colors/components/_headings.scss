@@ -1,0 +1,111 @@
+// h1 {
+//     color: var(--color-primary);
+// }
+
+// h2 {
+//     color: var(--color-primary);    
+// }
+
+// h3 {
+//     color: var(--color-secondary);
+// }
+
+// h4 {
+//     color: var(--color-primary);
+// }
+
+// h5 {
+//     color: var(--color-primary);
+// }
+
+// h6 {
+//     color: var(--color-secondary);
+// }
+
+@include heading-colors(
+    --color-primary,
+    --color-primary,
+    --color-secondary,
+    --color-primary,
+    --color-primary,
+    --color-secondary
+);
+
+@include theme-headings(
+    'dark',
+    --color-primary,
+    --color-primary,
+    --color-secondary,
+    --color-primary,
+    --color-primary,
+    --color-secondary
+);
+
+@include theme-headings(
+    'primary',
+    --color-light,
+    --color-light,
+    --color-secondary,
+    --color-light,
+    --color-light,
+    --color-secondary
+);
+
+@include theme-headings(
+    'secondary',
+    --color-primary,
+    --color-primary,
+    --color-dark,
+    --color-primary,
+    --color-primary,
+    --color-dark
+);
+
+@include theme-headings(
+    'accent',
+    --color-primary,
+    --color-primary,
+    --color-secondary,
+    --color-primary,
+    --color-primary,
+    --color-secondary
+    // --color-secondary,
+    // --color-secondary,
+    // --color-primary,
+    // --color-secondary,
+    // --color-secondary,
+    // --color-primary
+);
+
+@include theme-headings(
+    'gray',
+    --color-primary,
+    --color-primary,
+    --color-secondary,
+    --color-primary,
+    --color-primary,
+    --color-secondary
+    // --color-secondary,
+    // --color-secondary,
+    // --color-default,
+    // --color-secondary,
+    // --color-secondary,
+    // --color-default
+);
+
+@include theme-headings(
+    'light',
+    --color-primary,
+    --color-primary,
+    --color-secondary,
+    --color-primary,
+    --color-primary,
+    --color-secondary
+    // --color-secondary,
+    // --color-secondary,
+    // --color-primary,
+    // --color-secondary,
+    // --color-secondary,
+    // --color-primary
+);
+

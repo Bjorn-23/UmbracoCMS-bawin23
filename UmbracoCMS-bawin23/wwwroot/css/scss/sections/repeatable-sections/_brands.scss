@@ -1,0 +1,28 @@
+.brands {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: center;
+        padding: 2rem 0;
+        gap: 1rem;
+        
+        @include desktop {
+            grid-template-columns: auto auto auto auto auto auto;
+            justify-content: space-between;
+            padding: 5rem 0;
+        }
+        
+        .brand-grid-item {
+            text-align: center;
+
+            
+            img {
+                width: 50%;
+
+                @include tablet {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+.our-services {
+    padding: 2rem 0;
+
+    @include tablet {
+        padding: 3rem 0;
+    }
+
+    @include desktop {
+        padding: 4rem 0;
+    }
+    .container {
+        .text-wrapper {
+            text-align: center;
+            padding: 0 0 2rem ;
+            
+            @include tablet {
+                padding: 0 15% 0;
+            }
+
+            @include desktop {
+                padding: 2rem 25% 2rem;
+            }
+
+            span {
+                font-size: 14px;
+
+                @include tablet {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            justify-content: center;
+            gap: 1rem 0;
+            
+            @include tablet {
+                gap: 2rem;            
+                grid-template-columns: auto auto;
+            }
+
+            @include desktop {
+                grid-template-columns: auto auto auto;
+            }
+
+            .grid-box {
+                // These need a border when on services.htmlpage as bg is light.
+                max-width: 343px;
+                border-radius: 3px;
+                color: var(--color-primary);
+                text-decoration: none;
+                transition: 0.15s ease-out;
+                // overflow-x: hidden;
+                
+                @include tablet {
+                    padding: 1rem 0;
+                    max-width: calc((720px / 2) - 16px); // container width split in columns
+                }
+                
+                @include desktop {
+                    padding: 1rem 0;
+                    max-width: calc(1200px / 3); // container width split in columns
+                }
+                
+                h4{
+                    padding: 0.8rem 1.2rem ;
+                }
+                
+                p {
+                    font-size: 12px;
+                    padding: 1.5rem;
+                    
+                    @include desktop {
+                        font-size: 14px;
+                    }
+                }
+                
+                .image-wrapper {
+                    overflow: hidden;
+                    img {
+                        max-width: inherit;
+                        transition: 0.25s ease-out;
+                        
+                        &:hover {
+                            transform: rotate(3deg) scale(120%);
+                            transition: 0.25s ease-in;
+                        }
+                    }                
+                }
+
+                &:hover {
+                    transition: 0.15s ease-in;
+                    opacity: 50%;
+                }
+            }
+        }       
+    }
+}

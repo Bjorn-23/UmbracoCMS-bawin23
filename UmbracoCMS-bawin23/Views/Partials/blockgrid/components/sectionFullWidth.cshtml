@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var sectionId = sectionTitle?.ToString().ToLower().Trim().Replace(" ", "-");
+
+    var spacingTopClass = (Model?.Content.Value<bool>("addSpacingToTop") == true) ? "spacing-top" : "";
+    var spacingBottomClass = (Model?.Content.Value<bool>("addSpacingToBottom") == true) ? "spacing-botttom" : "";
+    var centerContentClass = (Model?.Content.Value<bool>("centerContentOnPage") == true) ? "center" : "";
+
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
+
+    var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
+    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-absolute" : "background-image";
+
+}
+
+<section id="@sectionId" class="@spacingTopClass spacingBottomClass">
+
+    @if (!string.IsNullOrEmpty(backgroundColorClass))
+    {
+        <div class="background @backgroundColorClass"></div>
+    }
+
+    @if (!string.IsNullOrEmpty(sectionBackgroundImage))
+    {
+        <img class="@isBackgroundImageAbsolute" src="sectionBackgroundImage" alt="@sectionTitle background image" />
+    }
+
+    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+</section>

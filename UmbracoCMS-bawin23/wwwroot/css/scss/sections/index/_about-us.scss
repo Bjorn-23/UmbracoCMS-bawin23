@@ -1,0 +1,64 @@
+.about-us {
+    .container {
+        position: relative;
+
+        @include tablet {
+            padding: 2rem;
+        }
+    
+        @include desktop {
+            padding: 6rem 0;
+            padding-right: calc(1200px * 0.42);
+        }
+
+        .text-wrapper {
+            text-align: center; 
+
+            @include tablet {
+                text-align: start;
+            }
+
+            blockquote {
+                font-style: italic;
+                margin: 1rem;
+            }
+        }
+
+        .form-wrapper {
+            box-shadow: 0 10px 8px 5px var(--color-gray);
+            
+            @include desktop {
+                position: absolute;
+                right: 0rem;
+                top: -5rem;
+            }
+            
+            .form-header {
+                padding: 2rem 5rem 2rem 3rem;
+                border-radius: 3px 3px 0 0;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+
+            .form-content {
+                display: flex;
+                flex-direction: column;
+
+                @include desktop {
+                    max-width: calc(1200px * 0.42);
+                }
+                
+                p {
+                    font-size: 13px;
+                    font-style: italic;
+                }
+
+                .input-group {
+                    margin: 0 0 1.5rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,123 @@
+.service-details {
+    // Sort out mobile and tablet designs
+    .container {
+        display: grid;
+        grid-template-areas:
+        'main'
+        'sidebar';
+
+        @include tablet {
+            grid-template-areas:
+            'sidebar main main main main main';
+        }
+        
+        @include desktop {
+            // gap: 4rem;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            max-width: 350px;
+            padding: 0 3rem 0 0;
+
+            
+            .about-us {
+                .image-wrapper {
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+            
+            .online-support {
+                padding: 1rem;
+                h3 {
+                    font-size: 22px;
+                }
+            }
+            p {
+                font-size: 14px;
+                padding: 0 2rem 0 0;
+            }
+        }
+
+        .main {
+            grid-area: main;
+            max-width: 100%;
+
+            @include desktop {
+                padding: 0 0 0 3rem;
+                border-left: 1px solid var(--color-border-gray);
+            }
+
+            .image-wrapper {
+                max-width: 100vw;
+
+                @include desktop {
+                    max-width: 900px;
+                    margin: 0 0 2rem;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            span {
+                margin: 0 0.5rem 0 0;
+            }
+            
+        }
+
+    }
+    
+}
+.contact-form {    
+    padding: 2rem 0;        
+
+    @include desktop {
+        padding: 4rem 0;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        max-width: 1200px;
+
+        .form-wrapper {
+            width: 1200px;
+
+            .form-content {
+                max-width: 1200px;
+                display: grid;
+                grid-template-areas:
+                'name email'
+                'message message';
+                border: none;
+                gap: 1rem;
+                padding: 0;
+                
+                .form-name {
+                    grid-area: name;
+                    // width: calc(50% -1rem);                
+                }
+                
+                .form-email {
+                    grid-area: email;
+                    // width: calc(50% -1rem);                
+                }
+                
+                .form-message {
+                    grid-area: message;
+                    textarea {
+                        width: 100%;                                    
+                    }
+                }
+
+                button {
+                    max-width: 8rem;
+                }
+            }
+        }
+    }
+}
