@@ -1,8 +1,19 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
 @{
-	Layout = null;
-  var pageTitle = !string.IsNullOrEmpty(ViewBag.Title) ? $"{ViewBag.Title} | Onatrix - Financial Soutions for Your Business" : "Onatrix - Financial Soutions for Your Business";
+
+    Layout = null;
+
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var siteName = settings?.Value<string>("siteName") ?? "";
+    var siteTagline = settings?.Value<string>("siteTagline") ?? "";
+
+    var pageTitle = !string.IsNullOrEmpty(ViewBag.Title)
+    && !string.IsNullOrEmpty(siteName)
+    && !string.IsNullOrEmpty(siteTagline) ? $"{ViewBag.Title} | {@siteName} - {@siteTagline}" : "Onatrix - Financial Soutions for Your Business";
 }
 
 <!DOCTYPE html>
@@ -11,18 +22,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://kit.fontawesome.com/a576612222.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/umb-grid.css">
-    <link rel="stylesheet" href="./css/theme.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="/css/umb-grid.css">
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="/css/main.min.css">
     <!-- <script src="/scripts/mobile-menu.js"></script> -->
     <meta name="author" content="Björn Andersson">
     <title>@pageTitle</title>
 </head>
 
 <body>
-    </div class="wrapper">
+    <div class="wrapper">
       @await Html.PartialAsync("partials/static/topbar.cshtml")
-      <header></header>
+      @await Html.PartialAsync("partials/static/header.cshtml")
 
       <main>
         @RenderBody()

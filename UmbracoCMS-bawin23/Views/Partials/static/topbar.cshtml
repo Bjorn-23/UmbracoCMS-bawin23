@@ -5,18 +5,18 @@
     var rootContents = UmbracoHelper.ContentAtRoot();
     var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
     var officeLocation = settings?.Value<string>("officeLocation") ?? "";
-    var socialMediaList = settings?.Value<IEnumerable<string>>("socialMediaLinks") ?? null;
 }
 
 <div id="topbar" class="bg-primary">
     <div class="container">
-        <div class="address">@officeLocation</div>
-    </div>
-    <div class="social-media">
-        @if (socialMediaList != null)
-        @foreach (var socialMedia in @socialMediaList)
-        {
-            <a href=$"https://www.{@socialMedia}.com" target="_blank" class="@socialMedia"><i class="fa-brands fa-@socialMedia-f"></i></a>
-        }
+        <div class="address">
+            <p>
+                @officeLocation
+            </p>
+        </div>
+
+        <div class="social-media">
+            @await Html.PartialAsync("./socialmedia.cshtml")
+        </div>
     </div>
 </div>

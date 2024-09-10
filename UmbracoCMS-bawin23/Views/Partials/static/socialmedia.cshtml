@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+    var rootContents = UmbracoHelper.ContentAtRoot();
+    var settings = rootContents?.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var socialMediaPlatforms = settings?.Value<IEnumerable<Umbraco.Cms.Core.Models.Blocks.BlockListItem>>("socialMediaInformation") ?? null;
+}
+
+@if (socialMediaPlatforms != null)
+{
+    <div class="social-media">
+        @foreach (var platform in socialMediaPlatforms)
+        {
+            var platformName = platform?.Content?.Value<string>("platformName").ToLower() ?? null;
+            var platformAccountUrl = platform?.Content?.Value<string>("platformAccountUrl") ?? "#";
+
+            @if (platformName != null)
+            {
+                if (platformName == "facebook")
+                {
+                    <a href="@platformAccountUrl" target="_blank" class="@platformName"><i class="fa-brands fa-@platformName-f"></i></a>
+                }
+                else if (platformName.ToLower() == "x (formerly twitter)")
+                {
+                    <a href="@platformAccountUrl" target="_blank" class="@platformName"><i class="fa-brands fa-x-twitter"></i></a>
+                }
+                else
+                {
+                    <a href="@platformAccountUrl" target="_blank" class="@platformName"><i class="fa-brands fa-@platformName"></i></a>
+                }
+            }
+        }
+    </div>
+}

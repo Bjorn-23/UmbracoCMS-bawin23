@@ -1,40 +1,43 @@
 //---Repeating sections
+@import "./repeatable-sections/_topbar.scss";
 @import "./repeatable-sections//header";
 @import "./repeatable-sections/footer";
 @import "./repeatable-sections//breadcrumbs";
 @import "./repeatable-sections//contact-details";
-@import "./repeatable-sections/our-services";
+@import "./repeatable-sections/our-services"; // Currently not used, remove if unnecessary.
 @import "./repeatable-sections/brands";
+@import "./repeatable-sections/service-grid-container";
+@import "./repeatable-sections/section-formatting";
 
 
-//---INDEX.HTML
-
-@import "./index/hero";
+//---Home
+@import "./index/hero"; // Currently not used, remove if unnecessary.
 @import "./index/about-us";
 @import "./index/trusted-company";
 @import "./index/success-stories";
 @import "./index/our-projects-index";
 
-//---ABOUT.HTML
 
+//---ABOUT
 @import "./about/tina-fox-ceo";
 @import "./about/trusted-reviews";
 @import "./about/our-experts";
 
-//---SERVICES.HTML
+
+//---SERVICES
 //Only repeating sections.
 
-//---SERVICE-DETAILS.HTML
+//---SERVICE-DETAILS
 @import "./service-details/service-details";
 
 
-//---PROJECTS:HTML
+//---PROJECTS
 @import "./projects/our-projects";
 
 
-//---PROJECTS-DETAILS.HTML
+//---PROJECTS-DETAILS
 @import "./project-details/projects-details";
 
 
-//---CONTACT:HTML
+//---CONTACT
 @import "./contact/contact";

@@ -36,11 +36,11 @@
         //}
 
         .btn-primary {
-            display: flex;
+            //display: flex;
 
-            @include tablet {
-                display: inline-block;
-            }
+            //@include tablet {
+            //    display: inline-block;
+            //}
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedValueFallback PublishedValueFallback
+@inject IPublishedUrlProvider PublishedUrlProvider
+
+@{
+    var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();
+}
+
+@if (selection?.Length > 0)
+{
+    <div id="nav-links" class="nav-links">
+        @foreach (var menuItem in selection)
+        {
+            @* var link = menuItem.Url(PublishedUrlProvider).TrimEnd("/"); *@
+            var link = menuItem.Url(PublishedUrlProvider);
+
+
+            <a class="@(menuItem.IsAncestorOrSelf(Model) ? "nav-link active" : "nav-link")"
+            href="@link" title="@menuItem.Name">@menuItem.Name</a>
+        }
+    </div>
+}

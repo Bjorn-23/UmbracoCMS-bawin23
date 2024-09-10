@@ -1,8 +1,9 @@
 .container, .container-fluid {
-    //position: relative; // interferes with spacing-top and bottom.
+    position: relative; // interferes with spacing-top and bottom.
     width: 100%;
     padding: 0 1rem;
     margin: 0 auto;
+    z-index: 100;
 }
 
 .container {
@@ -25,24 +26,4 @@
         max-width: 1920px;
     }
 }
-
-.center {
-    // this might cause issues with grids further down the track.
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.text-align-center {
-    text-align: center;
-}
-
-.text-align-start {
-    text-align: start;
-}
-
-#primary {
-
-}
-
 
