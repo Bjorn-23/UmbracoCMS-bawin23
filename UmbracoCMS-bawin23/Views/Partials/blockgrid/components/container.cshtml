@@ -2,6 +2,11 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 
-<div class="container">
+@{
+    var alignContentCenter = (Model?.Content.Value<bool>("alignContentCenter") == true) ? "center" : "";
+    var alignTextCenter = (Model?.Content.Value<bool>("alignTextCenter") == true ) ? "text-align-center" : "";
+}
+
+<div class="container @alignTextCenter @alignContentCenter">
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </div>

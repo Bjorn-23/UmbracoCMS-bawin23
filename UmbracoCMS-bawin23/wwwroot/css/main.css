@@ -312,10 +312,7 @@ h6 {
 }
 
 .center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
+  align-content: center;
 }
 .text-align-center {
   text-align: center;

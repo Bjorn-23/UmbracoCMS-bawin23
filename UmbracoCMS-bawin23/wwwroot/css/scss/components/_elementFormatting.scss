@@ -1,10 +1,16 @@
 .center {
-    // this might cause issues with grids further down the track.
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    
+    umb-block-grid__area-container {
+        umb-block-grid__area {
+            umb-block-grid__layout-container {
+                //this is currently not working - not sure how to override the styling from umbraco.
+                align-content: center;
+                //justify-content: center;
+                //align-items: center;                
+            }
+        }
+    }
+
+
 
     .umb-block-grid__layout-container {
         //Can i use this somehow?
