@@ -22,6 +22,7 @@
         text-decoration: none;
         transition: 0.15s ease-out;
         box-shadow: 0 10px 8px 5px var(--color-gray);
+        background-color: var(--color-light) !important;
 
         @include tablet {
             padding: 1rem 0;
@@ -40,6 +41,7 @@
         p {
             font-size: 12px;
             padding: 1.5rem;
+            color: var(--color-default);
 
             @include desktop {
                 font-size: 14px;

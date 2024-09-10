@@ -3,10 +3,9 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 
 @{
-    var alignContentCenter = (Model?.Content.Value<bool>("alignContentCenter") == true) ? "center" : "";
     var alignTextCenter = (Model?.Content.Value<bool>("alignTextCenter") == true ) ? "text-align-center" : "";
 }
 
-<div class="container @alignTextCenter @alignContentCenter">
+<div class="container @alignTextCenter">
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </div>

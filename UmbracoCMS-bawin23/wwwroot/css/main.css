@@ -312,14 +312,32 @@ h6 {
 }
 
 .center {
-  align-content: center;
+  text-align: center;
 }
+
+.btn-align-center {
+  text-align: center;
+}
+
+.btn-align-start {
+  text-align: start;
+}
+
 .text-align-center {
   text-align: center;
 }
 
 .text-align-start {
   text-align: start;
+}
+
+.img-margin-top {
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .img-margin-top {
+    margin-top: 2rem;
+  }
 }
 
 .background {
@@ -667,6 +685,7 @@ footer .container p {
   text-decoration: none;
   transition: 0.15s ease-out;
   box-shadow: 0 10px 8px 5px var(--color-gray);
+  background-color: var(--color-light) !important;
 }
 @media (min-width: 768px) {
   .service-grid-container .grid-box {
@@ -686,6 +705,7 @@ footer .container p {
 .service-grid-container .grid-box p {
   font-size: 12px;
   padding: 1.5rem;
+  color: var(--color-default);
 }
 @media (min-width: 1400px) {
   .service-grid-container .grid-box p {
