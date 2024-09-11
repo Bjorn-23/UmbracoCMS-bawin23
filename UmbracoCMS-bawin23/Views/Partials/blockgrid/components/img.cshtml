@@ -7,9 +7,14 @@
     var imageDescription = Model?.Content.Value<string>("imageDescription") ?? "";
     
     var marginTop = (Model?.Content.Value<bool>("addMarginTop") == true) ? "img-margin-top" : "";
+    var centerImage = (Model?.Content.Value<bool>("centerImage") == true) ? "center-image" : "";
+    var imageWidth = Model?.Content.Value<int>("imageWidth");
+    var imageStyleWidth = imageWidth.ToString() + "%";
 }
 
 @if(!string.IsNullOrEmpty(selectedImage))
 {
-    <img class="@marginTop" src="@selectedImage" alt="@imageDescription" >
+    <div class="image-formatting @centerImage" style="width: @imageStyleWidth">
+        <img class="@marginTop" src="@selectedImage" alt="@imageDescription" >
+    </div>
 }

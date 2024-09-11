@@ -1,6 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 @{
     var paragraphContent = Model?.Content.Value<string>("paragraphContent") ?? "";
@@ -10,9 +11,12 @@
     {
         textAlign = (Model?.Content.Value<bool>("alignLeft") == true) ? "text-align-start" : "";
     }
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 }
 
 @if(!string.IsNullOrEmpty(paragraphContent))
 {
-    <p class="@textAlign">@paragraphContent</p>
+    <p class="@textAlign @backgroundColorClass">@paragraphContent</p>
+
 }
