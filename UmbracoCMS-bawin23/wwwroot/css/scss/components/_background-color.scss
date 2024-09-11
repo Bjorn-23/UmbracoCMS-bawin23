@@ -11,3 +11,15 @@
     bottom: 10%;
     right: 0;
 }
+
+p {
+    &.bg {
+        background-color: transparent;
+    }
+}
+
+h2 {
+    &.bg {
+        background-color: transparent;
+    }
+}

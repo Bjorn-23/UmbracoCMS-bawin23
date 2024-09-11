@@ -12,7 +12,7 @@
         textAlign = (Model?.Content.Value<bool>("alignLeft") == true) ? "text-align-start" : "";
     }
     var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
-    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel} bg" : "";
 }
 
 @if(!string.IsNullOrEmpty(paragraphContent))

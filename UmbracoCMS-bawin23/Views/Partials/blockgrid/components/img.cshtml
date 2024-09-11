@@ -10,11 +10,13 @@
     var centerImage = (Model?.Content.Value<bool>("centerImage") == true) ? "center-image" : "";
     var imageWidth = Model?.Content.Value<int>("imageWidth");
     var imageStyleWidth = imageWidth.ToString() + "%";
+
+    var roundedBorders = (Model?.Content.Value<bool>("roundedBorders") == true) ? "image-borders-rounded" : "";
 }
 
 @if(!string.IsNullOrEmpty(selectedImage))
 {
     <div class="image-formatting @centerImage" style="width: @imageStyleWidth">
-        <img class="@marginTop" src="@selectedImage" alt="@imageDescription" >
+        <img class="@marginTop @roundedBorders" src="@selectedImage" alt="@imageDescription" >
     </div>
 }
