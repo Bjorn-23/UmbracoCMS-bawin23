@@ -17,24 +17,41 @@
     var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 
     var sectionBackgroundImage = Model?.Content?.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? "";
-    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-image-absolute" : "background-image";    
+    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-image-absolute" : "background-image";
     var backGroundHeight = Model?.Content?.Value<int>("sectionBackgroundHeight") ?? 0;
     var sectionMinimumHeight = backGroundHeight.ToString() + "px";
 }
 
-<section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText" style="min-height: @sectionMinimumHeight" >
+@if (Model?.Content.Value<bool>("SetBackgroundColorAbsolute") == true)
+{
+   <section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText" style="min-height: @sectionMinimumHeight" >
 
-    @if (!string.IsNullOrEmpty(backgroundColorClass))
-    {
-        <div class="background @backgroundColorClass @negativeSpacingBottom"></div>
-    }
+        @if (!string.IsNullOrEmpty(backgroundColorClass))
+        {
+            <div class="background @backgroundColorClass @negativeSpacingBottom"></div>
+        }
 
-    @if (!string.IsNullOrEmpty(sectionBackgroundImage))
-    {
-        <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
-    }
-    <!-- <div class="container @centerContentClass @backgroundColorClass" > -->
-    <div class="container @centerContentClass">
-        @await Html.GetBlockGridItemAreasHtmlAsync(Model)
-    </div>
-</section>
+        @if (!string.IsNullOrEmpty(sectionBackgroundImage))
+        {
+            <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+        }
+
+        <div class="container @centerContentClass">
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+        </div>
+    </section> 
+}
+
+else
+{
+    <section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText @backgroundColorClass" style="min-height: @sectionMinimumHeight" >
+
+        @if (!string.IsNullOrEmpty(sectionBackgroundImage))
+        {
+            <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+        }
+        <div class="container @centerContentClass">
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+        </div>
+    </section>
+}

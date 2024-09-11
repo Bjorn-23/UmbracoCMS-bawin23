@@ -355,11 +355,23 @@ h6 {
   right: 0;
 }
 
+p.bg {
+  background-color: transparent;
+}
+
+h2.bg {
+  background-color: transparent;
+}
+
 .image-formatting {
   max-width: 100%;
 }
 .center-image {
   margin: 0 auto;
+}
+
+.image-borders-rounded {
+  border-radius: 4px;
 }
 
 #topbar {
