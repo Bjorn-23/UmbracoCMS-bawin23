@@ -6,41 +6,44 @@
 
 	var selection = Umbraco.Content(Guid.Parse("1cd3b4ea-e949-432b-94f8-57e8fcd2424d"))?
     .ChildrenOfType("serviceItemTemplate")?
-    .Where(x => x.IsVisible());	
+    .Where(x => x.IsVisible());
+
+	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 }
 
-<section id="our-services">
-<div class="container">
-	@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
-	{
-		<div class="headline">
-			<h2 class="title">@Model.Value("customHeadLine")</h2>
-		</div>
-	}
+<section id="our-services" class="spacing-bottom">
+	<div class="container">
+		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
+		{
+			<div class="headline @centerHeadLine">
+				<h6>@Model.Name</h6>
+				<h2 class="title">@Model.Value("customHeadLine")</h2>
+			</div>
+		}
 
-	<div class="service-grid-container">
-			@if (selection != null)
-			{
-				foreach (var item in selection)
+		<div class="service-grid-container">
+				@if (selection != null)
 				{
-				var link = item?.Url().TrimEnd("/");
-				var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-				var preamble = item?.Value<string>("preamble") ?? "";
+					foreach (var item in selection)
+					{
+					var link = item?.Url().TrimEnd("/");
+					var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+					var preamble = item?.Value<string>("preamble") ?? "";
 
-				<a href="@link" class="grid-box bg-light">
-					<h4>@item?.Name</h4>
-					<div class="image-wrapper">
-						<img src="@image" alt="@item?.Name">
-					</div>
-					<p>@preamble</p>
-				</a>					
+					<a href="@link" class="grid-box bg-light">
+						<h4>@item?.Name</h4>
+						<div class="image-wrapper">
+							<img src="@image" alt="@item?.Name">
+						</div>
+						<p>@preamble</p>
+					</a>					
+					}
+					
 				}
-				
-			}
-	
-	</div>
+		
+		</div>
 
-</div>
+	</div>
 </section>
 
 
