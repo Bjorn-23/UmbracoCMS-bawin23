@@ -122,6 +122,15 @@ a[target=_blank]::after {
   text-decoration: none;
 }
 
+.tag {
+  text-align: center;
+  background-color: var(--color-gray);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border-gray);
+  border-radius: 2rem;
+  margin: 0.2rem;
+}
+
 p {
   margin: 0;
   padding: 0 0 1em 0;
@@ -238,16 +247,6 @@ h6 {
 }
 .form-content .input-group textarea {
   resize: none;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto !important;
-}
-@media (min-width: 768px) {
-  .wrapper {
-    grid-template-rows: auto auto 1fr auto !important;
-  }
 }
 
 .pagination {
@@ -391,6 +390,16 @@ section {
 
 #hero {
   overflow-x: hidden;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto !important;
+}
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-rows: auto auto 1fr auto !important;
+  }
 }
 
 #topbar {
@@ -584,45 +593,61 @@ footer .container p {
   padding: 1rem;
 }
 
-.breadcrumbs {
+#breadcrumbs {
   display: none;
 }
 @media (min-width: 768px) {
-  .breadcrumbs {
+  #breadcrumbs {
     display: block;
   }
 }
-.breadcrumbs .container-fluid {
+#breadcrumbs .container {
   position: relative;
-  max-height: 10rem;
+  max-height: 20rem;
   padding: 2rem 0;
   text-align: center;
 }
-.breadcrumbs .container-fluid .globe-left, .breadcrumbs .container-fluid .globe-right {
+#breadcrumbs .container .globe-left, #breadcrumbs .container .globe-right {
   position: absolute;
   max-height: 100%;
+  z-index: 10;
 }
-.breadcrumbs .container-fluid .globe-left img, .breadcrumbs .container-fluid .globe-right img {
+#breadcrumbs .container .globe-left img, #breadcrumbs .container .globe-right img {
   width: auto;
   max-height: 3rem;
 }
 @media (min-width: 768px) {
-  .breadcrumbs .container-fluid .globe-left img, .breadcrumbs .container-fluid .globe-right img {
+  #breadcrumbs .container .globe-left img, #breadcrumbs .container .globe-right img {
     max-height: 5rem;
   }
 }
 @media (min-width: 1400px) {
-  .breadcrumbs .container-fluid .globe-left img, .breadcrumbs .container-fluid .globe-right img {
+  #breadcrumbs .container .globe-left img, #breadcrumbs .container .globe-right img {
     max-height: 8rem;
   }
 }
-.breadcrumbs .container-fluid .globe-left {
+#breadcrumbs .container .globe-left {
   bottom: 0;
   left: 0;
 }
-.breadcrumbs .container-fluid .globe-right {
+#breadcrumbs .container .globe-right {
   top: 0;
   right: 0;
+}
+#breadcrumbs .container ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+#breadcrumbs .container ul .divider {
+  color: var(--color-default);
+  margin-right: 0.2rem;
+}
+#breadcrumbs .container ul a {
+  color: var(--color-default);
+}
+#breadcrumbs .container ul li {
+  color: var(--color-secondary);
 }
 
 .contact-details {
@@ -777,7 +802,14 @@ footer .container p {
 
 section {
   position: relative;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   z-index: 0;
+}
+
+#hero {
+  overflow-x: hidden;
 }
 
 .project-grid-container {
@@ -1346,69 +1378,94 @@ section {
   max-width: 8rem;
 }
 
-.our-projects .container {
+#our-projects .container {
   display: grid;
   grid-template-areas: "main" "sidebar";
 }
 @media (min-width: 768px) {
-  .our-projects .container {
+  #our-projects .container {
     grid-template-areas: "main main main main main sidebar";
   }
 }
 @media (min-width: 1400px) {
-  .our-projects .container {
+  #our-projects .container {
     padding: 4rem 0;
   }
 }
-.our-projects .container .sidebar {
+#our-projects .container .sidebar {
   grid-area: sidebar;
   max-width: 350px;
   padding: 0 0 0 3rem;
 }
-.our-projects .container .sidebar .tag-grid {
+#our-projects .container .sidebar .tag-grid {
   display: grid;
   grid-template-columns: auto auto;
   padding: 2rem 0;
 }
-.our-projects .container .sidebar p {
+#our-projects .container .sidebar p {
   font-size: 14px;
   padding: 0 2rem 0 0;
 }
-.our-projects .container .sidebar .online-support {
+#our-projects .container .sidebar .online-support {
   padding: 1rem;
 }
-.our-projects .container .sidebar .online-support h3 {
+#our-projects .container .sidebar .online-support h3 {
   font-size: 22px;
 }
-.our-projects .container .main {
+#our-projects .container .service-grid-container {
   grid-area: main;
   max-width: 100%;
+  grid-template-columns: auto;
 }
 @media (min-width: 1400px) {
-  .our-projects .container .main {
+  #our-projects .container .service-grid-container {
     padding: 0 3rem 0 0;
     border-right: 1px solid var(--color-border-gray);
+    gap: 0;
   }
 }
-.our-projects .container .main .projects-box {
+#our-projects .container .service-grid-container .projects-box {
   display: flex;
-  gap: 1rem;
+  padding: 2rem 0;
+  border-bottoM: 1px solid var(--color-border-gray);
 }
-.our-projects .container .main .projects-box .image-wrapper {
+#our-projects .container .service-grid-container .projects-box:first-child {
+  padding-top: 0;
+}
+#our-projects .container .service-grid-container .projects-box:last-child {
+  border: none;
+}
+#our-projects .container .service-grid-container .projects-box .image-wrapper {
   flex: 1;
   max-width: 100vw;
 }
 @media (min-width: 1400px) {
-  .our-projects .container .main .projects-box .image-wrapper {
+  #our-projects .container .service-grid-container .projects-box .image-wrapper {
     max-width: 900px;
-    margin: 0 0 2rem;
   }
 }
-.our-projects .container .main .projects-box .image-wrapper img {
+#our-projects .container .service-grid-container .projects-box .image-wrapper img {
   width: 100%;
+  object-fit: cover;
+  aspect-ratio: 3/2;
+  overflow: hidden;
 }
-.our-projects .container .main .projects-box .text-wrapper {
+#our-projects .container .service-grid-container .projects-box .text-wrapper {
   flex: 1;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 0.5rem 1rem;
+}
+#our-projects .container .service-grid-container .projects-box .text-wrapper h4 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#our-projects .container .service-grid-container .projects-box .text-wrapper .fa-calendar-days {
+  margin: 0 1rem 0 0;
+}
+#our-projects .container .service-grid-container .projects-box .text-wrapper .fa-arrow-right-long {
+  margin: 0 1rem;
 }
 
 .our-projects .container .project-details i {

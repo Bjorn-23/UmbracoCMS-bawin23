@@ -8,6 +8,11 @@
     var blockGrid = Model?.Value<BlockGridModel>("pageLayout");
 }
 
+@if (ViewBag.Title != "Home")
+{
+    @await Html.PartialAsync("partials/static/breadcrumbs.cshtml")
+}
+
 @if (blockGrid != null)
 {
     @await Html.GetBlockGridHtmlAsync(blockGrid);

@@ -11,12 +11,14 @@
 	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 }
 
-<section id="our-services" class="spacing-bottom">
+@await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
+
+<section id="our-services" class="spacing-bottom spacing-top">
 	<div class="container">
 		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
 		{
 			<div class="headline @centerHeadLine">
-				<h6>@Model.Name</h6>
+				<!-- <h6>@Model.Name</h6> -->
 				<h2 class="title">@Model.Value("customHeadLine")</h2>
 			</div>
 		}

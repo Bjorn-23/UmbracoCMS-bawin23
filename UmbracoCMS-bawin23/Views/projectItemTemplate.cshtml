@@ -7,6 +7,8 @@
 	ViewBag.Title = (!string.IsNullOrEmpty(pageTitle)) ? pageTitle : pageName;
 }
 
+@await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
+
 <section class="project-details">
 	<div class="container">
 		@Model.Value("pageContent")

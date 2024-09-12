@@ -1,20 +1,21 @@
-.breadcrumbs {
+#breadcrumbs {
     display: none; // totally removed from mobile design.
 
     @include tablet {
         display: block;
     }
 
-    .container-fluid {
+    .container {
         position: relative;
-        max-height: 10rem;
+        max-height: 20rem;
         padding: 2rem 0;
         text-align: center;
         
         .globe-left, .globe-right {
             position: absolute;
             max-height: 100%;
-    
+            z-index: 10;
+                
             img {
                 width: auto;
                 max-height: 3rem;
@@ -37,6 +38,25 @@
         .globe-right {  
             top: 0;
             right: 0;
+        }
+
+        ul {            
+            list-style: none;
+            display: flex;
+            justify-content: center;
+
+            .divider {
+                color: var(--color-default);
+                margin-right: 0.2rem;
+            }
+
+            a {
+                color: var(--color-default);
+            }
+
+            li {
+                color: var(--color-secondary);
+            }
         }
     }
 }

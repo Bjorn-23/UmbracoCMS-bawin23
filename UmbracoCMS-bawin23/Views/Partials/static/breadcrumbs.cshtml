@@ -1,0 +1,55 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Routing
+@using Umbraco.Extensions
+
+@inject IPublishedUrlProvider PublishedUrlProvider
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@{
+    var rootContent = UmbracoHelper.ContentAtRoot();
+    var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var siteName = settings?.Value<string>("siteName") ?? "";
+    var siteLogotype = settings?.Value<IPublishedContent>("siteLogotype")?.Url().ToLower() ?? "";
+    var breadcrumbImageLeft = settings?.Value<IPublishedContent>("breadcrumbImageLeft")?.Url().ToLower() ?? "";
+    var breadcrumbImageRight = settings?.Value<IPublishedContent>("breadcrumbImageRight")?.Url().ToLower() ?? "";
+
+
+    var selection = Model.Ancestors().ToArray();
+    var homePageDisplayName = "Home";
+    var isFirstItem = true;
+}
+
+<section id="breadcrumbs" class="bg-gray">
+    <div class="container">
+        @if (!string.IsNullOrEmpty(breadcrumbImageLeft))
+        {
+            <div class="globe-left">
+                <img src="@breadcrumbImageLeft" alt="a grid picture of a globe">
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(breadcrumbImageRight))
+        {
+            <div class="globe-right">
+                <img src="@breadcrumbImageRight" alt="a grid picture of a globe">
+            </div>
+        }        
+
+        <h1>@ViewBag.Title</h1>
+        
+        @if (selection?.Length > 0)
+        {
+            <ul class="breadcrumb">
+                @* For each page in the ancestors collection which have been ordered by Level (so we start with the highest top node first) *@
+                @foreach (var item in selection.OrderBy(x => x.Level))
+                {
+                    var displayName = isFirstItem ? homePageDisplayName : item.Name;
+                    <li><a href="@item.Url(PublishedUrlProvider)">@displayName</a> <span class="divider">></span></li>
+                    isFirstItem = false;
+                }
+
+                @* Display the current page as the last item in the list *@
+                <li class="active">@Model.Name</li>
+            </ul>
+        }
+
+    </div>
+</section>
