@@ -6,22 +6,22 @@
     .Where(x => x.IsVisible());
 }
 
-	<div class="service-grid-container">
+<div class="service-grid-container">
     @if (selection != null)
     {
         foreach (var item in selection)
         {
-        var link = item?.Url().TrimEnd("/");
-        var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-        var preamble = item?.Value<string>("preamble") ?? "";
+            var link = item?.Url().TrimEnd("/");
+            var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+            var preamble = item?.Value<string>("preamble") ?? "";
 
-        <a href="@link" class="grid-box bg-light">
-            <h4>@item?.Name</h4>
-            <div class="image-wrapper">
-                <img src="@image" alt="@item?.Name">
-            </div>
-            <p>@preamble</p>
-        </a>					
+            <a href="@link" class="grid-box bg-light">
+                <h4>@item?.Name</h4>
+                <div class="image-wrapper">
+                    <img src="@image" alt="@item?.Name">
+                </div>
+                <p>@preamble</p>
+            </a>					
         }        
     }
 

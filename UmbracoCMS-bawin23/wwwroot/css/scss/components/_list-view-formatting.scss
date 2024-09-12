@@ -1,0 +1,9 @@
+.center-headline {
+    text-align: center;
+
+    @include desktop {
+        h2 {
+            padding: 0 25%;
+        }
+    }
+}

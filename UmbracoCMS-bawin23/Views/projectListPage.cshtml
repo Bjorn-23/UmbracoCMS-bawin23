@@ -1,0 +1,50 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+
+	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
+    .ChildrenOfType("projectItemTemplate")?
+    .Where(x => x.IsVisible());
+
+	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
+}
+
+<section id="our-projects" class="spacing-bottom">
+	<div class="container">
+		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
+		{
+			<div class="headline @centerHeadLine">
+				<h2 class="title">@Model.Value("customHeadLine")</h2>
+			</div>
+		}
+
+		<div class="service-grid-container">
+				@if (selection != null)
+				{
+					foreach (var item in selection)
+					{
+						var link = item?.Url().TrimEnd("/");
+						var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+						var preamble = item?.Value<string>("preamble") ?? "";
+						var datePublished = item?.Value<DateTime>("datePublished").ToString() ?? null;
+						
+						<a href="@link" class="projects-box">
+							<div class="image-wrapper">
+								<img src="@image" alt="@item?.Name">
+							</div>
+							<div class="text-wrapper">
+								<h4>@item?.Name</h4>
+								<p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@datePublished</p>
+								<p class="ingress">@preamble</p>
+								<h4 class="read-more">Read more</h4>
+							</div>
+						</a>			
+					}
+					
+				}
+		
+		</div>
+	</div>
+</section>
