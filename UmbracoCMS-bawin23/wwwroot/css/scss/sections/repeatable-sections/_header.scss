@@ -68,6 +68,25 @@ header {
                 grid-area: links;
                 display: none;
 
+                .nav-link {
+                    @include heading;
+                    color: var(--color-default);
+                    
+                    &:hover {
+                        text-decoration: underline !important;
+                        text-underline-offset: 2px;
+                    }
+
+                    &.active {
+                        color: var(--color-secondary);
+
+                    }
+                    
+                    &.active:hover {
+                        text-decoration: none !important;
+                    }
+                }
+
                 @include tablet {
                     display: flex;
                     justify-content: space-between;

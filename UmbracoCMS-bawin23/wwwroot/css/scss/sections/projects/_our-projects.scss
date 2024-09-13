@@ -38,69 +38,69 @@
             }
         }
 
-        //.service-grid-container {
-        //    grid-area: main;
-        //    max-width: 100%;
-        //    grid-template-columns: auto;
+        .project-grid-container {
+            grid-area: main;
+            max-width: 100%;
+            grid-template-columns: auto;
 
-        //    @include desktop {
-        //        padding: 0 3rem 0 0;
-        //        border-right: 1px solid var(--color-border-gray);
-        //        gap: 0;
-        //    }
+            @include desktop {
+                padding: 0 3rem 0 0;
+                border-right: 1px solid var(--color-border-gray);
+                gap: 0;
+            }
 
-        //    .projects-box {
-        //        display: flex;
-        //        padding: 2rem 0;
-        //        border-bottoM: 1px solid var(--color-border-gray);
+            .projects-box {
+                display: flex;
+                padding: 2rem 0;
+                border-bottoM: 1px solid var(--color-border-gray);
                 
-        //        &:first-child {
-        //            padding-top: 0;
-        //        }
+                &:first-child {
+                    padding-top: 0;
+                }
 
-        //        &:last-child {
-        //            border: none;
-        //        }
+                &:last-child {
+                    border: none;
+                }
 
-        //        .image-wrapper {
-        //            flex: 1;
-        //            max-width: 100vw;
+                .image-wrapper {
+                    flex: 1;
+                    max-width: 100vw;
 
-        //            @include desktop {
-        //                max-width: 900px;
-                        //max-height: 600px;
-                        //margin: 0 0 2rem;
-        //            }
+                    @include desktop {
+                        max-width: 900px;
+                        max-height: 600px;
+                        margin: 0 0 2rem;
+                    }
 
-        //            img {
-        //                width: 100%;
-        //                object-fit: cover;
-        //                aspect-ratio: 3 / 2;
-        //                overflow: hidden;
-        //            }
-        //        }
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        aspect-ratio: 3 / 2;
+                        overflow: hidden;
+                    }
+                }
 
-        //        .text-wrapper {
-        //            flex: 1;
-        //            display: grid;
-        //            grid-template-rows: auto auto 1fr auto;
-        //            padding: 0.5rem 1rem;
+                .text-wrapper {
+                    flex: 1;
+                    display: grid;
+                    grid-template-rows: auto auto 1fr auto;
+                    padding: 0.5rem 1rem;
 
-        //            h4 {
-        //                text-overflow: ellipsis;
-        //                white-space: nowrap;
-        //                overflow: hidden;
-        //            }
+                    h4 {
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
                     
-        //            .fa-calendar-days {
-        //                margin: 0 1rem 0 0;
-        //            }
+                    .fa-calendar-days {
+                        margin: 0 1rem 0 0;
+                    }
                     
-        //            .fa-arrow-right-long {
-        //                margin: 0 1rem;
-        //            }
-        //        }
-        //    }
-        //}
+                    .fa-arrow-right-long {
+                        margin: 0 1rem;
+                    }
+                }
+            }
+        }
     }
 }
