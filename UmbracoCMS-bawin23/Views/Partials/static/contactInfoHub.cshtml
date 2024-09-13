@@ -1,0 +1,67 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var rootContent = UmbracoHelper.ContentAtRoot();
+
+    var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
+    var contactInfo = rootContent.FirstOrDefault(x => x.ContentType.Alias == "contactInfoHub") ?? null;
+
+    var siteName = settings?.Value<string>("siteName") ?? "";
+    var siteLogotype = settings?.Value<IPublishedContent>("siteLogotype")?.Url().ToLower() ?? "";
+    var officeLocation = settings?.Value<string>("officeLocation") ?? "";
+    var officePhone = settings?.Value<string>("officePhoneNumber") ?? "";
+    var officeEmail = settings?.Value<string>("officeEmailAddress") ?? "";
+
+    var sectionId = contactInfo?.Value<string>("sectionId").ToLower().Trim().Replace(" ", "-") ?? "";
+    var headline = contactInfo?.Value<string>("headline") ?? "";
+
+    var backgroundGraphicContent = contactInfo?.Value<IPublishedContent>("backgroundGraphic");
+    var backgroundGraphic = backgroundGraphicContent != null ? backgroundGraphicContent.Url() : "";
+
+    var foregroundImageContent = contactInfo?.Value<IPublishedContent>("foregroundImage");
+    var foregroundImage = foregroundImageContent != null ? foregroundImageContent.Url() : "";
+    
+    var sectionBackgroundColorLabel = contactInfo?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label?.ToLower();
+    var backgroundColorClass = !string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none" ? $"bg-{sectionBackgroundColorLabel}" : "";
+}
+
+<section id="@sectionId" class="@backgroundColorClass">
+
+    <div class="container">
+        <div class="image-wrapper" style="background-image: url(@backgroundGraphic); background-repeat: no-repeat; background-size: 75%; background-position: bottom left; ">
+            <img class="project-man" src="@foregroundImage" alt="@siteName">
+        </div>
+
+        <div class="text-wrapper">
+            <h2>@headline</h2>
+
+            <div class="contact-box">
+                <div class="icon-wrapper"><i class="fa-thin fa-location-dot"></i></div>
+                <div class="info-wrapper">
+                    <h6>Office location</h6>
+                    <p>@officeLocation</p>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="icon-wrapper"><i class="fa-thin fa-phone"></i></div>
+                <div class="info-wrapper">
+                    <h6>Phone number</h6>
+                    <p>@officePhone</p>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <div class="icon-wrapper"><i class="fa-thin fa-envelope"></i></div>
+                <div class="info-wrapper">
+                    <h6>E-mail address</h6>
+                    <p>@officeEmail</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

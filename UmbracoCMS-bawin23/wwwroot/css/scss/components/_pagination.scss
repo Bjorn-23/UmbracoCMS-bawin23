@@ -1,13 +1,52 @@
 .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    margin: 1rem 0 0;
+
+    @include tablet {
+        margin: 2rem 0 0;
+    }
 
     a {
         margin: 0 0.5rem;
     }
 
-    .btn-pagination.active {
-        @include btn-circle;
-        height: 2rem;
-        width: 2rem;
+    .prev-next {
+        padding: 0.25rem 0.5rem;
+    }
+
+    .prev-next {
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 4rem;
+
+        &:hover {
+            text-decoration: none;
+            background-color: var(--color-gray);
+            border: 1px solid var(--color-border-gray);
+        }
+    }
+
+    .btn-pagination {
+
+        &.active {
+            @include btn-circle;
+            height: 2rem;
+            width: 2rem;
+        }
+
+        &:hover:not(.active) {
+            text-decoration: underline;
+        }
+    }
+
+    .inactive {
+        opacity: 50%;
+
+        &:hover {
+            text-decoration: line-through;
+        }
     }
 }
