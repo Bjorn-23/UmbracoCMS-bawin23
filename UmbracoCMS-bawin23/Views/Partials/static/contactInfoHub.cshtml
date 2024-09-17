@@ -4,6 +4,8 @@
 @using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 
 @{
+    var pageTitle = ViewBag.Title;
+
     var rootContent = UmbracoHelper.ContentAtRoot();
 
     var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
@@ -15,7 +17,7 @@
     var officePhone = settings?.Value<string>("officePhoneNumber") ?? "";
     var officeEmail = settings?.Value<string>("officeEmailAddress") ?? "";
 
-    var sectionId = contactInfo?.Value<string>("sectionId").ToLower().Trim().Replace(" ", "-") ?? "";
+    var sectionId = contactInfo?.Value<string>("sectionId")?.ToLower().Trim().Replace(" ", "-") ?? "";
     var headline = contactInfo?.Value<string>("headline") ?? "";
 
     var backgroundGraphicContent = contactInfo?.Value<IPublishedContent>("backgroundGraphic");
@@ -26,6 +28,11 @@
     
     var sectionBackgroundColorLabel = contactInfo?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label?.ToLower();
     var backgroundColorClass = !string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none" ? $"bg-{sectionBackgroundColorLabel}" : "";
+
+    if (pageTitle == "Contact")
+    {
+        backgroundColorClass = "bg-light";
+    }
 }
 
 <section id="@sectionId" class="@backgroundColorClass">

@@ -1,0 +1,17 @@
+.map-wrapper {
+    padding: 0;
+
+    .google-map {
+        height: 20rem;
+        width: 100%;
+        opacity: 40%;
+
+        @include tablet {
+            height: 25rem;
+        }
+
+        @include desktop {
+            height: 30rem;
+        }
+    }
+}

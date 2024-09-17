@@ -235,20 +235,59 @@ h6 {
   }
 }
 
-.form-content {
+.form-wrapper {
+  box-shadow: 0 10px 8px 5px var(--color-gray);
+}
+@media (min-width: 1400px) {
+  .form-wrapper {
+    position: absolute;
+    z-index: 10;
+    right: 0rem;
+    top: -10rem;
+  }
+}
+.form-wrapper .form-header {
+  padding: 2rem 5rem 2rem 3rem;
+  border-radius: 3px 3px 0 0;
+}
+.form-wrapper .form-header h3 {
+  margin: 0;
+}
+.form-wrapper form {
   padding: 2rem 1.5rem 2.5rem;
   border: 1px solid var(--color-border-dark-transparent);
   border-radius: 0 0 3px 3px;
 }
-.form-content .input-group input, .form-content .input-group select, .form-content .input-group textarea {
+.form-wrapper form .input-group {
+  position: relative;
+  margin: 1rem 0;
+}
+.form-wrapper form .input-group input, .form-wrapper form .input-group select, .form-wrapper form .input-group textarea {
   width: 100%;
   padding: 0.5rem;
   outline: none;
   border: 1px solid var(--color-border-dark-transparent);
   border-radius: 3px;
 }
-.form-content .input-group textarea {
+.form-wrapper form .input-group .form-input-error {
+  display: none;
+}
+.form-wrapper form .input-group .form-invalid-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  display: inline-block;
+  color: red;
+}
+.form-wrapper form .input-group textarea {
   resize: none;
+}
+.form-wrapper form .form-success {
+  background-color: lawngreen;
+  padding: 0.2rem 1rem;
+  border: 1px solid green;
+  border-radius: 8px;
 }
 
 .pagination {
@@ -434,6 +473,25 @@ section {
 @media (min-width: 768px) {
   .wrapper {
     grid-template-rows: auto auto 1fr auto !important;
+  }
+}
+
+.map-wrapper {
+  padding: 0;
+}
+.map-wrapper .google-map {
+  height: 20rem;
+  width: 100%;
+  opacity: 40%;
+}
+@media (min-width: 768px) {
+  .map-wrapper .google-map {
+    height: 25rem;
+  }
+}
+@media (min-width: 1400px) {
+  .map-wrapper .google-map {
+    height: 30rem;
   }
 }
 
@@ -1337,96 +1395,151 @@ section {
   font-size: 12px;
 }
 
-.service-details .container {
+#service-details .container {
   display: grid;
   grid-template-areas: "main" "sidebar";
 }
 @media (min-width: 768px) {
-  .service-details .container {
-    grid-template-areas: "sidebar main main main main main";
+  #service-details .container {
+    grid-template-areas: "sidebar main main main main";
+  }
+  #service-details .container .sidebar {
+    padding: 0 3rem 0 0;
+    border-right: 1px solid var(--color-border-gray);
   }
 }
-.service-details .container .sidebar {
+#service-details .container .sidebar {
   grid-area: sidebar;
-  max-width: 350px;
   padding: 0 3rem 0 0;
 }
-.service-details .container .sidebar .about-us .image-wrapper img {
-  width: 100%;
-}
-.service-details .container .sidebar .online-support {
-  padding: 1rem;
-}
-.service-details .container .sidebar .online-support h3 {
-  font-size: 22px;
-}
-.service-details .container .sidebar p {
+#service-details .container .sidebar p {
   font-size: 14px;
   padding: 0 2rem 0 0;
 }
-.service-details .container .main {
+#service-details .container .sidebar .about-us {
+  margin: 2rem 0;
+}
+#service-details .container .sidebar .about-us .image-wrapper {
+  margin: 0 0 0.5rem;
+}
+#service-details .container .sidebar .about-us .image-wrapper img {
+  width: 100%;
+}
+#service-details .container .sidebar .online-support {
+  margin: 1rem 0;
+  padding: 1rem;
+}
+#service-details .container .sidebar .online-support h3 {
+  font-size: 16px;
+}
+#service-details .container .sidebar .online-support form {
+  position: relative;
+}
+#service-details .container .sidebar .online-support form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem;
+}
+#service-details .container .sidebar .online-support form input[placeholder] {
+  font-style: italic;
+}
+#service-details .container .sidebar .online-support form i {
+  color: var(--color-default);
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  right: 1rem;
+}
+#service-details .container .main {
   grid-area: main;
-  max-width: 100%;
 }
 @media (min-width: 1400px) {
-  .service-details .container .main {
+  #service-details .container .main {
     padding: 0 0 0 3rem;
-    border-left: 1px solid var(--color-border-gray);
   }
 }
-.service-details .container .main .image-wrapper {
-  max-width: 100vw;
+#service-details .container .main figure {
+  margin: 1rem 0;
+  padding: 0;
+}
+#service-details .container .main figure img {
+  aspect-ratio: inherit;
+  width: 100%;
+  height: auto;
 }
 @media (min-width: 1400px) {
-  .service-details .container .main .image-wrapper {
+  #service-details .container .main .image-wrapper {
     max-width: 900px;
     margin: 0 0 2rem;
   }
 }
-.service-details .container .main .image-wrapper img {
+#service-details .container .main .image-wrapper img {
   width: 100%;
 }
-.service-details .container .main span {
+#service-details .container .main span {
   margin: 0 0.5rem 0 0;
 }
+@media (min-width: 768px) {
+  #service-details .container.sidebar-right {
+    grid-template-areas: "main main main main sidebar";
+  }
+  #service-details .container.sidebar-right .sidebar {
+    padding: 0 0 0 3rem;
+    border-left: 1px solid var(--color-border-gray);
+    border-right: none;
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) {
+  #service-details .container.sidebar-right .main {
+    padding: 0 3rem 0 0;
+  }
+}
 
-.contact-form {
+#service-details-contact-form {
   padding: 2rem 0;
 }
 @media (min-width: 1400px) {
-  .contact-form {
+  #service-details-contact-form {
     padding: 4rem 0;
   }
 }
-.contact-form .container {
+#service-details-contact-form .container {
   display: flex;
   justify-content: center;
   max-width: 1200px;
 }
-.contact-form .container .form-wrapper {
-  width: 1200px;
-}
-.contact-form .container .form-wrapper .form-content {
+#service-details-contact-form .container .form-wrapper {
+  position: relative;
+  inset: unset;
+  border: none;
+  box-shadow: none;
   max-width: 1200px;
+}
+#service-details-contact-form .container .form-wrapper .form-header {
+  padding: 2rem 0;
+}
+#service-details-contact-form .container .form-wrapper .form-content {
+  width: 1200px;
   display: grid;
   grid-template-areas: "name email" "message message";
   border: none;
   gap: 1rem;
   padding: 0;
 }
-.contact-form .container .form-wrapper .form-content .form-name {
+#service-details-contact-form .container .form-wrapper .form-content .form-name {
   grid-area: name;
-}
-.contact-form .container .form-wrapper .form-content .form-email {
-  grid-area: email;
-}
-.contact-form .container .form-wrapper .form-content .form-message {
-  grid-area: message;
-}
-.contact-form .container .form-wrapper .form-content .form-message textarea {
   width: 100%;
 }
-.contact-form .container .form-wrapper .form-content button {
+#service-details-contact-form .container .form-wrapper .form-content .form-email {
+  grid-area: email;
+  width: 100%;
+}
+#service-details-contact-form .container .form-wrapper .form-content .form-message {
+  grid-area: message;
+}
+#service-details-contact-form .container .form-wrapper .form-content .form-message textarea {
+  width: 100%;
+}
+#service-details-contact-form .container .form-wrapper .form-content button {
   max-width: 8rem;
 }
 

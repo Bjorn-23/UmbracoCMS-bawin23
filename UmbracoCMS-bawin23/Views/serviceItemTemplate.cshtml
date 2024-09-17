@@ -5,13 +5,64 @@
 	var pageTitle = Model?.Value<string>("pageTitle") ?? "";
 	var pageName = Model?.Name;
 	ViewBag.Title = (!string.IsNullOrEmpty(pageTitle)) ? pageTitle : pageName;
+
+	var placeSideBarOnRight = (Model?.Value<bool>("PlaceSideBarToRight") == true) ? "sidebar-right" : "";
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
-<section class="service-details">
-	<div class="container">
-		@Model.Value("pageContent")
-	</div>
+<section id="service-details">
+	<div class="container @placeSideBarOnRight">
 
+		<div class="sidebar bg-light">			
+			<div class="about-us">
+				<h4>About us</h4>
+				<div class="image-wrapper">
+					<img src="~/media/t2jgm5im/statisticadvisor1.png" alt="@pageTitle">
+				</div>
+				<p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </p>
+			</div>
+
+			<div class="online-support bg-primary">
+				<h3>How can we help you?</h3>
+				<p>online support 24/7, we are here to help you.</p>
+				<form action="">
+					<input type="text" placeholder="E-mail address">
+					<i class="fa-thin fa-envelope"></i>
+				</form>
+			</div>
+		</div>
+
+		@if (Model != null)
+		{
+			<div class="main">
+				@Model.Value("pageContent")
+			</div>			
+		}
+
+	</div>
 </section>
+
+<section id="service-details-contact-form" class="bg-light">
+	<div class="container">
+		<div class="form-wrapper">
+			<div class="form-header">
+				<h4>Have a question?</h4>
+			</div>
+			<form class="form-content" action="" novalidate>
+				<div class="input-group form-name">
+					<input type="text" placeholder="Name">
+				</div>
+				<div class="input-group form-email">
+					<input type="text" placeholder="Email">
+				</div>
+				<div class="input-group form-message">
+					<textarea rows="10" placeholder="Question"></textarea>
+				</div>
+				<button type="submit" class="btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+@await Html.PartialAsync("partials/static/contactInfoHub.cshtml")
