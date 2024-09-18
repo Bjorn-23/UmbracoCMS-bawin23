@@ -17,7 +17,7 @@
 
         .sidebar {
             grid-area: sidebar;
-            //max-width: 300px;
+            width: 300px;
             padding: 0 3rem 0 0;
 
             p {
@@ -30,6 +30,7 @@
 
                 .image-wrapper {
                     margin: 0 0 0.5rem;
+
                     img {
                         width: 100%;
                     }
@@ -51,17 +52,20 @@
                         width: 100%;
                         margin: 0.5rem 0;
                         padding: 1rem;
+                        font-size: 12px;
 
                         &[placeholder] {
                             font-style: italic;
                         }
                     }
 
-                    i {
+                    button {
+                        background-color: transparent;
+                        border: none;
                         color: var(--color-default);
                         position: absolute;
                         top: calc(50% - 0.5rem);
-                        right: 1rem;
+                        right: 0.5rem;
                     }
                 }
             }
@@ -82,10 +86,10 @@
 
                 img {
                     aspect-ratio: inherit;
+                    max-width: 800px;
                     width: 100%;
                     height: auto;
                 }
-
             }
 
             .image-wrapper {
@@ -108,7 +112,7 @@
         &.sidebar-right {
             @include tablet {
                 grid-template-areas:
-                    'main main main main sidebar';
+                    'main main main sidebar';
 
                 .sidebar {
                     padding: 0 0 0 3rem;
@@ -149,7 +153,7 @@
                 padding: 2rem 0;
             }
 
-            .form-content {
+            form {
                 width: 1200px;
                 display: grid;
                 grid-template-areas:

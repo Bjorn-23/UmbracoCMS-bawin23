@@ -283,10 +283,12 @@ h6 {
 .form-wrapper form .input-group textarea {
   resize: none;
 }
-.form-wrapper form .form-success {
-  background-color: lawngreen;
+.form-wrapper .form-success {
+  text-align: center;
+  margin: 1rem 0;
+  background-color: rgba(127, 218, 107, 0.6274509804);
   padding: 0.2rem 1rem;
-  border: 1px solid green;
+  border: 1px solid #7fda6b;
   border-radius: 8px;
 }
 
@@ -652,12 +654,12 @@ header nav .container .nav-links .nav-link.active:hover {
     gap: 4rem;
   }
 }
-header nav .container .search-wrapper {
+header nav .container form {
   grid-area: search;
   display: none;
 }
 @media (min-width: 768px) {
-  header nav .container .search-wrapper {
+  header nav .container form {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
@@ -666,25 +668,26 @@ header nav .container .search-wrapper {
   }
 }
 @media (min-width: 1400px) {
-  header nav .container .search-wrapper {
+  header nav .container form {
+    max-width: 145px;
     gap: 0.5rem;
   }
 }
-header nav .container .search-wrapper input {
+header nav .container form input {
   outline: none;
   border: 1px solid var(--color-border-gray);
   border-radius: 5px;
   padding: 0.15rem;
 }
-header nav .container .search-wrapper input:hover, header nav .container .search-wrapper input :focus, header nav .container .search-wrapper input :active {
+header nav .container form input:hover, header nav .container form input :focus, header nav .container form input :active {
   outline: auto;
 }
-header nav .container .search-wrapper button {
+header nav .container form button {
   border: 3px solid transparent;
   border-radius: 4px;
   outline: none;
 }
-header nav .container .search-wrapper button:hover, header nav .container .search-wrapper button:focus {
+header nav .container form button:hover, header nav .container form button:focus {
   border: 3px solid var(--color-border-gray);
   background-color: var(--color-accent);
 }
@@ -748,6 +751,9 @@ footer .container p {
   list-style: none;
   display: flex;
   justify-content: center;
+  padding: 0;
+  position: relative;
+  z-index: 100;
 }
 #breadcrumbs .container ul .divider {
   color: var(--color-default);
@@ -1410,6 +1416,7 @@ section {
 }
 #service-details .container .sidebar {
   grid-area: sidebar;
+  width: 300px;
   padding: 0 3rem 0 0;
 }
 #service-details .container .sidebar p {
@@ -1439,15 +1446,18 @@ section {
   width: 100%;
   margin: 0.5rem 0;
   padding: 1rem;
+  font-size: 12px;
 }
 #service-details .container .sidebar .online-support form input[placeholder] {
   font-style: italic;
 }
-#service-details .container .sidebar .online-support form i {
+#service-details .container .sidebar .online-support form button {
+  background-color: transparent;
+  border: none;
   color: var(--color-default);
   position: absolute;
   top: calc(50% - 0.5rem);
-  right: 1rem;
+  right: 0.5rem;
 }
 #service-details .container .main {
   grid-area: main;
@@ -1463,6 +1473,7 @@ section {
 }
 #service-details .container .main figure img {
   aspect-ratio: inherit;
+  max-width: 800px;
   width: 100%;
   height: auto;
 }
@@ -1480,7 +1491,7 @@ section {
 }
 @media (min-width: 768px) {
   #service-details .container.sidebar-right {
-    grid-template-areas: "main main main main sidebar";
+    grid-template-areas: "main main main sidebar";
   }
   #service-details .container.sidebar-right .sidebar {
     padding: 0 0 0 3rem;
@@ -1517,7 +1528,7 @@ section {
 #service-details-contact-form .container .form-wrapper .form-header {
   padding: 2rem 0;
 }
-#service-details-contact-form .container .form-wrapper .form-content {
+#service-details-contact-form .container .form-wrapper form {
   width: 1200px;
   display: grid;
   grid-template-areas: "name email" "message message";
@@ -1525,21 +1536,21 @@ section {
   gap: 1rem;
   padding: 0;
 }
-#service-details-contact-form .container .form-wrapper .form-content .form-name {
+#service-details-contact-form .container .form-wrapper form .form-name {
   grid-area: name;
   width: 100%;
 }
-#service-details-contact-form .container .form-wrapper .form-content .form-email {
+#service-details-contact-form .container .form-wrapper form .form-email {
   grid-area: email;
   width: 100%;
 }
-#service-details-contact-form .container .form-wrapper .form-content .form-message {
+#service-details-contact-form .container .form-wrapper form .form-message {
   grid-area: message;
 }
-#service-details-contact-form .container .form-wrapper .form-content .form-message textarea {
+#service-details-contact-form .container .form-wrapper form .form-message textarea {
   width: 100%;
 }
-#service-details-contact-form .container .form-wrapper .form-content button {
+#service-details-contact-form .container .form-wrapper form button {
   max-width: 8rem;
 }
 

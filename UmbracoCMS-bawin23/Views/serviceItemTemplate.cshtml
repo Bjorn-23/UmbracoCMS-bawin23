@@ -1,5 +1,7 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using System.Web
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
 @{
 	Layout = "mainLayout.cshtml";
 	var pageTitle = Model?.Value<string>("pageTitle") ?? "";
@@ -7,6 +9,53 @@
 	ViewBag.Title = (!string.IsNullOrEmpty(pageTitle)) ? pageTitle : pageName;
 
 	var placeSideBarOnRight = (Model?.Value<bool>("PlaceSideBarToRight") == true) ? "sidebar-right" : "";
+
+
+	var queryString = UmbracoContext.CleanedUmbracoUrl.Query;
+
+	// Remove the leading "?" if it exists
+	queryString = queryString.TrimStart('?');
+
+	// Split the query string into key-value pairs
+	var queryParams = queryString.Split('&');
+
+	// Create a dictionary to store the parameters
+	var queryDictionary = new Dictionary<string, string>();
+
+	// Loop through the pairs and split them into key and value
+	foreach (var param in queryParams)
+	{
+		var keyValue = param.Split('=');
+		if (keyValue.Length == 2)
+		{
+			queryDictionary[keyValue[0]] = keyValue[1];
+		}
+	}
+
+	// Access the individual parameters
+	var nameParam = queryDictionary.ContainsKey("param") ? HttpUtility.UrlDecode(queryDictionary["param"]) : "";
+	var emailParam = queryDictionary.ContainsKey("paramEmail") ? HttpUtility.UrlDecode(queryDictionary["paramEmail"]) : "";
+	var messageParam = queryDictionary.ContainsKey("paramMessage") ? HttpUtility.UrlDecode(queryDictionary["paramMessage"]) : "";
+	var paramFormSubmitted = queryDictionary.ContainsKey("paramFormSubmitted") ? HttpUtility.UrlDecode(queryDictionary["paramFormSubmitted"]) : "";
+	var paramFormSuccess = queryDictionary.ContainsKey("paramFormSuccess") ? HttpUtility.UrlDecode(queryDictionary["paramFormSuccess"]) : "";
+
+	bool error_name = false;
+	bool error_email = false;
+	bool error_message = false;
+
+	if (paramFormSubmitted == "true")
+	{
+		//Check if any params are empty and if they are the set the class of corresponding input field to: "form-invalid-input"
+		bool.TryParse(string.IsNullOrEmpty(nameParam).ToString(), out error_name);
+		bool.TryParse(string.IsNullOrEmpty(emailParam).ToString(), out error_email);
+		bool.TryParse(string.IsNullOrEmpty(messageParam).ToString(), out error_message);		
+	}
+
+	ViewData["name"] = nameParam;
+	ViewData["email"] = emailParam;
+	ViewData["message"] = messageParam;
+	ViewData["form-success"] = paramFormSuccess;
+	int test = 0;
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
@@ -26,10 +75,11 @@
 			<div class="online-support bg-primary">
 				<h3>How can we help you?</h3>
 				<p>online support 24/7, we are here to help you.</p>
-				<form action="">
-					<input type="text" placeholder="E-mail address">
-					<i class="fa-thin fa-envelope"></i>
-				</form>
+				@using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
+				{
+					<input id="email" type="text" name="email" placeholder="E-mail address">
+					<button type="submit"><i class="fa-thin fa-envelope"></i></button>
+				}				
 			</div>
 		</div>
 
@@ -48,19 +98,33 @@
 		<div class="form-wrapper">
 			<div class="form-header">
 				<h4>Have a question?</h4>
+			@if (ViewData["form-success"]?.ToString() == "true")
+			{
+				<p class="form-success">Form submitted succesfully</p>
+			}
 			</div>
-			<form class="form-content" action="" novalidate>
+
+			@using (Html.BeginUmbracoForm("HandleContactRequestSubmit", "ContactSurface", FormMethod.Post))
+			{
 				<div class="input-group form-name">
-					<input type="text" placeholder="Name">
+					<label class="form-label" for="formName">Name</label>
+					<input id="formName" name="name" type="text" placeholder="Name" value="@ViewData["name"]">
+					<span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
 				</div>
 				<div class="input-group form-email">
-					<input type="text" placeholder="Email">
+					<label class="form-label" for="formEmail">E-mail</label>
+					<input id="formEmail" name="email" type="text" placeholder="Email" value="@ViewData["email"]">
+					<span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
+
 				</div>
 				<div class="input-group form-message">
-					<textarea rows="10" placeholder="Question"></textarea>
+					<label class="form-label" for="formMessage">Message</label>
+					<textarea id="formMessage" name="message" rows="10" placeholder="Question">@ViewData["message"]</textarea>
+					<span class="form-input-error @((error_message) ? "form-invalid-input" : null)">You must enter a message</span>
+
 				</div>
 				<button type="submit" class="btn-primary">Submit</button>
-			</form>
+			}
 		</div>
 	</div>
 </section>

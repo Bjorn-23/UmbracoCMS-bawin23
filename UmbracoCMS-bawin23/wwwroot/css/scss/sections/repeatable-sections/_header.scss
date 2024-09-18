@@ -98,7 +98,7 @@ header {
                 }
             }
 
-            .search-wrapper {
+            form {
                 grid-area: search;
                 display: none;
 
@@ -111,6 +111,7 @@ header {
                 }
 
                 @include desktop {
+                    max-width: 145px;
                     gap: 0.5rem;
                 }
     

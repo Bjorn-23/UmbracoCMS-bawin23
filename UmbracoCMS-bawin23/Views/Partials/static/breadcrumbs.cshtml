@@ -42,7 +42,8 @@
                 @foreach (var item in selection.OrderBy(x => x.Level))
                 {
                     var displayName = isFirstItem ? homePageDisplayName : item.Name;
-                    <li><a href="@item.Url(PublishedUrlProvider)">@displayName</a> <span class="divider">></span></li>
+                    var url = isFirstItem ? "/" : @item.Url(PublishedUrlProvider);
+                    <li><a href="@url">@displayName</a> <span class="divider">></span></li>
                     isFirstItem = false;
                 }
 

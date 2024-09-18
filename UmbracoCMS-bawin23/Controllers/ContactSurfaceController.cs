@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -20,7 +21,7 @@ public class ContactSurfaceController : SurfaceController
     {
     }
 
-    public IActionResult HandleCallbackRequestSubmit(CallbackRequestFormModel form)
+    public IActionResult HandleCallbackRequestSubmit(ContactFormsModel form)
     {
         if (!ModelState.IsValid)
         {
@@ -51,5 +52,74 @@ public class ContactSurfaceController : SurfaceController
             return CurrentUmbracoPage();
         }
 
+    }
+
+	public IActionResult HandleContactRequestSubmit(ContactFormsModel form)
+	{
+		var currentPageUrl = UmbracoContext.CleanedUmbracoUrl.ToString();
+		int queryIndex = currentPageUrl.IndexOf('?');
+
+		// If a query string exists, remove it
+		if (queryIndex >= 0)
+		{
+			currentPageUrl = currentPageUrl.Substring(0, queryIndex);
+		}
+		
+		var queryString = "";
+		
+		var fragmentId = "service-details-contact-form";
+		var fragment = $"#{fragmentId}"; // Create the fragment
+
+		if (!ModelState.IsValid || form.Message == null )
+		{
+			var paramName = !string.IsNullOrEmpty(form.Name) ? $"param={form.Name}" : "";
+			var paramEmail = !string.IsNullOrEmpty(form.Email) ? $"paramEmail={form.Email}" : "";
+			var paramMessage = !string.IsNullOrEmpty(form.Message) ? $"paramMessage={form.Message}" : "";
+            var paramFormSubmitted = "paramFormSubmitted=true";
+
+			// Combine query parameters correctly
+			if (!string.IsNullOrEmpty(paramName))
+			{
+				queryString = $"?{paramName}";
+			}
+			if (!string.IsNullOrEmpty(paramEmail))
+			{
+				queryString += !string.IsNullOrEmpty(queryString) ? $"&{paramEmail}" : $"?{paramEmail}";
+			}
+			if (!string.IsNullOrEmpty(paramMessage))
+			{
+				queryString += !string.IsNullOrEmpty(queryString) ? $"&{paramMessage}" : $"?{paramMessage}";
+			}
+			if (!string.IsNullOrEmpty(paramFormSubmitted))
+			{
+				queryString += !string.IsNullOrEmpty(queryString) ? $"&{paramFormSubmitted}" : $"?{paramFormSubmitted}";
+			}
+			
+			return Redirect(currentPageUrl + queryString + fragment);
+		}
+		else
+		{
+			// logic for sending of form goes here.
+			queryString = "?paramFormSuccess=true";
+
+			return Redirect(currentPageUrl + queryString + fragment);
+		}
+
+	}
+
+	public IActionResult HandleOnlineSupportFormSubmit(EmailSupportModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            ViewData["online-support"] = model.Email;
+            ViewData["online-support-error"] = string.IsNullOrEmpty(model.Email);
+            return CurrentUmbracoPage();
+        }
+        else
+        {
+            ViewData["form-success"] = "true";
+            ViewData["online-support"] = string.Empty;
+            return CurrentUmbracoPage();
+        }
     }
 }
