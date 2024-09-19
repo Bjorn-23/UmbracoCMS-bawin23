@@ -1,23 +1,15 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @{
-
 	int.TryParse(Model?.Content.Value<string>("displayCount"), out int displayCount);
 
 	var selection = Umbraco.Content(Guid.Parse("2c56be26-c9bd-436e-b5f7-33877ea9a745"))
     .ChildrenOfType("staffItemTemplate")
     .Where(x => x.IsVisible()).Take(displayCount);
-
-
 }
 
-<section class=" bg-light">
+<section id="staffCards" class=" bg-light">
 	<div class="container">
-		<div class="text-wrapper">
-			<span>OUR EXPERTS</span>
-			<h2>A team off professionals with years of experience</h2>
-		</div>
-
 		<div class="grid-container">
 			@if (selection != null)
 			{
@@ -28,6 +20,7 @@
 					var image = item.Value<IPublishedContent>("staffImage")?.Url() ?? "";
 					var roles = item.Value<IEnumerable<string>>("staffRole") ?? null;
 					var role = "";
+					var company = item.Value<string>("company") ?? "";
 
 					@if (roles.Count() > 0)
 					{
@@ -46,7 +39,7 @@
 						}						
 					}
 
-					role += "at Onatrix";
+					role += "at " + company;
 
 					<div id="@id" class="card">
 						<div class="image-wrapper">

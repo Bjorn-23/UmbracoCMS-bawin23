@@ -1,0 +1,12 @@
+
+#staffCards {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-container div:nth-child(n+4) {
+        //grid-column: span 1/auto;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
