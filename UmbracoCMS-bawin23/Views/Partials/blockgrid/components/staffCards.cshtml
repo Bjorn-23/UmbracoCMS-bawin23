@@ -1,0 +1,66 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+
+	int.TryParse(Model?.Content.Value<string>("displayCount"), out int displayCount);
+
+	var selection = Umbraco.Content(Guid.Parse("2c56be26-c9bd-436e-b5f7-33877ea9a745"))
+    .ChildrenOfType("staffItemTemplate")
+    .Where(x => x.IsVisible()).Take(displayCount);
+
+
+}
+
+<section class=" bg-light">
+	<div class="container">
+		<div class="text-wrapper">
+			<span>OUR EXPERTS</span>
+			<h2>A team off professionals with years of experience</h2>
+		</div>
+
+		<div class="grid-container">
+			@if (selection != null)
+			{
+				@foreach (var item in selection)
+				{
+					var id = item.Name.ToLower().Replace(" ", "");
+					var name = item.Value<String>("staffName") ?? "";
+					var image = item.Value<IPublishedContent>("staffImage")?.Url() ?? "";
+					var roles = item.Value<IEnumerable<string>>("staffRole") ?? null;
+					var role = "";
+
+					@if (roles.Count() > 0)
+					{
+						var i = 1;
+						foreach ( var title in roles)
+						{
+							if (i > 1)
+							{
+								role += "& " + title + " ";
+							}
+							else
+							{
+								role += title + " ";								
+							}
+							i++;
+						}						
+					}
+
+					role += "at Onatrix";
+
+					<div id="@id" class="card">
+						<div class="image-wrapper">
+							<img src="@image" alt="@name">
+						</div>
+						<div class="bottom-box">
+							<h4 class="name">@name</h4>
+							<p class="position">@role</p>
+						</div>
+					</div>				
+				}
+			}
+		</div>
+	</div>
+</section>
+
+

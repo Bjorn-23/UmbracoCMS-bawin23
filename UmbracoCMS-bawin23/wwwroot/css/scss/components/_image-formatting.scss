@@ -12,3 +12,19 @@
 .image-borders-rounded {
     border-radius: 4px;
 }
+
+.img-margin-top {
+    margin-top: 1rem;
+
+    @include tablet {
+        margin-top: 2rem;
+    }
+}
+
+.img-margin-bottom {
+    margin-bottom: 1rem;
+
+    @include tablet {
+        margin-bottom: 2rem;
+    }
+}

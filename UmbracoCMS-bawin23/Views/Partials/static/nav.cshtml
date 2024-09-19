@@ -16,11 +16,15 @@
     <div id="nav-links" class="nav-links">
         @foreach (var menuItem in selection)
         {
-            @* var link = menuItem.Url(PublishedUrlProvider).TrimEnd("/"); *@
-            var link = menuItem.Url(PublishedUrlProvider).TrimEnd("/"); ;
+            //skips page called staff
+            if(menuItem.Name != "Staff")
+            {
+                var link = menuItem.Url(PublishedUrlProvider).TrimEnd("/"); ;
 
-            <a class="@(menuItem.IsAncestorOrSelf(Model) ? "nav-link active" : "nav-link")"
-            href="@link" title="@menuItem.Name">@menuItem.Name</a>
+                <a class="@(menuItem.IsAncestorOrSelf(Model) ? "nav-link active" : "nav-link")"
+                href="@link" title="@menuItem.Name">@menuItem.Name</a>
+            }
+
         }
     </div>
 }

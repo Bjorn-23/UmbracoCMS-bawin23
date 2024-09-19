@@ -1,0 +1,18 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = "mainLayout.cshtml";
+	var selection = Umbraco.Content(Guid.Parse("2c56be26-c9bd-436e-b5f7-33877ea9a745"))
+    .ChildrenOfType("staffItemTemplate")
+    .Where(x => x.IsVisible());
+}
+
+<ul>
+	@foreach (var item in selection)
+	{
+		<li>
+			<a href="@item.Url()">@item.Name()</a>
+		</li>
+	}
+</ul>
+

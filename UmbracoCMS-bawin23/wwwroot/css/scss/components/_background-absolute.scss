@@ -5,4 +5,18 @@
     transform: translateX(-50%);
     z-index: 1;
     background-repeat: no-repeat;
+    height: 100%;    
+}
+
+.set-img-bottom {
+    bottom: 0;
+}
+
+.set-img-right {
+    transform: translateX(0);
+}
+
+.set-img-left {
+    left: 0;
+    transform: translateX(0);
 }

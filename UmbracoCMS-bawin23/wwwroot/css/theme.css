@@ -37,20 +37,6 @@
   --color-border-light-transparent: #171717f2;
 }
 
-body {
-  color: var(--color-default);
-}
-
-span {
-  color: var(--color-secondary);
-  font-weight: 500;
-}
-
-.bg-secondary span {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
 .bg-dark {
   background-color: var(--color-dark);
   color: var(--color-default);
