@@ -1,11 +1,16 @@
 ﻿.background-image-absolute {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    background-repeat: no-repeat;
-    height: 100%;    
+    display: none;
+
+    @include desktop {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
 }
 
 .set-img-bottom {

@@ -1,6 +1,7 @@
 
 ////REMOVE THIS LATER
 section {
+    position: relative;
     max-width: 100%;
     margin: 0;
     padding: 0;
@@ -8,11 +9,18 @@ section {
 
 #hero {
     overflow-x: hidden;
+
+    @include desktop {
+        min-height: 550px;
+    }
 }
 
-//#about-us {
-//    overflow-x: hidden;
-//}
+#about-us {
+    @include desktop {
+        min-height: 600px;
+    }
+}
+
 
 //#trusted-company {
 //    overflow-x: hidden;

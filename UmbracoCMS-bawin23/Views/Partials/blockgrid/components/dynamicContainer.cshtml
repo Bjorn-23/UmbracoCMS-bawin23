@@ -6,6 +6,6 @@
     var alignTextCenter = (Model?.Content.Value<bool>("alignTextCenter") == true ) ? "text-align-center" : "";
 }
 
-<div class="@alignTextCenter ">
+<div class="dynamic container @alignTextCenter">
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)
 </div>

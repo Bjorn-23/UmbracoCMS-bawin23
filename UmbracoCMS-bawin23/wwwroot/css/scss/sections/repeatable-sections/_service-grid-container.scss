@@ -17,17 +17,15 @@
     }
 
     .grid-box {
-        // These need a border when on services.htmlpage as bg is light.
-        max-width: 343px;
         border: 1px solid var(--color-border-gray);
         border-radius: 3px;
-        //color: var(--color-primary);
         text-decoration: none;
         transition: 0.15s ease-out;
         box-shadow: 0 10px 8px 5px var(--color-gray);
         background-color: var(--color-light) !important;
 
         @include tablet {
+            max-width: 343px;
             padding: 1rem 0;
             max-width: calc((720px / 2) - 16px); // container width split in columns
         }
@@ -55,7 +53,7 @@
             overflow: hidden;
 
             img {
-                max-width: inherit;
+                max-width: 100%;
                 transition: 0.25s ease-out;
             }
         }

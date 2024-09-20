@@ -9,8 +9,9 @@
     var marginTop = (Model?.Content.Value<bool>("addMarginTop") == true) ? "img-margin-top" : "";
     var marginBottom = (Model?.Content.Value<bool>("addMarginBottom") == true) ? "img-margin-bottom" : "";
     var centerImage = (Model?.Content.Value<bool>("centerImage") == true) ? "center-image" : "";
-    var imageWidth = Model?.Content.Value<int>("imageWidth");
+@*    var imageWidth = Model?.Content.Value<int>("imageWidth");
     var imageStyleWidth = imageWidth.ToString() + "%";
+     style="width: @imageStyleWidth *@
 
     var setImgAbsolute = (Model?.Content.Value<bool>("setImgAbsolute") == true) ? "set-img-absolute" : "";
     var imgTop = (Model?.Content.Value<bool>("setImgTop") == true) ? "set-img-top" : "";
@@ -23,13 +24,13 @@
 
 @if (!string.IsNullOrEmpty(selectedImage) && Model?.Content.Value<bool>("setImgAbsolute") != true)
 {
-    <div class="image-formatting @centerImage" style="width: @imageStyleWidth">
+    <div class="image-formatting @centerImage">
         <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
     </div>
 }
 else
 {
-    <div class="image-formatting @centerImage @setImgAbsolute @imgTop @imgBottom @imgRight @imgLeft" style="width: @imageStyleWidth">
+    <div class="image-formatting @centerImage @setImgAbsolute @imgTop @imgBottom @imgRight @imgLeft">
         <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
     </div>
 }

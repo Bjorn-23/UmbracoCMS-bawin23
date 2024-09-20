@@ -24,9 +24,12 @@
     {
         isBackgroundImageAbsolute = $"{isBackgroundImageAbsolute} bg-higher-z-index";
     }
+
+    var hideSection = (Model?.Content.Value<bool>("hideSection") == true) ? "hide" : "";
+
 }
 
-<section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText" style="min-height: @sectionMinimumHeight" >
+<section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText @hideSection" style="min-height: @sectionMinimumHeight" >
 
     @if (!string.IsNullOrEmpty(backgroundColorClass))
     {
