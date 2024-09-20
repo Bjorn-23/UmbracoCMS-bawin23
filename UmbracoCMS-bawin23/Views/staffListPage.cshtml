@@ -7,6 +7,12 @@
     .Where(x => x.IsVisible());
 }
 
+@await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
+
+@*
+	Develop the below section further.
+*@
+
 <ul>
 	@foreach (var item in selection)
 	{

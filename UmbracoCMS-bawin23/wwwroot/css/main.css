@@ -212,7 +212,8 @@ h2.bg {
 }
 @media (min-width: 1024px) {
   .background-image-absolute {
-    max-width: 100%;
+    max-width: 100vw;
+    max-height: 100%;
     display: block;
     position: absolute;
     top: 0;
@@ -220,8 +221,13 @@ h2.bg {
     transform: translateX(-50%);
     z-index: 1;
     background-repeat: no-repeat;
-    height: auto;
     object-fit: cover;
+    height: auto;
+  }
+}
+@media (min-width: 1024px) and (min-width: 1400px) {
+  .background-image-absolute {
+    max-width: 1920px;
   }
 }
 
@@ -314,11 +320,6 @@ section {
 @media (max-width: 1023px) {
   #hero .container [data-content-element-type-alias=dynamicContainer] {
     --umb-block-grid--item-column-span: 12 !important;
-  }
-}
-@media (min-width: 1400px) {
-  #hero .container {
-    min-height: 550px;
   }
 }
 

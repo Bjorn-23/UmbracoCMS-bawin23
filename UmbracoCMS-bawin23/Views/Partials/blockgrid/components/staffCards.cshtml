@@ -23,12 +23,14 @@
 			{
 				@foreach (var item in selection)
 				{
+					var url = item.Url();
 					var id = item.Name.ToLower().Replace(" ", "");
 					var name = item.Value<String>("staffName") ?? "";
 					var image = item.Value<IPublishedContent>("staffImage")?.Url() ?? "";
 					var roles = item.Value<IEnumerable<string>>("staffRole") ?? null;
 					var role = "";
 					var company = item.Value<string>("company") ?? "";
+
 
 					@if (roles.Count() > 0)
 					{
@@ -49,7 +51,7 @@
 
 					role += "at " + company;
 
-					<div id="@id" class="card">
+					<a id="@id" href="@url" class="card">
 						<div class="image-wrapper">
 							<img src="@image" alt="@name">
 						</div>
@@ -57,7 +59,7 @@
 							<h5 class="name">@name</h5>
 							<p class="position">@role</p>
 						</div>
-					</div>				
+					</a>				
 				}
 			}
 		</div>
