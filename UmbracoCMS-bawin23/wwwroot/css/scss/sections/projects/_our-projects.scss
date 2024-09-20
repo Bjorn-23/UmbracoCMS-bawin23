@@ -2,23 +2,38 @@
 
 #our-projects {
     .container {
-        display: grid;
-        grid-template-areas:
-            'main' 'sidebar';
+
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1rem 0;
 
         @include tablet {
-            grid-template-areas:
-                'main main main main main sidebar';
+            padding: 2rem 0 0;
         }
 
         @include desktop {
+            display: grid;
+            grid-template-areas:
+                'main main main main main sidebar';
             padding: 4rem 0;
+        }
+
+        @include desktop {
         }
 
         .sidebar {
             grid-area: sidebar;
-            max-width: 350px;
-            padding: 0 0 0 3rem;
+
+            @include tablet {
+                //display: flex;
+                //justify-content: space-between;
+                //max-width: 100%;
+            }
+
+            @include desktop {
+                max-width: 350px;
+                padding: 0 0 0 3rem;
+            }
 
             .tag-grid {
                 display: grid;
@@ -52,9 +67,12 @@
             }
 
             .projects-box {
-                display: flex;
                 padding: 2rem 0;
                 border-bottoM: 1px solid var(--color-border-gray);
+
+                @include tablet {
+                    display: flex;    
+                }
                 
                 &:first-child {
                     padding-top: 0;

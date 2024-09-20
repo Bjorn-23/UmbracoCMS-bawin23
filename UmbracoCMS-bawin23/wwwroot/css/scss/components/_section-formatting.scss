@@ -8,28 +8,64 @@ section {
 }
 
 #hero {
-    overflow-x: hidden;
+    .container {
+        @media (max-width: 1023px) {
+            [data-content-element-type-alias="dynamicContainer"] {
+                --umb-block-grid--item-column-span: 12 !important;
+            }
+        }
 
-    @include desktop {
-        min-height: 550px;
+        @media (min-width: 1024px) {
+            //min-height: 450px;
+        }
+
+        @include desktop {
+            min-height: 550px;
+        }
     }
-}
 
-#about-us {
-    @include desktop {
-        min-height: 600px;
+}
+    #about-us {
+        overflow-x: unset;
+
+        .container {
+            @media (max-width: 1399px) {
+                [data-content-element-type-alias="dynamicContainer"] {
+                    --umb-block-grid--item-column-span: 6 !important;
+                }
+            }
+        }
+
+        .form-wrapper {
+            // Something in umbraco changes at 1024px so needed to use this mediq query here.
+            @media (min-width: 1024px) {
+                position: absolute;
+                z-index: 10;
+                top: -6.5rem;
+            }
+
+            @include desktop {
+                top: -10rem;
+                right: 0;
+            }
+        }
+
+        @include tablet {
+            //max-height: 400px;
+            min-height: 600px;
+        }
+
+        @include desktop {
+            min-height: 600px;
+            //max-height: unset;
+        }
     }
-}
-
-
-//#trusted-company {
-//    overflow-x: hidden;
-//}
-
-//#our-services {
-//    overflow-x: hidden;
-//}
-
-//#our-projects {
-//    overflow-x: hidden;
-//}
+    //#trusted-company {
+    //    overflow-x: hidden;
+    //}
+    //#our-services {
+    //    overflow-x: hidden;
+    //}
+    //#our-projects {
+    //    overflow-x: hidden;
+    //}

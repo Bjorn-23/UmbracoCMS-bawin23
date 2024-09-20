@@ -1,11 +1,19 @@
 #staffCards {
     .grid-container {
-        display: grid;
+        //display: grid;
         gap: 1rem;
         margin: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        
+        @include desktop {
+            justify-content: space-between;
+        }                
     }
 
     .card {
+        max-width: 300px;
         border: 1px solid var(--color-border-gray);
         border-radius: 3px;
 
@@ -41,11 +49,4 @@
         }
     }
 
-    @include desktop {
-        .grid-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-    }
 }

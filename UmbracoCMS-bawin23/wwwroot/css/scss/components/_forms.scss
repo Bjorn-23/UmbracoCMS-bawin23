@@ -1,13 +1,6 @@
 .form-wrapper {
     box-shadow: 0 10px 8px 5px var(--color-gray);
 
-    @include desktop {
-        position: absolute;
-        z-index: 10;
-        right: 0rem;
-        top: -10rem;
-    }
-
     .form-header {
         padding: 2rem 5rem 2rem 3rem;
         border-radius: 3px 3px 0 0;

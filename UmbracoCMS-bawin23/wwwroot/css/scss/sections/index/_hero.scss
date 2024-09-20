@@ -1,46 +1,47 @@
-#hero {
-    //padding: 1rem 0 2rem;
-    //@include tablet {
-    //    height: 550px;
-    //    background-image: url("/img/hero1.png");
-    //    background-position: center;
-    //    background-repeat: no-repeat;
-    //}
+/*#hero {
+    padding: 1rem 0 2rem;
+    @include tablet {
+        height: 550px;
+        background-image: url("/img/hero1.png");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
     .container {
-        //@include tablet {
-        //    padding-top: 2rem;
-        //    padding-right: calc(720px * 0.52);
-        //}
-        //@include desktop {
-        //    padding-top: 6rem;
-        //    padding-right: calc(1200px * 0.52);
-        //}
-        //h1 {
-        //    text-align: center;
-        //    @include tablet {
-        //        text-align: start;
-        //        padding: 0;
-        //    }
-        //}
-        //p {
-        //    padding: 0 1.2rem 1rem;
-        //    font-size: 14px;
-        //    @include tablet {
-        //        padding: 0 0 1rem;
-        //    }
-        //    @include desktop {
-        //        padding: 0 0 2rem;
-        //        font-size: 16px;
-        //    }
-        //}
+        @include tablet {
+            padding-top: 2rem;
+            padding-right: calc(720px * 0.52);
+        }
+        @include desktop {
+            padding-top: 6rem;
+            padding-right: calc(1200px * 0.52);
+        }
+        h1 {
+            text-align: center;
+            @include tablet {
+                text-align: start;
+                padding: 0;
+            }
+        }
+        p {
+            padding: 0 1.2rem 1rem;
+            font-size: 14px;
+            @include tablet {
+                padding: 0 0 1rem;
+            }
+            @include desktop {
+                padding: 0 0 2rem;
+                font-size: 16px;
+            }
+        }
 
         .btn-primary {
-            //display: flex;
+            display: flex;
 
-            //@include tablet {
-            //    display: inline-block;
-            //}
+            @include tablet {
+                display: inline-block;
+            }
         }
     }
 }
+*/
