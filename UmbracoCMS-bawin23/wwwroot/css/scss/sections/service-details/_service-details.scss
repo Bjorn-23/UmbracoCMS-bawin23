@@ -1,19 +1,19 @@
 #service-details {
     .container {
-        display: flex;
-        flex-direction: column-reverse;
-        max-height: 100%;
+        //display: flex;
+        //flex-direction: column-reverse;
+        //max-height: 100%;
 
-        @include tablet {
-            flex-direction: row;
-            max-width: 100%;
-            padding: 0 2rem;
-        }
+        //@include tablet {
+        //    flex-direction: row;
+        //    max-width: 100%;
+        //    padding: 0 2rem;
+        //}
 
-        @include desktop {
-            max-width: 1200px;
-            padding: 2rem 0;
-        }
+        //@include desktop {
+        //    max-width: 1200px;
+        //    padding: 2rem 0;
+        //}
 
         //.sidebar {
         //    @include tablet {
@@ -117,11 +117,11 @@
         //    }
         //}
 
-        &.sidebar-right {
-            @include tablet {
-                flex-direction: row-reverse;
-            }
-        }
+        //&.sidebar-right {
+        //    @include tablet {
+        //        flex-direction: row-reverse;
+        //    }
+        //}
     }
 }
 

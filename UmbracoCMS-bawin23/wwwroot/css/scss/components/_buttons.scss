@@ -1,5 +1,5 @@
 .btn-dark, .btn-primary, .btn-secondary, .btn-accent, .btn-gray, .btn-light {
-    @include btn;    
+    @include btn;
 }
 
 .btn-menu {
@@ -16,4 +16,5 @@
     border: 1px solid var(--color-border-gray);
     border-radius: 2rem;
     margin: 0.2rem;
+    white-space: nowrap;
 }

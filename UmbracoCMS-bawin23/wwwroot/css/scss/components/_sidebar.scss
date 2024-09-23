@@ -1,3 +1,10 @@
+.container {
+    &.sidebar-left {
+        @include tablet {
+            flex-direction: row-reverse;
+        }
+    }
+}
 .sidebar {
     @include tablet {
         max-width: 25%;
@@ -108,3 +115,4 @@
         }
     }
 }
+

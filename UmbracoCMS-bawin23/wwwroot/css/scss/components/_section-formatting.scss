@@ -5,9 +5,12 @@ section {
     max-width: 100%;
     margin: 0;
     padding: 0;
+    z-index: 0;
 }
 
 #hero {
+    overflow-x: hidden;
+
     .container {
         @media (max-width: 1023px) {
             [data-content-element-type-alias="dynamicContainer"] {

@@ -2,86 +2,84 @@
 @using Umbraco.Cms.Core.Models.Blocks;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = "mainLayout.cshtml";
-	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
-	var selection = Umbraco.Content(Guid.Parse("1cd3b4ea-e949-432b-94f8-57e8fcd2424d"))?
+    var selection = Umbraco.Content(Guid.Parse("1cd3b4ea-e949-432b-94f8-57e8fcd2424d"))?
     .ChildrenOfType("serviceItemTemplate")?
     .Where(x => x.IsVisible());
 
-	var itemsPerPage = 6;
+    var itemsPerPage = 6;
 
-	if(!int.TryParse(Context.Request.Query["page"], out int currentPage))
-	{
-		currentPage = 1;
-	}
+    if (!int.TryParse(Context.Request.Query["page"], out int currentPage))
+    {
+        currentPage = 1;
+    }
 
-	var totalItems = selection?.Count() ?? 0;
-	var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
+    var totalItems = selection?.Count() ?? 0;
+    var pagedItems = selection?.Skip((currentPage - 1) * itemsPerPage).Take(itemsPerPage);
 
-	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
+    var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
 <section id="our-services" class="spacing-bottom spacing-top">
-	<div class="container">
-		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
-		{
-			<div class="headline @centerHeadLine">
-				<!-- <h6>@Model.Name</h6> -->
-				<h2 class="title">@Model.Value("customHeadLine")</h2>
-			</div>
-		}
+    <div class="container">
+        @if (!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
+        {
+            <div class="headline @centerHeadLine">
+                <!-- <h6>@Model.Name</h6> -->
+                <h2 class="title">@Model.Value("customHeadLine")</h2>
+            </div>
+        }
 
-		<div class="service-grid-container">
-			@if (pagedItems != null)
-			{
-				foreach (var item in pagedItems)
-				{
-				var link = item?.Url().TrimEnd("/");
-				var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-				var preamble = item?.Value<string>("preamble") ?? "";
+        <div class="service-grid-container">
+            @if (pagedItems != null)
+            {
+                foreach (var item in pagedItems)
+                {
+                    var link = item?.Url().TrimEnd("/");
+                    var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+                    var preamble = item?.Value<string>("preamble") ?? "";
 
-				<a href="@link" class="grid-box bg-light">
-					<h4>@item?.Name</h4>
-					<div class="image-wrapper">
-						<img src="@image" alt="@item?.Name">
-					</div>
-					<p>@preamble</p>
-				</a>					
-				}
-					
-			}		
-		</div>
+                    <a href="@link" class="grid-box bg-light">
+                        <h4>@item?.Name</h4>
+                        <div class="image-wrapper">
+                            <img src="@image" alt="@item?.Name">
+                        </div>
+                        <p>@preamble</p>
+                    </a>
+                }
+            }
+        </div>
 
-		<div class="pagination bg-light"> 
+        <div class="pagination bg-light">
 
-			@if (currentPage > 1)
-			{
-				<a href="?page=@(currentPage - 1)" class="prev-next">Prev</a>
-			}
-			else
-			{
-				<p href="?page=@(currentPage)" class="prev-next inactive">Prev</p>
-			}
+            @if (currentPage > 1)
+            {
+                <a href="?page=@(currentPage - 1)" class="prev-next">Prev</a>
+            }
+            else
+            {
+                <p href="?page=@(currentPage)" class="prev-next inactive">Prev</p>
+            }
 
-			<div class="pages">
-				@for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
-				{
-					<a href="?page=@i" class="@((i == currentPage) ? "btn-pagination active" : "btn-pagination")">@i</a>
-				}
-			</div>			
+            <div class="pages">
+                @for (int i = 1; i <= Math.Ceiling((decimal)totalItems / itemsPerPage); i++)
+                {
+                    <a href="?page=@i" class="@((i == currentPage) ? "btn-pagination active" : "btn-pagination")">@i</a>
+                }
+            </div>
 
-			@if (currentPage < Math.Ceiling((decimal)totalItems / itemsPerPage))
-			{
-				<a href="?page=@(currentPage + 1)" class="prev-next">Next</a>
-			}
-			else
-			{
-				<p class="prev-next inactive">Next</p>
-			}
-		</div>
-
-	</div>
+            @if (currentPage < Math.Ceiling((decimal)totalItems / itemsPerPage))
+            {
+                <a href="?page=@(currentPage + 1)" class="prev-next">Next</a>
+            }
+            else
+            {
+                <p class="prev-next inactive">Next</p>
+            }
+        </div>
+    </div>
 </section>

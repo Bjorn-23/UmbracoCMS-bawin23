@@ -1,7 +1,7 @@
 .list-page {
     .container {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         max-height: 100%;
 
         @include tablet {
@@ -23,6 +23,7 @@
             .tag-wrapper {
                 display: flex;
                 align-items: first baseline;
+                flex-wrap: wrap;
 
                 h4 {
                     margin: 0 1rem 0 0;
