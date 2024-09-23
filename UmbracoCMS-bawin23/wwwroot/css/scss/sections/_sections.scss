@@ -6,9 +6,12 @@
 @import "./repeatable-sections//contact-details";
 @import "./repeatable-sections/our-services"; // Currently not used, remove if unnecessary.
 @import "./repeatable-sections/brands";
-@import "./repeatable-sections/service-grid-container";
+//@import "./repeatable-sections/service-grid-container";
 @import "./repeatable-sections/section-formatting";
-@import "./repeatable-sections/_project-grid-container.scss";
+//@import "./repeatable-sections/_project-grid-container.scss";
+
+//---Grids
+@import "grids/_grids.scss";
 
 
 //---Home
@@ -37,8 +40,13 @@
 
 
 //---PROJECTS-DETAILS
-@import "./project-details/projects-details";
+@import "./project-details/_projects-details.scss";
 
 
 //---CONTACT
 @import "./contact/contact";
+
+
+//---UMBRACO
+
+@import "_umbraco-forms.scss";

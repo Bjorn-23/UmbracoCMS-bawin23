@@ -1,121 +1,203 @@
-.service-details {
-    // Sort out mobile and tablet designs
+#service-details {
     .container {
-        display: grid;
-        grid-template-areas:
-        'main'
-        'sidebar';
+        display: flex;
+        flex-direction: column-reverse;
+        max-height: 100%;
 
         @include tablet {
-            grid-template-areas:
-            'sidebar main main main main main';
-        }
-        
-        @include desktop {
-            // gap: 4rem;
-        }
-
-        .sidebar {
-            grid-area: sidebar;
-            max-width: 350px;
-            padding: 0 3rem 0 0;
-
-            
-            .about-us {
-                .image-wrapper {
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
-            
-            .online-support {
-                padding: 1rem;
-                h3 {
-                    font-size: 22px;
-                }
-            }
-            p {
-                font-size: 14px;
-                padding: 0 2rem 0 0;
-            }
-        }
-
-        .main {
-            grid-area: main;
+            flex-direction: row;
             max-width: 100%;
-
-            @include desktop {
-                padding: 0 0 0 3rem;
-                border-left: 1px solid var(--color-border-gray);
-            }
-
-            .image-wrapper {
-                max-width: 100vw;
-
-                @include desktop {
-                    max-width: 900px;
-                    margin: 0 0 2rem;
-                }
-
-                img {
-                    width: 100%;
-                }
-            }
-
-            span {
-                margin: 0 0.5rem 0 0;
-            }
-            
+            padding: 0 2rem;
         }
 
+        @include desktop {
+            max-width: 1200px;
+            padding: 2rem 0;
+        }
+
+        //.sidebar {
+        //    @include tablet {
+        //        max-width: 25%;
+        //    }
+
+        //    p {
+        //        font-size: 10px;
+
+        //        @include tablet {
+        //            font-size: 12px;
+        //        }
+
+        //        @include desktop {
+        //            font-size: 14px;
+        //        }
+        //    }
+
+        //    .about-us {
+        //        margin: 2rem 0;
+
+        //        .image-wrapper {
+        //            margin: 0 0 0.5rem;
+
+        //            img {
+        //                width: 100%;
+        //            }
+        //        }
+        //    }
+
+        //    .online-support {
+        //        margin: 1rem 0;
+        //        padding: 1rem;
+
+        //        h3 {
+        //            font-size: 16px;
+        //        }
+
+        //        form {
+        //            position: relative;
+
+        //            input {
+        //                width: 100%;
+        //                margin: 0.5rem 0;
+        //                padding: 1rem;
+        //                font-size: 12px;
+
+        //                &[placeholder] {
+        //                    font-style: italic;
+        //                }
+        //            }
+
+        //            button {
+        //                background-color: transparent;
+        //                border: none;
+        //                color: var(--color-default);
+        //                position: absolute;
+        //                top: calc(50% - 0.5rem);
+        //                right: 0.5rem;
+        //            }
+        //        }
+        //    }
+        //}
+
+        //.divider {
+        //    border-left: 1px solid var(--color-border-gray);
+        //    max-height: 300vh;
+        //    margin: 0 1rem;
+
+        //    @include desktop {
+        //        margin: 0 3rem;
+        //    }
+        //}
+
+        //.rich-text-main {
+        //    @include tablet {
+        //        max-width: 75%;
+        //    }
+
+        //    p:first-child {
+                //hides the first p element which is a formatting tag for rich text.
+        //        display: none;
+        //    }
+
+        //    figure {
+        //        margin: 0;
+        //        padding: 0;
+        //    }
+
+        //    img {
+        //        width: 100%;
+        //        height: auto;
+
+        //        @include tablet {
+        //            margin: 2rem 0;
+        //        }
+        //    }
+
+        //    span {
+        //        margin: 0 0.5rem 0 0;
+        //    }
+        //}
+
+        &.sidebar-right {
+            @include tablet {
+                flex-direction: row-reverse;
+            }
+        }
     }
-    
 }
-.contact-form {    
-    padding: 2rem 0;        
+
+#service-details-contact-form {
+    padding: 2rem 0;
 
     @include desktop {
         padding: 4rem 0;
     }
 
     .container {
-        display: flex;
-        justify-content: center;
-        max-width: 1200px;
+
+        @include tablet {
+            max-width: 100%;
+            padding: 0 2rem;
+        }
+
+        @include desktop {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 0;
+        }
 
         .form-wrapper {
-            width: 1200px;
+            //gets rid of default from styling.
+            position: relative;
+            inset: unset;
+            border: none;
+            box-shadow: none;
+            width: 100%;
 
-            .form-content {
-                max-width: 1200px;
+
+            .form-header {
+                padding: 2rem 0;
+            }
+
+            form {
                 display: grid;
-                grid-template-areas:
-                'name email'
-                'message message';
                 border: none;
-                gap: 1rem;
                 padding: 0;
-                
+                margin: 0;
+
+                max-width: 100vw;
+                grid-template-areas:
+                    'name' 'email' 'message';
+
+                @include desktop {
+                    gap: 1rem;
+                    grid-template-areas:
+                        'name email' 'message message';
+                }
+
                 .form-name {
                     grid-area: name;
-                    // width: calc(50% -1rem);                
+                    width: 100%;
                 }
-                
+
                 .form-email {
                     grid-area: email;
-                    // width: calc(50% -1rem);                
+                    width: 100%;
                 }
-                
+
                 .form-message {
                     grid-area: message;
+
                     textarea {
-                        width: 100%;                                    
+                        width: 100%;
                     }
                 }
 
                 button {
-                    max-width: 8rem;
+
+                    @include desktop {
+                        max-width: 8rem;
+                    }
                 }
             }
         }

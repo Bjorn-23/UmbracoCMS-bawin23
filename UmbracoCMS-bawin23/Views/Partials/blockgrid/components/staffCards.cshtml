@@ -1,0 +1,112 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@{
+	int.TryParse(Model?.Content.Value<string>("displayCount"), out int displayCount);
+
+	var selection = Umbraco.Content(Guid.Parse("2c56be26-c9bd-436e-b5f7-33877ea9a745"))
+    .ChildrenOfType("staffItemTemplate")
+    .Where(x => x.IsVisible()).Take(displayCount)/* .Take(3) */;
+
+	// var secondSelection = Umbraco.Content(Guid.Parse("2c56be26-c9bd-436e-b5f7-33877ea9a745"))
+	// .ChildrenOfType("staffItemTemplate")
+	// .Where(x => x.IsVisible()).Take(displayCount).Skip(3).Take(4);
+
+	//I do not like this way of looping out the content, currently the reason for doing it is the lack of grid properties to put 3 on the first row and 4 on the next. Might try with flex instead and jut get the items once and loop out once
+}
+
+ 
+
+<section id="staffCards" class=" bg-light">
+	<div class="container">
+		<div class="grid-container grid-one">
+			@if (selection != null)
+			{
+				@foreach (var item in selection)
+				{
+					var url = item.Url();
+					var id = item.Name.ToLower().Replace(" ", "");
+					var name = item.Value<String>("staffName") ?? "";
+					var image = item.Value<IPublishedContent>("staffImage")?.Url() ?? "";
+					var roles = item.Value<IEnumerable<string>>("staffRole") ?? null;
+					var role = "";
+					var company = item.Value<string>("company") ?? "";
+
+
+					@if (roles.Count() > 0)
+					{
+						var i = 1;
+						foreach ( var title in roles)
+						{
+							if (i > 1)
+							{
+								role += "& " + title + " ";
+							}
+							else
+							{
+								role += title + " ";								
+							}
+							i++;
+						}						
+					}
+
+					role += "at " + company;
+
+					<a id="@id" href="@url" class="card">
+						<div class="image-wrapper">
+							<img src="@image" alt="@name">
+						</div>
+						<div class="text-wrapper">
+							<h5 class="name">@name</h5>
+							<p class="position">@role</p>
+						</div>
+					</a>				
+				}
+			}
+		</div>
+		@* <div class="grid-container grid-two">
+			@if (secondSelection != null)
+			{
+				@foreach (var item in secondSelection)
+				{
+					var id = item.Name.ToLower().Replace(" ", "");
+					var name = item.Value<String>("staffName") ?? "";
+					var image = item.Value<IPublishedContent>("staffImage")?.Url() ?? "";
+					var roles = item.Value<IEnumerable<string>>("staffRole") ?? null;
+					var role = "";
+					var company = item.Value<string>("company") ?? "";
+
+					@if (roles.Count() > 0)
+					{
+						var i = 1;
+						foreach (var title in roles)
+						{
+							if (i > 1)
+							{
+								role += "& " + title + " ";
+							}
+							else
+							{
+								role += title + " ";
+							}
+							i++;
+						}
+					}
+
+					role += "at " + company;
+
+					<div id="@id" class="card">
+						<div class="image-wrapper">
+							<img src="@image" alt="@name">
+						</div>
+						<div class="text-wrapper">
+							<h5 class="name">@name</h5>
+							<p class="position">@role</p>
+						</div>
+					</div>
+				}
+			}
+		</div> *@
+	</div>
+</section>
+
+

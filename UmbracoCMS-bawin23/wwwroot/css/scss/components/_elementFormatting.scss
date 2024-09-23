@@ -17,11 +17,3 @@
 .text-align-start {
     text-align: start;
 }
-
-.img-margin-top {
-    margin-top: 1rem;
-
-    @include tablet {
-        margin-top: 2rem;
-    }
-}

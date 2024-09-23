@@ -1,0 +1,52 @@
+#staffCards {
+    .grid-container {
+        //display: grid;
+        gap: 1rem;
+        margin: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        
+        @include desktop {
+            justify-content: space-between;
+        }                
+    }
+
+    .card {
+        max-width: 300px;
+        border: 1px solid var(--color-border-gray);
+        border-radius: 3px;
+
+        .image-wrapper {
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+                max-height: auto;
+                width: 100%;
+                max-width: inherit;
+                transition: 0.25s ease-out;
+
+                &:hover {
+                    transform: scale(110%);
+                    transition: 0.25s ease-in;
+                }
+            }
+        }
+
+        .text-wrapper {
+            padding: 1rem;
+
+            h5 {
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                padding: 0;
+                font-size: 12px;
+            }
+        }
+    }
+
+}

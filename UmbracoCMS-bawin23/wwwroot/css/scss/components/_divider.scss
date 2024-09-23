@@ -1,0 +1,9 @@
+.sidebar-divider {
+    border-left: 1px solid var(--color-border-gray);
+    max-height: 300vh;
+    margin: 0 1rem;
+
+    @include desktop {
+        margin: 0 3rem;
+    }
+}

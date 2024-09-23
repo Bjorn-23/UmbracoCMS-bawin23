@@ -1,19 +1,58 @@
-.form-content {
-    padding: 2rem 1.5rem 2.5rem;
-    border: 1px solid var(--color-border-dark-transparent);
-    border-radius: 0 0 3px 3px;
+.form-wrapper {
+    box-shadow: 0 10px 8px 5px var(--color-gray);
 
-    .input-group {
-        input, select, textarea {
-            width: 100%;
-            padding: 0.5rem;
-            outline: none;
-            border: 1px solid var(--color-border-dark-transparent);
-            border-radius: 3px;
-        }
+    .form-header {
+        padding: 2rem 5rem 2rem 3rem;
+        border-radius: 3px 3px 0 0;
 
-        textarea {
-            resize: none;
+        h3 {
+            margin: 0;
         }
+    }
+
+    form {
+        padding: 2rem 1.5rem 2.5rem;
+        border: 1px solid var(--color-border-dark-transparent);
+        border-radius: 0 0 3px 3px;
+
+        .input-group {
+            position: relative;
+            margin: 1rem 0;
+
+            input, select, textarea {
+                width: 100%;
+                padding: 0.5rem;
+                outline: none;
+                border: 1px solid var(--color-border-dark-transparent);
+                border-radius: 3px;
+            }
+
+            .form-input-error {
+                display: none;
+            }
+
+            .form-invalid-input {
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 12px;
+                display: inline-block;
+                color: red;
+            }
+
+            textarea {
+                resize: none;
+            }
+        }
+    }
+
+    .form-success {
+        //change color values and placement.
+        text-align: center;
+        margin: 1rem 0;
+        background-color: #7fda6ba0;
+        padding: 0.2rem 1rem;
+        border: 1px solid #7fda6b;
+        border-radius: 8px;
     }
 }

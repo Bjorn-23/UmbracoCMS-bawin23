@@ -7,19 +7,29 @@
     var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
     var sectionId = sectionTitle?.ToString().ToLower().Trim().Replace(" ", "-");
 
-    var spacingTopClass = (Model?.Content.Value<bool>("addSpacingToTop") == true) ? "spacing-top" : "";
-    var spacingBottomClass = (Model?.Content.Value<bool>("addSpacingToBottom") == true) ? "spacing-botttom" : "";
+    var spacingTopClass = (Model?.Content.Value<bool>("addSpaceToTop") == true) ? "spacing-top" : "";
+    var spacingBottomClass = (Model?.Content.Value<bool>("addSpaceToBottom") == true) ? "spacing-botttom" : "";
     var centerContentClass = (Model?.Content.Value<bool>("centerContentOnPage") == true) ? "center" : "";
+    var alignText = (Model?.Content.Value<bool>("alignAllTextCenter") == true ) ? "text-align-center" : "";
 
     var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
     var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 
     var sectionBackgroundImage = Model?.Content.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? null;
-    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-absolute" : "background-image";
+    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-image-absolute" : "background-image";
+    var backGroundHeight = Model?.Content?.Value<int>("sectionBackgroundHeight") ?? 0;
+    var sectionMinimumHeight = backGroundHeight.ToString() + "px";
+
+    if (!string.IsNullOrEmpty(sectionBackgroundImage) && !string.IsNullOrEmpty(sectionBackgroundColorLabel))
+    {
+        isBackgroundImageAbsolute = $"{isBackgroundImageAbsolute} bg-higher-z-index";
+    }
+
+    var hideSection = (Model?.Content.Value<bool>("hideSection") == true) ? "hide" : "";
 
 }
 
-<section id="@sectionId" class="@spacingTopClass spacingBottomClass">
+<section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText @hideSection" style="min-height: @sectionMinimumHeight" >
 
     @if (!string.IsNullOrEmpty(backgroundColorClass))
     {
@@ -28,7 +38,7 @@
 
     @if (!string.IsNullOrEmpty(sectionBackgroundImage))
     {
-        <img class="@isBackgroundImageAbsolute" src="sectionBackgroundImage" alt="@sectionTitle background image" />
+        <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
     }
 
     @await Html.GetBlockGridItemAreasHtmlAsync(Model)

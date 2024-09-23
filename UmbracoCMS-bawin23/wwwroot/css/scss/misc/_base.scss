@@ -30,6 +30,47 @@ body {
     color: #535656; // fallback color if themes don't work.
 }
 
+span {
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+.bg-secondary {
+    span {
+        color: var(--color-primary);
+        font-weight: 600;
+    }
+}
+
+blockquote {
+    span {
+        position: relative;
+
+        &::before, &::after {
+            position: absolute;
+            font-family: "Font Awesome 6 Pro";
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        &::before {
+            content: "\f10d";
+            top: 0;
+            left: -1.5rem;
+        }
+
+        &::after {
+            content: "\f10e";
+            bottom: 0;
+            right: -1.5rem;
+        }
+    }
+}
+
+.hide {
+    display: none !important;
+}
+
 // .mobile-menu-hidden {
 //     position: relative;
 //     display: flex;

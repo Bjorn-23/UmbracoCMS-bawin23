@@ -22,10 +22,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://kit.fontawesome.com/a576612222.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/umb-grid.css">
+    @* <link rel="stylesheet" href="/css/umb-grid.css"> *@
     <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/main.min.css">
-    <!-- <script src="/scripts/mobile-menu.js"></script> -->
+    <script src="/scripts/main.js"></script>
     <meta name="author" content="Björn Andersson">
     <title>@pageTitle</title>
 </head>
@@ -38,6 +38,11 @@
       <main>
         @RenderBody()
       </main>
+
+        @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
+        {
+            @await Html.PartialAsync("partials/static/contactInfoHub.cshtml")
+        }
 
       @await Html.PartialAsync("partials/static/footer.cshtml")
     </div>

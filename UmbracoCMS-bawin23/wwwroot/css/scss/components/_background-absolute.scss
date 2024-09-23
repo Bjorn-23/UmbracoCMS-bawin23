@@ -1,8 +1,36 @@
 ﻿.background-image-absolute {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    background-repeat: no-repeat;
+    display: none;
+
+    @media (min-width: 1024px) {
+        max-width: 100vw;
+        max-height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        height: auto;
+
+        @include desktop {
+            max-width: 1920px;
+            //width: 100%;
+            //height: 100%;
+        }
+    }
+}
+
+.set-img-bottom {
+    bottom: 0;
+}
+
+.set-img-right {
+    transform: translateX(0);
+}
+
+.set-img-left {
+    left: 0;
+    transform: translateX(0);
 }

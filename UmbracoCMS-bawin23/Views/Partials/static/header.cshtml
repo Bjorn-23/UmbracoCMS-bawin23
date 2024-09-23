@@ -6,6 +6,9 @@
     var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;
     var siteName = settings?.Value<string>("siteName") ?? "";
     var siteLogotype = settings?.Value<IPublishedContent>("siteLogotype")?.Url().ToLower() ?? "";
+
+    var searchQuery = string.IsNullOrEmpty(ViewData["searchQuery"]?.ToString()) ? "" : ViewData["SearchQuery"]?.ToString();
+    int test = 0;
 }
 
 <header class="header">
@@ -20,16 +23,15 @@
                 @await Html.PartialAsync("./nav.cshtml")
             </div>
 
-            <div class="nav-links">
+            <div class="nav-links-wrapper">
                 @await Html.PartialAsync("./nav.cshtml")
             </div>
 
-            <div class="search-wrapper">
-                <form class="search-field">
-                    <input type="text">
-                </form>
+            @using (Html.BeginUmbracoForm("HandleNavBarSearchQuery", "SearchSurface", FormMethod.Post))
+            {
+                <input id="searchQuery" name="searchQuery" type="text" value="@searchQuery">
                 <button type="submit" class="bg-light"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            }   
 
         </div>
     </nav>

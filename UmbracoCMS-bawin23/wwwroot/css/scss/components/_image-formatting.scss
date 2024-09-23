@@ -1,14 +1,35 @@
 .image-formatting {
-    max-width: 100%;
-    img {
-        //width: 100%;
-    }
+     img {
+        max-width: 330px;
+        
+        @include tablet {
+            max-width: 100%;
+        }
+     }
 }
 
 .center-image {
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .image-borders-rounded {
     border-radius: 4px;
+}
+
+.img-margin-top {
+    margin-top: 1rem;
+
+    @include tablet {
+        margin-top: 2rem;
+    }
+}
+
+.img-margin-bottom {
+    margin-bottom: 1rem;
+
+    @include tablet {
+        margin-bottom: 2rem;
+    }
 }
