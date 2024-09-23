@@ -1,51 +1,17 @@
-//---Repeating sections
-@import "./repeatable-sections/_topbar.scss";
-@import "./repeatable-sections//header";
-@import "./repeatable-sections/footer";
-@import "./repeatable-sections//breadcrumbs";
-@import "./repeatable-sections//contact-details";
-@import "./repeatable-sections/our-services"; // Currently not used, remove if unnecessary.
-@import "./repeatable-sections/brands";
-//@import "./repeatable-sections/service-grid-container";
-@import "./repeatable-sections/section-formatting";
-//@import "./repeatable-sections/_project-grid-container.scss";
+//----STATIC OR REPEATED SECTIONS
+@import "static/_topbar.scss";
+@import "static//_header.scss";
+@import "static/_footer.scss";
+@import "static/_breadcrumbs.scss";
+@import "static/_contact-details.scss";
+@import "static/_brands.scss";
+@import "static/_contact.scss";
 
-//---Grids
+//---GRIDS
 @import "grids/_grids.scss";
 
-
-//---Home
-@import "./index/hero"; // Currently not used, remove if unnecessary.
-@import "./index/about-us";
-@import "./index/trusted-company";
-@import "./index/success-stories";
-@import "./index/our-projects-index";
-
-
-//---ABOUT
-@import "./about/tina-fox-ceo";
-@import "./about/trusted-reviews";
-@import "./about/our-experts";
-
-
-//---SERVICES
-//Only repeating sections.
-
 //---SERVICE-DETAILS
-@import "./service-details/service-details";
-
-
-//---PROJECTS
-@import "./projects/our-projects";
-
-
-//---PROJECTS-DETAILS
-@import "./project-details/_projects-details.scss";
-
-
-//---CONTACT
-@import "./contact/contact";
-
+@import "service-details/_service-details.scss";
 
 //---UMBRACO
 

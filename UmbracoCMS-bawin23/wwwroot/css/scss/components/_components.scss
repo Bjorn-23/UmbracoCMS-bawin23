@@ -1,26 +1,27 @@
-@import "container";
-@import "_grid.scss";
-@import "_forms.scss";
-@import "_spacing.scss";
+// SECTION ELEMENT
 @import "_wrapper.scss";
-
+@import "_section-formatting.scss";
+@import "_spacing.scss";
 @import "_background-color.scss";
 @import "_background-absolute.scss";
 
+// DIV .CONTAINER ELEMENT
+@import "_container.scss";
+@import "_divider.scss";
+
+// SMALLER ELEMENT FORMATTNG
+@import "_typography.scss";
+@import "_links.scss";
+@import "_buttons.scss";
 @import "_image-formatting.scss";
 @import "_elementFormatting.scss";
-@import "_list-view-formatting.scss";
-@import "_section-formatting.scss";
+
+// LARGER SECTIONS FORMATTING
+@import "_forms.scss";
 @import "_list-page.scss";
-@import "_divider.scss";
+@import "_rich-text-formatting.scss";
+@import "_list-view-formatting.scss";
 @import "_sidebar.scss";
 @import "_review-stars.scss";
-@import "links";
-@import "buttons";
-@import "typography";
-
-@import "pagination";
-@import "_rich-text-formatting.scss";
-@import "_staff-grid-container.scss";
+@import "_pagination.scss";
 @import "_map-wrapper.scss";
-

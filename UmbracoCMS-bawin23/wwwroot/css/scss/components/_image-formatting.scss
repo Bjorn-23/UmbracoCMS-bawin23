@@ -1,11 +1,11 @@
 .image-formatting {
-     img {
+    img {
         max-width: 330px;
-        
+
         @include tablet {
             max-width: 100%;
         }
-     }
+    }
 }
 
 .center-image {
