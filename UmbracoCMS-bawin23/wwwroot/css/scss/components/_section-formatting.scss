@@ -47,10 +47,10 @@ section {
         min-height: 600px;
     }
 
-    @include desktop {
-        min-height: 600px;
+    //@include desktop {
+    //    min-height: 600px;
         //max-height: unset;
-    }
+    //}
 }
 //#trusted-company {
 //    overflow-x: hidden;

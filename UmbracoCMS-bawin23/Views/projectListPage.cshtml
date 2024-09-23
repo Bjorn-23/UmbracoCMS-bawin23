@@ -13,7 +13,7 @@
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
-<section id="our-projects" class="spacing-bottom bg-light">
+<section id="our-projects" class="spacing-bottom list-page bg-light">
 	<div class="container">
 		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
 		{
@@ -30,8 +30,8 @@
 						var link = item?.Url().TrimEnd("/");
 						var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
 						var preamble = item?.Value<string>("preamble") ?? "";
-						var datePublished = item?.Value<DateTime>("datePublished").ToString() ?? null;
-						
+						var datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
+
 						<a href="@link" class="projects-box">
 							<div class="image-wrapper">
 								<img src="@image" alt="@item?.Name">
@@ -42,11 +42,12 @@
 								<p class="ingress">@preamble</p>
 								<h4 class="read-more">Read more<span><i class="fa-solid fa-arrow-right-long"></i></span></h4>
 							</div>
-						</a>			
+						</a>
 					}					
-				}
-		
+				}		
 		</div>
+
+		<div class="sidebar-divider"></div>
 
 		<div class="sidebar">
 			<h4>Tags</h4>

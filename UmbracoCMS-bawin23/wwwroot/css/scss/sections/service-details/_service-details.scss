@@ -12,110 +12,110 @@
 
         @include desktop {
             max-width: 1200px;
-            padding: 0;
+            padding: 2rem 0;
         }
 
-        .sidebar {
-            @include tablet {
-                max-width: 25%;
-            }
+        //.sidebar {
+        //    @include tablet {
+        //        max-width: 25%;
+        //    }
 
-            p {
-                font-size: 10px;
+        //    p {
+        //        font-size: 10px;
 
-                @include tablet {
-                    font-size: 12px;
-                }
+        //        @include tablet {
+        //            font-size: 12px;
+        //        }
 
-                @include desktop {
-                    font-size: 14px;
-                }
-            }
+        //        @include desktop {
+        //            font-size: 14px;
+        //        }
+        //    }
 
-            .about-us {
-                margin: 2rem 0;
+        //    .about-us {
+        //        margin: 2rem 0;
 
-                .image-wrapper {
-                    margin: 0 0 0.5rem;
+        //        .image-wrapper {
+        //            margin: 0 0 0.5rem;
 
-                    img {
-                        width: 100%;
-                    }
-                }
-            }
+        //            img {
+        //                width: 100%;
+        //            }
+        //        }
+        //    }
 
-            .online-support {
-                margin: 1rem 0;
-                padding: 1rem;
+        //    .online-support {
+        //        margin: 1rem 0;
+        //        padding: 1rem;
 
-                h3 {
-                    font-size: 16px;
-                }
+        //        h3 {
+        //            font-size: 16px;
+        //        }
 
-                form {
-                    position: relative;
+        //        form {
+        //            position: relative;
 
-                    input {
-                        width: 100%;
-                        margin: 0.5rem 0;
-                        padding: 1rem;
-                        font-size: 12px;
+        //            input {
+        //                width: 100%;
+        //                margin: 0.5rem 0;
+        //                padding: 1rem;
+        //                font-size: 12px;
 
-                        &[placeholder] {
-                            font-style: italic;
-                        }
-                    }
+        //                &[placeholder] {
+        //                    font-style: italic;
+        //                }
+        //            }
 
-                    button {
-                        background-color: transparent;
-                        border: none;
-                        color: var(--color-default);
-                        position: absolute;
-                        top: calc(50% - 0.5rem);
-                        right: 0.5rem;
-                    }
-                }
-            }
-        }
+        //            button {
+        //                background-color: transparent;
+        //                border: none;
+        //                color: var(--color-default);
+        //                position: absolute;
+        //                top: calc(50% - 0.5rem);
+        //                right: 0.5rem;
+        //            }
+        //        }
+        //    }
+        //}
 
-        .divider {
-            border-left: 1px solid var(--color-border-gray);
-            max-height: 300vh;
-            margin: 0 1rem;
+        //.divider {
+        //    border-left: 1px solid var(--color-border-gray);
+        //    max-height: 300vh;
+        //    margin: 0 1rem;
 
-            @include desktop {
-                margin: 0 3rem;
-            }
-        }
+        //    @include desktop {
+        //        margin: 0 3rem;
+        //    }
+        //}
 
-        .rich-text-main {
-            @include tablet {
-                max-width: 75%;
-            }
+        //.rich-text-main {
+        //    @include tablet {
+        //        max-width: 75%;
+        //    }
 
-            p:first-child {
+        //    p:first-child {
                 //hides the first p element which is a formatting tag for rich text.
-                display: none;
-            }
+        //        display: none;
+        //    }
 
-            figure {
-                margin: 0;
-                padding: 0;
-            }
+        //    figure {
+        //        margin: 0;
+        //        padding: 0;
+        //    }
 
-            img {
-                width: 100%;
-                height: auto;
+        //    img {
+        //        width: 100%;
+        //        height: auto;
 
-                @include tablet {
-                    margin: 2rem 0;
-                }
-            }
+        //        @include tablet {
+        //            margin: 2rem 0;
+        //        }
+        //    }
 
-            span {
-                margin: 0 0.5rem 0 0;
-            }
-        }
+        //    span {
+        //        margin: 0 0.5rem 0 0;
+        //    }
+        //}
 
         &.sidebar-right {
             @include tablet {

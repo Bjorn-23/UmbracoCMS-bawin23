@@ -29,7 +29,7 @@
     var sectionBackgroundColorLabel = contactInfo?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label?.ToLower();
     var backgroundColorClass = !string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none" ? $"bg-{sectionBackgroundColorLabel}" : "";
 
-    if (pageTitle == "Contact")
+    if (ViewBag.Title == "Contact Us")
     {
         backgroundColorClass = "bg-light";
     }
