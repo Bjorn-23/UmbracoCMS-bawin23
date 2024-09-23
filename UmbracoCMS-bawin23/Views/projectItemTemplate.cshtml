@@ -5,12 +5,83 @@
 	var pageTitle = Model?.Value<string>("pageTitle") ?? "";
 	var pageName = Model?.Name;
 	ViewBag.Title = (!string.IsNullOrEmpty(pageTitle)) ? pageTitle : pageName;
+
+	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
+		.ChildrenOfType("projectItemTemplate")?
+		.Where(x => x.IsVisible()).OrderByDescending(x => x.CreateDate).Take(4);
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
-<section class="project-details">
+<section id="project-details" class="project-details bg-light">
 	<div class="container">
-		@Model.Value("pageContent")
+
+		@if (Model != null)
+		{
+			<div class="rich-text-main">
+				@Model.Value("pageContent")
+			</div>
+		}
+
+
+		<div class="sidebar bg-light">
+			@* <div class="project-grid-container">
+				@if (selection != null)
+				{
+					foreach (var item in selection)
+					{
+						var link = item?.Url().TrimEnd("/");
+						var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+						var preamble = item?.Value<string>("preamble") ?? "";
+						var datePublished = item?.Value<DateTime>("datePublished").ToString() ?? null;
+
+						<a href="@link" class="projects-box">
+							<div class="image-wrapper">
+								<img src="@image" alt="@item?.Name">
+							</div>
+							<div class="text-wrapper">
+								<h4>@item?.Name</h4>
+								<p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@datePublished</p>
+								<p class="ingress">@preamble</p>
+								<h4 class="read-more">Read more<span><i class="fa-solid fa-arrow-right-long"></i></span></h4>
+							</div>
+						</a>
+					}
+				}
+
+			</div> *@
+
+
+			<div class="tag-wrapper">
+				<h4>Tags</h4>
+				<div class="tag-grid">
+					<!-- These should be picked up as an array and looped through depending on the current selection of reports -->
+
+					<a class="tag">Report</a>
+					<a class="tag">Business plans</a>
+					<a class="tag">Insights</a>
+					<a class="tag">Business</a>
+					<a class="tag">App</a>
+					<a class="tag">Project</a>
+					<a class="tag">Finance</a>
+					<a class="tag">Pricing</a>
+				</div>
+			</div>
+
+			<div class="online-support bg-primary">
+				<h3>How can we help you?</h3>
+				<p>online support 24/7, we are here to help you.</p>
+				@using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
+				{
+					<input id="email" type="text" name="email" placeholder="E-mail address">
+					<button type="submit"><i class="fa-thin fa-envelope"></i></button>
+				}
+			</div>
+		</div>
+
+		<div class="divider"></div>
+
+
+
 	</div>
 </section>

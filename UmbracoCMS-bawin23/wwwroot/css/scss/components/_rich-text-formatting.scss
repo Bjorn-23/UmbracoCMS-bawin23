@@ -1,0 +1,33 @@
+.rich-text-main {
+    @include tablet {
+        max-width: 75%;
+    }
+
+    p:first-child {
+        //hides the first p element which is a formatting tag for rich text.
+        display: none;
+    }
+
+    figure {
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+
+        @include tablet {
+            margin: 2rem 0;
+        }
+    }
+
+    span {
+        margin: 0 0.5rem 0 0;
+        color: var(--color-default);
+    }
+
+    blockquote {
+        margin: 0 0 1rem;
+    }
+}

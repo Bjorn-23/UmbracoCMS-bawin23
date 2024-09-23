@@ -1,26 +1,27 @@
 #breadcrumbs {
-    display: none; // totally removed from mobile design.
+    //display: none; // totally removed from mobile design.
 
     @include tablet {
         display: block;
     }
+    //only changes default stylings for mobile design
 
     .container {
         position: relative;
         max-height: 20rem;
         padding: 2rem 0;
         text-align: center;
-        
+
         .globe-left, .globe-right {
             position: absolute;
             max-height: 100%;
             z-index: 10;
-                
+
             img {
                 width: auto;
                 max-height: 3rem;
 
-                @include tablet{
+                @include tablet {
                     max-height: 5rem;
                 }
 
@@ -29,18 +30,18 @@
                 }
             }
         }
-        
+
         .globe-left {
             bottom: 0;
             left: 0;
         }
-    
-        .globe-right {  
+
+        .globe-right {
             top: 0;
             right: 0;
         }
 
-        ul {       
+        ul {
             list-style: none;
             display: flex;
             justify-content: center;
@@ -61,5 +62,26 @@
                 color: var(--color-secondary);
             }
         }
+    }
+
+    @media (max-width: 767px) {
+        .container {
+            padding: 1rem 0;
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .breadcrumb{
+                margin: 0.5rem 0;
+                
+                a, li {
+                    font-size: 12px;
+                }
+
+            }
+
+        }
+
     }
 }

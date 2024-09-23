@@ -592,10 +592,32 @@ h6 {
   background-color: rgba(255, 0, 0, 0.2);
 }
 
-.content span {
+@media (min-width: 768px) {
+  .rich-text-main {
+    max-width: 75%;
+  }
+}
+.rich-text-main p:first-child {
+  display: none;
+}
+.rich-text-main figure {
+  margin: 0;
+  padding: 0;
+}
+.rich-text-main img {
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .rich-text-main img {
+    margin: 2rem 0;
+  }
+}
+.rich-text-main span {
+  margin: 0 0.5rem 0 0;
   color: var(--color-default);
 }
-.content blockquote {
+.rich-text-main blockquote {
   margin: 0 0 1rem;
 }
 
@@ -876,9 +898,6 @@ footer .container p {
   padding: 1rem;
 }
 
-#breadcrumbs {
-  display: none;
-}
 @media (min-width: 768px) {
   #breadcrumbs {
     display: block;
@@ -934,6 +953,20 @@ footer .container p {
 }
 #breadcrumbs .container ul li {
   color: var(--color-secondary);
+}
+@media (max-width: 767px) {
+  #breadcrumbs .container {
+    padding: 1rem 0;
+  }
+  #breadcrumbs .container h1 {
+    font-size: 20px;
+  }
+  #breadcrumbs .container .breadcrumb {
+    margin: 0.5rem 0;
+  }
+  #breadcrumbs .container .breadcrumb a, #breadcrumbs .container .breadcrumb li {
+    font-size: 12px;
+  }
 }
 
 #contact-details {
@@ -1387,26 +1420,40 @@ section {
     }
 }*/
 #service-details .container {
-  display: grid;
-  grid-template-areas: "main" "sidebar";
+  display: flex;
+  flex-direction: column-reverse;
+  max-height: 100%;
 }
 @media (min-width: 768px) {
   #service-details .container {
-    grid-template-areas: "sidebar main main main main";
-  }
-  #service-details .container .sidebar {
-    padding: 0 3rem 0 0;
-    border-right: 1px solid var(--color-border-gray);
+    flex-direction: row;
+    max-width: 100%;
+    padding: 0 2rem;
   }
 }
-#service-details .container .sidebar {
-  grid-area: sidebar;
-  width: 300px;
-  padding: 0 3rem 0 0;
+@media (min-width: 1400px) {
+  #service-details .container {
+    max-width: 1200px;
+    padding: 0;
+  }
+}
+@media (min-width: 768px) {
+  #service-details .container .sidebar {
+    max-width: 25%;
+  }
 }
 #service-details .container .sidebar p {
-  font-size: 14px;
-  padding: 0 2rem 0 0;
+  font-size: 10px;
+}
+@media (min-width: 768px) {
+  #service-details .container .sidebar p {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1400px) {
+  #service-details .container .sidebar p {
+    font-size: 14px;
+  }
 }
 #service-details .container .sidebar .about-us {
   margin: 2rem 0;
@@ -1444,49 +1491,43 @@ section {
   top: calc(50% - 0.5rem);
   right: 0.5rem;
 }
-#service-details .container .main {
-  grid-area: main;
+#service-details .container .divider {
+  border-left: 1px solid var(--color-border-gray);
+  max-height: 300vh;
+  margin: 0 1rem;
 }
 @media (min-width: 1400px) {
-  #service-details .container .main {
-    padding: 0 0 0 3rem;
+  #service-details .container .divider {
+    margin: 0 3rem;
   }
 }
+@media (min-width: 768px) {
+  #service-details .container .main {
+    max-width: 75%;
+  }
+}
+#service-details .container .main p:first-child {
+  display: none;
+}
 #service-details .container .main figure {
-  margin: 1rem 0;
+  margin: 0;
   padding: 0;
 }
-#service-details .container .main figure img {
-  aspect-ratio: inherit;
-  max-width: 800px;
+#service-details .container .main img {
   width: 100%;
   height: auto;
 }
-@media (min-width: 1400px) {
-  #service-details .container .main .image-wrapper {
-    max-width: 900px;
-    margin: 0 0 2rem;
+@media (min-width: 768px) {
+  #service-details .container .main img {
+    margin: 2rem 0;
   }
-}
-#service-details .container .main .image-wrapper img {
-  width: 100%;
 }
 #service-details .container .main span {
   margin: 0 0.5rem 0 0;
 }
 @media (min-width: 768px) {
   #service-details .container.sidebar-right {
-    grid-template-areas: "main main main sidebar";
-  }
-  #service-details .container.sidebar-right .sidebar {
-    padding: 0 0 0 3rem;
-    border-left: 1px solid var(--color-border-gray);
-    border-right: none;
-  }
-}
-@media (min-width: 768px) and (min-width: 768px) {
-  #service-details .container.sidebar-right .main {
-    padding: 0 3rem 0 0;
+    flex-direction: row-reverse;
   }
 }
 
@@ -1498,28 +1539,43 @@ section {
     padding: 4rem 0;
   }
 }
-#service-details-contact-form .container {
-  display: flex;
-  justify-content: center;
-  max-width: 1200px;
+@media (min-width: 768px) {
+  #service-details-contact-form .container {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+}
+@media (min-width: 1400px) {
+  #service-details-contact-form .container {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    padding: 0;
+  }
 }
 #service-details-contact-form .container .form-wrapper {
   position: relative;
   inset: unset;
   border: none;
   box-shadow: none;
-  max-width: 1200px;
+  width: 100%;
 }
 #service-details-contact-form .container .form-wrapper .form-header {
   padding: 2rem 0;
 }
 #service-details-contact-form .container .form-wrapper form {
-  width: 1200px;
   display: grid;
-  grid-template-areas: "name email" "message message";
   border: none;
-  gap: 1rem;
   padding: 0;
+  margin: 0;
+  max-width: 100vw;
+  grid-template-areas: "name" "email" "message";
+}
+@media (min-width: 1400px) {
+  #service-details-contact-form .container .form-wrapper form {
+    gap: 1rem;
+    grid-template-areas: "name email" "message message";
+  }
 }
 #service-details-contact-form .container .form-wrapper form .form-name {
   grid-area: name;
@@ -1535,8 +1591,10 @@ section {
 #service-details-contact-form .container .form-wrapper form .form-message textarea {
   width: 100%;
 }
-#service-details-contact-form .container .form-wrapper form button {
-  max-width: 8rem;
+@media (min-width: 1400px) {
+  #service-details-contact-form .container .form-wrapper form button {
+    max-width: 8rem;
+  }
 }
 
 #our-projects .container {
@@ -1642,28 +1700,8 @@ section {
   margin: 0 1rem;
 }
 
-.our-projects .container .project-details i {
-  justify-items: baseline;
-  font-size: 6px;
-  margin: 0 1rem;
-}
-.our-projects .container .project-details .flex-container {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-.our-projects .container .project-details .bottom-tag-wrapper {
-  display: flex;
-  align-items: baseline;
-  margin: 1rem 0;
-}
-.our-projects .container .project-details .bottom-tag-wrapper h5 {
-  margin: 0 1rem 0 0;
-}
-.our-projects .container .project-details .bottom-tag-wrapper .btn-accent {
-  padding: 0.3rem 1rem;
-  border-radius: 2rem;
-  margin: 0 1rem 0 0;
+#project-details .container {
+  max-width: 100%;
 }
 
 .contact {

@@ -55,7 +55,6 @@
 	ViewData["email"] = emailParam;
 	ViewData["message"] = messageParam;
 	ViewData["form-success"] = paramFormSuccess;
-	int test = 0;
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
@@ -83,9 +82,11 @@
 			</div>
 		</div>
 
+		<div class="divider"></div>
+
 		@if (Model != null)
 		{
-			<div class="main">
+			<div class="rich-text-main">
 				@Model.Value("pageContent")
 			</div>			
 		}
@@ -129,4 +130,4 @@
 	</div>
 </section>
 
-@await Html.PartialAsync("partials/static/contactInfoHub.cshtml")
+@* @await Html.PartialAsync("partials/static/contactInfoHub.cshtml") *@

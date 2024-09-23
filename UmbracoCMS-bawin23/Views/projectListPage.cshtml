@@ -7,12 +7,7 @@
 	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
     .ChildrenOfType("projectItemTemplate")?
     .Where(x => x.IsVisible());
-
-	var recentProjects = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))
-    .ChildrenOfType("projectItemTemplate")
-    .Where(x => x.IsVisible())
-    .OrderByDescending(x => x.CreateDate);
-
+		
 	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 }
 

@@ -39,6 +39,11 @@
         @RenderBody()
       </main>
 
+        @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
+        {
+            @await Html.PartialAsync("partials/static/contactInfoHub.cshtml")
+        }
+
       @await Html.PartialAsync("partials/static/footer.cshtml")
     </div>
 </body>
