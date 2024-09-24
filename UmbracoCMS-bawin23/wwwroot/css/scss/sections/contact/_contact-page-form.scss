@@ -1,0 +1,72 @@
+#contact-page-form {
+    .container {
+        position: relative;
+
+        .form-wrapper {
+            background-color: var(--color-light) !important;
+
+            @include tablet {
+                padding-bottom: 3rem;
+            }
+
+            @include desktop {
+                position: absolute;
+                z-index: 100;
+                top: 10.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                padding-bottom: 4rem;
+            }
+            
+            .form-header {
+                margin-bottom: -2rem;
+
+                @include desktop {
+                    margin-bottom: 0;
+                }
+
+                h6 {
+
+                    @include desktop {
+                    }
+                }
+
+                p, h2 {
+                    display: none;
+
+                    @include desktop {
+                        display: block;
+                        padding: 0 20%;
+                    }
+                }
+            }
+            
+            form {
+                background-color: var(--color-light) !important;
+                display: grid;
+                grid-template-columns: auto;
+                gap: 1rem;
+                border: none;
+
+                @include tablet {
+                    grid-template-columns: auto auto;
+                    align-items: last baseline;
+                }
+
+                button {
+                    background-color: var(--color-primary);
+                    color: var(--color-secondary);
+                    
+                    @include tablet {
+                        position: absolute;
+                        bottom: 2rem;
+                        left: 50%;
+                        transform: translateX(-50%);
+
+                    }
+                }
+            }
+        }
+    }
+}

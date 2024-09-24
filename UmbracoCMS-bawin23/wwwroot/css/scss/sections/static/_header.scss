@@ -1,8 +1,8 @@
 header {    
     nav {
-        position: relative;
-        z-index: 1;
         .container {
+            position: relative;
+            z-index: 100;
             display: grid;
             grid-template-areas:
             'logo mobile-menu';            
@@ -31,19 +31,22 @@ header {
             }
 
             #mobileMenu {
+                background-color: var(--color-light);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                transform: translateX(-100%);
+                z-index: 1000;
+                transition: transform 0.25s ease-in-out;
+
                 @include tablet {
                     display: none;
                 }
-                transform: translateX(-100%);
                 
                 &[aria-expanded="true"] {
                     transform: translateX(0);
                 }
-                transition: transform 0.25s ease-in-out;
 
-                position: absolute;
-                top: 100%;
-                left: 0;
                 
                 .nav-links {
                     display: flex;
@@ -51,7 +54,6 @@ header {
                     width: 100vw;
                     height: 100vh;
                     padding: 0 1rem;
-                    //text-align: center;
                 }
 
                 a {

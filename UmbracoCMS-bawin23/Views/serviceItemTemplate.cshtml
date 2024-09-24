@@ -80,15 +80,8 @@
                 <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non </p>
             </div>
 
-            <div class="online-support bg-primary">
-                <h3>How can we help you?</h3>
-                <p>online support 24/7, we are here to help you.</p>
-                @using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
-                {
-                    <input id="email" type="text" name="email" placeholder="E-mail address">
-                    <button type="submit"><i class="fa-thin fa-envelope"></i></button>
-                }
-            </div>
+            @await Html.PartialAsync("partials/static/onlineSupportForm.cshtml")
+
         </div>
     </div>
 </section>

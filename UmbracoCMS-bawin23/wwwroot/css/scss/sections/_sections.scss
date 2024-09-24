@@ -3,9 +3,7 @@
 @import "static//_header.scss";
 @import "static/_footer.scss";
 @import "static/_breadcrumbs.scss";
-@import "static/_contact-details.scss";
 @import "static/_brands.scss";
-@import "static/_contact.scss";
 
 //---GRIDS
 @import "grids/_grids.scss";
@@ -13,6 +11,10 @@
 //---SERVICE-DETAILS
 @import "service-details/_service-details.scss";
 
-//---UMBRACO
+//---CONTACT
+@import "contact/_contact-page-form.scss";
+@import "contact/_contact-details.scss";
 
+//---UMBRACO
 @import "_umbraco-forms.scss";
+

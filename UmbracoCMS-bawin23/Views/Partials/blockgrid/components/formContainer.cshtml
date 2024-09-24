@@ -1,9 +1,14 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@* @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage *@
+
 @{
     bool.TryParse(ViewData["name-error"]?.ToString()!, out bool error_name);
     bool.TryParse(ViewData["email-error"]?.ToString()!, out bool error_email);
     bool.TryParse(ViewData["phone-error"]?.ToString()!, out bool error_phone);
+
+   //  var id = Model?.ContentUdi;
+   // int i = 0;
 }
 
 <div class="form-wrapper">
@@ -30,11 +35,16 @@
             <input id="formPhone" name="phone" type="text" placeholder="Enter your phone number" value="@ViewData["phone"]"/>
             <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a phone number</span>
         </div>
-@*          <div class="input-group">
-             <label class="form-label" for="formMessage">Phone</label>
-             <textarea id="formMessage" name="message" type="text" placeholder="Enter your message">@ViewData["message"]</textarea>
-             <span class="form-input-error">You must enter a message</span>
-         </div> *@
+
+        @if (ViewBag.Title != "Home")
+        {
+            <div class="input-group">
+                <label class="form-label" for="formMessage">Phone</label>
+                <textarea id="formMessage" name="message" type="text" placeholder="Enter your message">@ViewData["message"]</textarea>
+                <span class="form-input-error">You must enter a message</span>
+            </div>
+        }
+        
         <div class="input-group">
             <select type="">
                 <option value="financialConsulting">Financial Consulting</option>

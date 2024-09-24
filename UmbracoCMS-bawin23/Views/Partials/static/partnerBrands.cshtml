@@ -1,0 +1,24 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("e32373e9-8a94-4c2a-8ee2-93dc131fba50"))
+    .ChildrenOfType("partnerBrandItemTemplate")
+    .Where(x => x.IsVisible());
+}
+
+<div class="grid-container container">
+
+@if (selection != null)
+	{
+		foreach(var brand in selection)
+		{
+			var image = brand?.Value<IPublishedContent>("thumbnailImage").Url() ?? "";
+			var brandName = brand?.Value<string>("brandName") ?? "";
+
+			<div class="brand-grid-item">
+				<img src="@image" alt="@brandName">
+			</div>
+		}
+	}
+</div>

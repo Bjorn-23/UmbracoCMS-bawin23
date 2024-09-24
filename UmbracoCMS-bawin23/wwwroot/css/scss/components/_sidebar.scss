@@ -111,12 +111,13 @@
             }
 
             button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0.5rem;
                 background-color: transparent;
                 border: none;
                 color: var(--color-default);
-                position: absolute;
-                top: calc(50% - 0.5rem);
-                right: 0.5rem;
             }
         }
     }
