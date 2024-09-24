@@ -1,13 +1,3 @@
-.image-formatting {
-    img {
-        max-width: 330px;
-
-        @include tablet {
-            max-width: 100%;
-        }
-    }
-}
-
 .center-image {
     margin: 0 auto;
     display: flex;

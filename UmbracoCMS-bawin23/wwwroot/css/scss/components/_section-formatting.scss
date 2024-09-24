@@ -1,5 +1,4 @@
-
-////REMOVE THIS LATER
+// Sets styling for general sections.
 section {
     position: relative;
     max-width: 100%;
@@ -7,6 +6,8 @@ section {
     padding: 0;
     z-index: 0;
 }
+
+// Sets specific styling for certain sections. Mainly for responsivity.
 
 #hero {
     overflow-x: hidden;
@@ -21,7 +22,8 @@ section {
 }
 
 #about-us {
-    overflow-x: unset;
+    //overflow-x: unset;
+    overflow-y: inherit;
 
     .container {
         @media (max-width: 1399px) {
@@ -29,14 +31,25 @@ section {
                 --umb-block-grid--item-column-span: 6 !important;
             }
         }
+
+        // Sets the max- width for Tina fox signature.
+        .image-formatting {
+            img {
+                max-width: 30%;
+
+                @include tablet{
+                    max-width: 150px;
+                }
+            }
+        }
     }
 
     .form-wrapper {
-        // Something in umbraco changes at 1024px so needed to use this mediq query here.
+        // Something in umbraco changes at 1024px so needed to use this media query here. --- Try to fix later ----.
         @media (min-width: 1024px) {
             position: absolute;
             z-index: 10;
-            top: -6.5rem;
+            top: -10rem;
         }
 
         @include desktop {
@@ -47,6 +60,10 @@ section {
 
     @include tablet {
         //max-height: 400px;
+        min-height: 500px;
+    }
+
+    @include desktop {
         min-height: 600px;
     }
 }

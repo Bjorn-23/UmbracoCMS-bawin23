@@ -21,42 +21,17 @@ img, svg {
   vertical-align: middle;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
   color: #535656;
-}
-
-span {
-  color: var(--color-secondary);
-  font-weight: 500;
-}
-
-.bg-secondary span {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-blockquote span {
-  position: relative;
-}
-blockquote span::before, blockquote span::after {
-  position: absolute;
-  font-family: "Font Awesome 6 Pro";
-  font-size: 18px;
-  font-weight: 500;
-}
-blockquote span::before {
-  content: "\f10d";
-  top: 0;
-  left: -1.5rem;
-}
-blockquote span::after {
-  content: "\f10e";
-  bottom: 0;
-  right: -1.5rem;
 }
 
 .hide {
@@ -87,18 +62,26 @@ section {
 }
 
 #about-us {
-  overflow-x: unset;
+  overflow-y: inherit;
 }
 @media (max-width: 1399px) {
   #about-us .container [data-content-element-type-alias=dynamicContainer] {
     --umb-block-grid--item-column-span: 6 !important;
   }
 }
+#about-us .container .image-formatting img {
+  max-width: 30%;
+}
+@media (min-width: 768px) {
+  #about-us .container .image-formatting img {
+    max-width: 150px;
+  }
+}
 @media (min-width: 1024px) {
   #about-us .form-wrapper {
     position: absolute;
     z-index: 10;
-    top: -6.5rem;
+    top: -10rem;
   }
 }
 @media (min-width: 1400px) {
@@ -108,6 +91,11 @@ section {
   }
 }
 @media (min-width: 768px) {
+  #about-us {
+    min-height: 500px;
+  }
+}
+@media (min-width: 1400px) {
   #about-us {
     min-height: 600px;
   }
@@ -194,10 +182,20 @@ h2.bg {
 .set-img-right {
   transform: translateX(0);
 }
+@media (min-width: 1400px) {
+  .set-img-right {
+    max-width: 960px;
+  }
+}
 
 .set-img-left {
   left: 0;
   transform: translateX(0);
+}
+@media (min-width: 1400px) {
+  .set-img-left {
+    max-width: 960px;
+  }
 }
 
 .container, .container-fluid {
@@ -250,8 +248,37 @@ p {
   padding: 0 0 1em 0;
 }
 
+span {
+  color: var(--color-secondary);
+  font-weight: 500;
+}
+
+.bg-secondary span {
+  color: var(--color-default);
+  font-weight: 600;
+}
+
 blockquote {
   font-style: italic;
+}
+blockquote span {
+  position: relative;
+}
+blockquote span::before, blockquote span::after {
+  position: absolute;
+  font-family: "Font Awesome 6 Pro";
+  font-size: 18px;
+  font-weight: 500;
+}
+blockquote span::before {
+  content: "\f10d";
+  top: 0;
+  left: -1.5rem;
+}
+blockquote span::after {
+  content: "\f10e";
+  bottom: 0;
+  right: -1.5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -422,15 +449,6 @@ a[target=_blank]::after {
   white-space: nowrap;
 }
 
-.image-formatting img {
-  max-width: 330px;
-}
-@media (min-width: 768px) {
-  .image-formatting img {
-    max-width: 100%;
-  }
-}
-
 .center-image {
   margin: 0 auto;
   display: flex;
@@ -477,6 +495,15 @@ a[target=_blank]::after {
 
 .text-align-start {
   text-align: start;
+}
+
+.center-headline {
+  text-align: center;
+}
+@media (min-width: 1400px) {
+  .center-headline h2 {
+    padding: 0 25%;
+  }
 }
 
 .form-wrapper {
@@ -593,15 +620,6 @@ a[target=_blank]::after {
   margin: 0 0 1rem;
 }
 
-.center-headline {
-  text-align: center;
-}
-@media (min-width: 1400px) {
-  .center-headline h2 {
-    padding: 0 25%;
-  }
-}
-
 @media (min-width: 768px) {
   .container.sidebar-left {
     flex-direction: row-reverse;
@@ -615,7 +633,6 @@ a[target=_blank]::after {
   }
 }
 .sidebar img {
-  width: 100%;
   aspect-ratio: 3/2;
   object-fit: cover;
   border-radius: 4px;
@@ -641,13 +658,19 @@ a[target=_blank]::after {
 .sidebar .recent-projects-wrapper a .image-wrapper {
   flex: 1;
 }
-.sidebar .recent-projects-wrapper a .image-wrapper img {
-  aspect-ratio: 3/2;
-  object-fit: cover;
-}
 @media (min-width: 768px) {
   .sidebar .recent-projects-wrapper a .image-wrapper img {
+    aspect-ratio: 1/1.5;
+  }
+}
+@media (min-width: 1024px) {
+  .sidebar .recent-projects-wrapper a .image-wrapper img {
     aspect-ratio: 1/1;
+  }
+}
+@media (min-width: 1180px) {
+  .sidebar .recent-projects-wrapper a .image-wrapper img {
+    aspect-ratio: 4/3;
   }
 }
 @media (min-width: 1200px) {
@@ -1334,7 +1357,6 @@ footer .container p {
   overflow: hidden;
 }
 .service-grid-container .grid-box .image-wrapper img {
-  max-width: 100%;
   transition: 0.25s ease-out;
 }
 .service-grid-container .grid-box:hover {
@@ -1378,7 +1400,6 @@ footer .container p {
   }
 }
 .project-grid-container .projects-box .image-wrapper img {
-  width: 100%;
   object-fit: cover;
   aspect-ratio: 3/2;
   overflow: hidden;
@@ -1428,10 +1449,6 @@ footer .container p {
   overflow: hidden;
 }
 #staffCards .card .image-wrapper img {
-  max-width: 100%;
-  max-height: auto;
-  width: 100%;
-  max-width: inherit;
   transition: 0.25s ease-out;
 }
 #staffCards .card .image-wrapper img:hover {

@@ -21,10 +21,6 @@
             overflow: hidden;
 
             img {
-                max-width: 100%;
-                max-height: auto;
-                width: 100%;
-                max-width: inherit;
                 transition: 0.25s ease-out;
 
                 &:hover {
