@@ -13,12 +13,14 @@
 }
 
 p {
+    // For changing the color of a p element without it affecting its background color. Should be Moved to a mixin to be automatically controlled.
     &.bg {
         background-color: transparent;
     }
 }
 
 h2 {
+    // For changing the color of a h2 element without it affecting its background color. Should be Moved to a mixin to be automatically controlled.
     &.bg {
         background-color: transparent;
     }

@@ -1,78 +1,92 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = "mainLayout.cshtml";
-	ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    Layout = "mainLayout.cshtml";
+    ViewBag.Title = Model?.Value("pageTitle") ?? null;
+    var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 
-	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
+    var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
     .ChildrenOfType("projectItemTemplate")?
     .Where(x => x.IsVisible());
-		
-	var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
+
+    var name = "";
+    var link = "";
+    var image = "";
+    var preamble = "";
+    var datePublished = "";
+    IEnumerable<string> tags = [];
+    List<string> sortedTags = [];
 }
 
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
 <section id="our-projects" class="spacing-bottom list-page bg-light">
-	<div class="container">
-		@if(!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
-		{
-			<div class="headline @centerHeadLine">
-				<h2 class="title">@Model.Value("customHeadLine")</h2>
-			</div>
-		}
+    <div class="container">
+        @if (!string.IsNullOrEmpty(Model?.Value("customHeadLine")?.ToString()))
+        {
+            <div class="headline @centerHeadLine">
+                <h2 class="title">@Model.Value("customHeadLine")</h2>
+            </div>
+        }
 
-		<div class="project-grid-container">
-				@if (selection != null)
-				{
-					foreach (var item in selection)
-					{
-						var link = item?.Url().TrimEnd("/");
-						var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-						var preamble = item?.Value<string>("preamble") ?? "";
-						var datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
+        <div class="project-grid-container">
+            @if (selection != null)
+            {
+                foreach (var item in selection)
+                {
+                    if (item != null)
+                    {
+                        name = item.Name;
+                        link = item?.Url().TrimEnd("/");
+                        image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
+                        preamble = item?.Value<string>("preamble") ?? "";
+                        datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
+                        
+                        <a href="@link" class="projects-box">
+                            <div class="image-wrapper">
+                                <img src="@image" alt="@name">
+                            </div>
+                            <div class="text-wrapper">
+                                <h4>@name</h4>
+                                <p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@datePublished</p>
+                                <p class="ingress">@preamble</p>
+                                <h4 class="read-more">Read more<span><i class="fa-solid fa-arrow-right-long"></i></span></h4>
+                            </div>
+                        </a>
 
-						<a href="@link" class="projects-box">
-							<div class="image-wrapper">
-								<img src="@image" alt="@item?.Name">
-							</div>
-							<div class="text-wrapper">
-								<h4>@item?.Name</h4>
-								<p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@datePublished</p>
-								<p class="ingress">@preamble</p>
-								<h4 class="read-more">Read more<span><i class="fa-solid fa-arrow-right-long"></i></span></h4>
-							</div>
-						</a>
-					}					
-				}		
-		</div>
+                        tags = item?.Value<IEnumerable<string>>("projectTags")!;
 
-		<div class="sidebar-divider"></div>
+                        @foreach (string tag in tags!)
+                        {
+                            string trimmedTag = tag.Trim();
+                            if (!sortedTags.Any(t => t.Equals(trimmedTag, StringComparison.OrdinalIgnoreCase)))
+                            {
+                                sortedTags.Add(trimmedTag);
+                            }
+                        }
+                    }
+                }
+            }
+        </div>
 
-		<div class="sidebar">
-			<h4>Tags</h4>
-			<div class="tag-grid">
-				<!-- These should be picked up as an array and looped through depending on the current selection of reports -->
+        <div class="sidebar-divider"></div>
 
-				<a class="tag">Report</a>
-				<a class="tag">Business plans</a>
-				<a class="tag">Insights</a>
-				<a class="tag">Business</a>
-				<a class="tag">App</a>
-				<a class="tag">Project</a>
-				<a class="tag">Finance</a>
-				<a class="tag">Pricing</a>
-			</div>
+        <div class="sidebar">
+            <h4>Tags</h4>
+            <div class="tag-grid">
+                @if (selection != null)
+                {
+                    @foreach (string sortedTag in sortedTags)
+                    {
+                        //Implement logic to sort articles according to tag in the selection query and connect to Href.
+                        <a class="tag" href="#">@sortedTag</a>
+                    }
+                }
+            </div>
 
-			<div class="online-support bg-primary">
-				<h3>How can we help you?</h3>
-				<p>online support 24/7, we are here to help you.</p>
-				<form action="">
-					<input type="text" placeholder="E-mail address">
-					<i class="fa-thin fa-envelope"></i>
-				</form>
-			</div>
-		</div>
+            @await Html.PartialAsync("partials/static/onlineSupportForm.cshtml")
 
-	</div>
+        </div>
+
+    </div>
 </section>

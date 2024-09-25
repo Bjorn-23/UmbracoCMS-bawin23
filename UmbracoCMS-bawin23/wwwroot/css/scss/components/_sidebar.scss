@@ -1,3 +1,12 @@
+// Sets styling for .sidebar used on pages that list items and mainly use _list-page.scss. These Include: /projects, /projects/yourProjectNameHere, /service/yourServiceNameHere.
+
+.container {
+    &.sidebar-left {
+        @include tablet {
+            flex-direction: row-reverse;
+        }
+    }
+}
 .sidebar {
     @include tablet {
         max-width: 25%;
@@ -5,7 +14,6 @@
     }
 
     img {
-        width: 100%;
         aspect-ratio: 3 / 2;
         object-fit: cover;
         border-radius: 4px;
@@ -33,11 +41,16 @@
                 flex: 1;
 
                 img {
-                    aspect-ratio: 3 / 2;
-                    object-fit: cover;
-
                     @include tablet {
+                        aspect-ratio: 1 / 1.5;
+                    }
+
+                    @media (min-width: 1024px) {
                         aspect-ratio: 1 / 1;
+                    }
+
+                    @media (min-width: 1180px) {
+                        aspect-ratio: 4 / 3;
                     }
 
                     @media (min-width: 1200px) {
@@ -98,13 +111,15 @@
             }
 
             button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0.5rem;
                 background-color: transparent;
                 border: none;
                 color: var(--color-default);
-                position: absolute;
-                top: calc(50% - 0.5rem);
-                right: 0.5rem;
             }
         }
     }
 }
+

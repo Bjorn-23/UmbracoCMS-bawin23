@@ -16,8 +16,6 @@
 
         @include desktop {
             max-width: 1920px;
-            //width: 100%;
-            //height: 100%;
         }
     }
 }
@@ -28,9 +26,17 @@
 
 .set-img-right {
     transform: translateX(0);
+
+    @include desktop {
+        max-width: 960px;
+    }
 }
 
 .set-img-left {
     left: 0;
     transform: translateX(0);
+
+    @include desktop {
+        max-width: 960px;
+    }
 }

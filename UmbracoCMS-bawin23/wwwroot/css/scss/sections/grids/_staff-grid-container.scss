@@ -1,5 +1,5 @@
 #staffCards {
-    .grid-container {
+    .container {
         //display: grid;
         gap: 1rem;
         margin: 1rem 0;
@@ -21,10 +21,6 @@
             overflow: hidden;
 
             img {
-                max-width: 100%;
-                max-height: auto;
-                width: 100%;
-                max-width: inherit;
                 transition: 0.25s ease-out;
 
                 &:hover {

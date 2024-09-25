@@ -1,9 +1,5 @@
 .wrapper {
     display: grid;
-    grid-template-rows: auto 1fr auto !important;    // This is only if we dont want the breadcrumbs to be visible in mobile.
+    grid-template-rows: auto auto 1fr auto !important;
     height: 100vh;
-
-    @include tablet {
-        grid-template-rows: auto auto 1fr auto !important;
-    }
 }

@@ -2,7 +2,7 @@
 
 namespace UmbracoCMS_bawin23.Models;
 
-public class EmailSupportModel
+public class OnlineSupportFormModel
 {
 	[Required]
 	[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,}$", ErrorMessage = "You must enter a valid email address")]
