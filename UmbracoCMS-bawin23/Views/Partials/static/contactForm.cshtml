@@ -36,11 +36,31 @@
                     <input id="formPhone" name="phone" type="text" placeholder="Enter your phone number" value="@ViewData["phone"]" />
                     <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a phone number</span>
                 </div>
+
+                @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
+                {
+                    <div class="input-group">
+                        <label class="form-label" for="formMessage">Message</label>
+                        <textarea id="formMessage" name="message" type="text" placeholder="Enter your message">@ViewData["message"]</textarea>
+                        <span class="form-input-error">You must enter a message</span>
+                    </div>
+                }
+
                 <div class="input-group">
-                    <select type="">
+                    <label class="form-label" for="formConsulting">Consulting Type</label>
+                    <select id="formConsulting" name="subject">
                         <option value="financialConsulting">Financial Consulting</option>
+                        <option value="riskManagement">Risk Management</option>
+                        <option value="bondsCommodities">Bonds & Commodities</option>
+                        <option value="assuranceAudits">Assurance & Audits</option>
+                        <option value="taxAndTrusts">Tax and Trusts</option>
+                        <option value="statisticAdvisors">Statistic Advisors</option>
+                        <option value="investmentPortfolio">Investment Portfolio</option>
+                        <option value="longTermInterest">Long Term Interest</option>
                     </select>
+                    <span class="form-input-error">You must select a consulting type</span>
                 </div>
+
                 <button class="btn-accent" type="submit">Submit</button>
 
                 @if (ViewData["form-success"]?.ToString() == "true")

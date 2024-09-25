@@ -1483,6 +1483,22 @@ footer .container p {
     transform: translateX(-50%);
   }
 }
+#contact-page-form .container .form-wrapper form .form-success {
+  position: absolute;
+  top: 2.5rem;
+}
+@media (min-width: 768px) {
+  #contact-page-form .container .form-wrapper form .form-success {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2.5rem;
+  }
+}
+@media (min-width: 1400px) {
+  #contact-page-form .container .form-wrapper form .form-success {
+    top: 15rem;
+  }
+}
 
 #contact-details {
   padding: 2rem 0 0 0;

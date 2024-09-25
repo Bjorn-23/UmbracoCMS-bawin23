@@ -66,6 +66,21 @@
 
                     }
                 }
+
+                .form-success {
+                    position: absolute;
+                    top: 2.5rem;
+
+                    @include tablet {
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: 2.5rem;
+                    }
+
+                    @include desktop {
+                        top: 15rem;
+                    }
+                }
             }
         }
     }
