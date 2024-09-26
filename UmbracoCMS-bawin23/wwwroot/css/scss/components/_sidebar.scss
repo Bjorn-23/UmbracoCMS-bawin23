@@ -6,120 +6,136 @@
             flex-direction: row-reverse;
         }
     }
-}
-.sidebar {
-    @include tablet {
-        max-width: 25%;
-        min-width: 25%;
-    }
 
-    img {
-        aspect-ratio: 3 / 2;
-        object-fit: cover;
-        border-radius: 4px;
-    }
+    .sidebar {
+        max-width: 100%;
 
-    p {
-        font-size: 10px;
-
-        @include tablet {
-            font-size: 12px;
+        img {
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
-        @include desktop {
-            font-size: 14px;
-        }
-    }
+        p {
+            font-size: 10px;
 
-    .recent-projects-wrapper {
-        a {
+            @include tablet {
+                font-size: 12px;
+            }
+
+            @include desktop {
+                font-size: 14px;
+            }
+        }
+
+        .recent-projects-wrapper {
+            margin-bottom: 1rem;
+            max-width: calc(100vw - 1rem);
+
+            a {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0 0 1rem;
+
+                .image-wrapper {
+                    min-width: 35%;
+
+                    img {
+                        @include tablet {
+                            aspect-ratio: 1 / 1.5;
+                        }
+
+                        @media (min-width: 1024px) {
+                            aspect-ratio: 1 / 1;
+                        }
+
+                        @media (min-width: 1180px) {
+                            aspect-ratio: 4 / 3;
+                        }
+
+                        @media (min-width: 1200px) {
+                            aspect-ratio: 3 / 2;
+                        }
+                    }
+                }
+
+                .text-wrapper {
+                    min-width: 55%;
+                    padding: 0.5rem 1rem;
+
+                    @include desktop {
+                        padding: 0.5rem 1rem;
+                    }
+
+                    h4 {
+                        font-size: 14px !important;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+
+                    p {
+                        font-size: 12px;
+
+                        i {
+                            margin: 0 0.5rem 0 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tag-wrapper {
             display: flex;
-            justify-content: space-evenly;
-            margin: 0 0 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+
+            h4 {
+                margin: 0 1rem 0 0;
+            }
+        }
+
+        .about-us {
+            margin-bottom: 1rem;
 
             .image-wrapper {
-                flex: 1;
+                margin: 0 0 0.5rem;
+            }
+        }
 
-                img {
-                    @include tablet {
-                        aspect-ratio: 1 / 1.5;
-                    }
+        .online-support {
+            max-width: calc(100vw - 2rem);
+            margin-bottom: 1rem;
+            padding: 1rem;
 
-                    @media (min-width: 1024px) {
-                        aspect-ratio: 1 / 1;
-                    }
-
-                    @media (min-width: 1180px) {
-                        aspect-ratio: 4 / 3;
-                    }
-
-                    @media (min-width: 1200px) {
-                        aspect-ratio: 3 / 2;
-                    }
-                }
+            h3 {
+                font-size: 16px;
             }
 
-            .text-wrapper {
-                flex: 1;
-                padding: 0.5rem 1rem;
+            form {
+                position: relative;
 
-                @include desktop {
-                    padding: 0.5rem 1rem;
-                }
-
-                h4 {
-                    font-size: 14px !important;
-                }
-
-                p {
+                input {
+                    width: 100%;
+                    margin: 0.5rem 0;
+                    padding: 1rem;
                     font-size: 12px;
 
-                    i {
-                        margin: 0 0.5rem 0 0;
+                    &[placeholder] {
+                        font-style: italic;
                     }
                 }
-            }
-        }
-    }
 
-    .about-us {
-        .image-wrapper {
-            margin: 0 0 0.5rem;
-        }
-    }
-
-    .online-support {
-        margin: 1rem 0;
-        padding: 1rem;
-
-        h3 {
-            font-size: 16px;
-        }
-
-        form {
-            position: relative;
-
-            input {
-                width: 100%;
-                margin: 0.5rem 0;
-                padding: 1rem;
-                font-size: 12px;
-
-                &[placeholder] {
-                    font-style: italic;
+                button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 0.5rem;
+                    background-color: transparent;
+                    border: none;
+                    color: var(--color-default);
                 }
-            }
-
-            button {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: 0.5rem;
-                background-color: transparent;
-                border: none;
-                color: var(--color-default);
             }
         }
     }
 }
-

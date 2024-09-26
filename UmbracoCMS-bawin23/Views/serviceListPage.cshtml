@@ -5,6 +5,8 @@
     Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Value("pageTitle") ?? null;
 
+    var contactInfoHub = Model?.Value<BlockGridModel>("contactInfoSection");
+
     var selection = Umbraco.Content(Guid.Parse("1cd3b4ea-e949-432b-94f8-57e8fcd2424d"))?
     .ChildrenOfType("serviceItemTemplate")?
     .Where(x => x.IsVisible());
@@ -83,3 +85,8 @@
         </div>
     </div>
 </section>
+
+@if (contactInfoHub != null)
+{
+    @await Html.GetBlockGridHtmlAsync(contactInfoHub)
+}

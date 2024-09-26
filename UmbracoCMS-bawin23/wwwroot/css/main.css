@@ -508,7 +508,7 @@ a[target=_blank]::after {
   box-shadow: 0 10px 8px 5px var(--color-gray);
 }
 .form-wrapper .form-header {
-  padding: 2rem 5rem 2rem 3rem;
+  padding: 2rem;
   border-radius: 3px 3px 0 0;
 }
 .form-wrapper .form-header h3 {
@@ -553,6 +553,29 @@ a[target=_blank]::after {
   border-radius: 8px;
 }
 
+@media (min-width: 768px) {
+  .list-page .project-grid-container {
+    max-width: 75%;
+  }
+}
+@media (min-width: 768px) {
+  .list-page .article-wrapper {
+    max-width: 75%;
+  }
+}
+.list-page .umb-block-grid {
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .list-page .umb-block-grid {
+    max-width: 25%;
+  }
+}
+@media (min-width: 1400px) {
+  .list-page .umb-block-grid {
+    min-width: 25%;
+  }
+}
 .list-page .container {
   display: flex;
   flex-direction: column;
@@ -571,6 +594,11 @@ a[target=_blank]::after {
     padding: 2rem 0;
   }
 }
+.list-page .container .article-wrapper .date {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
 .list-page .container .article-wrapper .rich-text-main {
   max-width: 100%;
 }
@@ -586,14 +614,6 @@ a[target=_blank]::after {
   background-color: var(--color-accent);
 }
 
-@media (min-width: 768px) {
-  .rich-text-main {
-    max-width: 75%;
-  }
-}
-.rich-text-main p:first-child {
-  display: none;
-}
 .rich-text-main figure {
   margin: 0;
   padding: 0;
@@ -610,6 +630,11 @@ a[target=_blank]::after {
     margin: 2rem 0;
   }
 }
+@media (min-width: 768px) {
+  .rich-text-main img:first-child {
+    margin-top: 0;
+  }
+}
 .rich-text-main span {
   margin: 0 0.5rem 0 0;
   color: var(--color-default);
@@ -623,100 +648,115 @@ a[target=_blank]::after {
     flex-direction: row-reverse;
   }
 }
-
-@media (min-width: 768px) {
-  .sidebar {
-    max-width: 25%;
-    min-width: 25%;
-  }
+.container .sidebar {
+  max-width: 100%;
 }
-.sidebar img {
+.container .sidebar img {
   aspect-ratio: 3/2;
   object-fit: cover;
   border-radius: 4px;
 }
-.sidebar p {
+.container .sidebar p {
   font-size: 10px;
 }
 @media (min-width: 768px) {
-  .sidebar p {
+  .container .sidebar p {
     font-size: 12px;
   }
 }
 @media (min-width: 1400px) {
-  .sidebar p {
+  .container .sidebar p {
     font-size: 14px;
   }
 }
-.sidebar .recent-projects-wrapper a {
+.container .sidebar .recent-projects-wrapper {
+  margin-bottom: 1rem;
+  max-width: calc(100vw - 1rem);
+}
+.container .sidebar .recent-projects-wrapper a {
   display: flex;
   justify-content: space-evenly;
   margin: 0 0 1rem;
 }
-.sidebar .recent-projects-wrapper a .image-wrapper {
-  flex: 1;
+.container .sidebar .recent-projects-wrapper a .image-wrapper {
+  min-width: 35%;
 }
 @media (min-width: 768px) {
-  .sidebar .recent-projects-wrapper a .image-wrapper img {
+  .container .sidebar .recent-projects-wrapper a .image-wrapper img {
     aspect-ratio: 1/1.5;
   }
 }
 @media (min-width: 1024px) {
-  .sidebar .recent-projects-wrapper a .image-wrapper img {
+  .container .sidebar .recent-projects-wrapper a .image-wrapper img {
     aspect-ratio: 1/1;
   }
 }
 @media (min-width: 1180px) {
-  .sidebar .recent-projects-wrapper a .image-wrapper img {
+  .container .sidebar .recent-projects-wrapper a .image-wrapper img {
     aspect-ratio: 4/3;
   }
 }
 @media (min-width: 1200px) {
-  .sidebar .recent-projects-wrapper a .image-wrapper img {
+  .container .sidebar .recent-projects-wrapper a .image-wrapper img {
     aspect-ratio: 3/2;
   }
 }
-.sidebar .recent-projects-wrapper a .text-wrapper {
-  flex: 1;
+.container .sidebar .recent-projects-wrapper a .text-wrapper {
+  min-width: 55%;
   padding: 0.5rem 1rem;
 }
 @media (min-width: 1400px) {
-  .sidebar .recent-projects-wrapper a .text-wrapper {
+  .container .sidebar .recent-projects-wrapper a .text-wrapper {
     padding: 0.5rem 1rem;
   }
 }
-.sidebar .recent-projects-wrapper a .text-wrapper h4 {
+.container .sidebar .recent-projects-wrapper a .text-wrapper h4 {
   font-size: 14px !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.sidebar .recent-projects-wrapper a .text-wrapper p {
+.container .sidebar .recent-projects-wrapper a .text-wrapper p {
   font-size: 12px;
 }
-.sidebar .recent-projects-wrapper a .text-wrapper p i {
+.container .sidebar .recent-projects-wrapper a .text-wrapper p i {
   margin: 0 0.5rem 0 0;
 }
-.sidebar .about-us .image-wrapper {
+.container .sidebar .tag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.container .sidebar .tag-wrapper h4 {
+  margin: 0 1rem 0 0;
+}
+.container .sidebar .about-us {
+  margin-bottom: 1rem;
+}
+.container .sidebar .about-us .image-wrapper {
   margin: 0 0 0.5rem;
 }
-.sidebar .online-support {
-  margin: 1rem 0;
+.container .sidebar .online-support {
+  max-width: calc(100vw - 2rem);
+  margin-bottom: 1rem;
   padding: 1rem;
 }
-.sidebar .online-support h3 {
+.container .sidebar .online-support h3 {
   font-size: 16px;
 }
-.sidebar .online-support form {
+.container .sidebar .online-support form {
   position: relative;
 }
-.sidebar .online-support form input {
+.container .sidebar .online-support form input {
   width: 100%;
   margin: 0.5rem 0;
   padding: 1rem;
   font-size: 12px;
 }
-.sidebar .online-support form input[placeholder] {
+.container .sidebar .online-support form input[placeholder] {
   font-style: italic;
 }
-.sidebar .online-support form button {
+.container .sidebar .online-support form button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1254,25 +1294,25 @@ footer .container p {
   transition: 0.25s ease-in;
 }
 
-.project-grid-container {
-  grid-area: main;
-  max-width: 100%;
-  grid-template-columns: auto;
-}
 .project-grid-container .projects-box {
-  padding: 2rem 0;
-  border-bottoM: 1px solid var(--color-border-gray);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-border-gray);
 }
 @media (min-width: 768px) {
   .project-grid-container .projects-box {
     display: flex;
   }
 }
-.project-grid-container .projects-box:first-child {
+@media (min-width: 1400px) {
+  .project-grid-container .projects-box {
+    padding: 2rem 0 0;
+  }
+}
+.project-grid-container .projects-box:first-of-type {
   padding-top: 0;
 }
-.project-grid-container .projects-box:last-child {
-  border: none;
+.project-grid-container .projects-box:last-of-type {
+  border-bottom: none;
 }
 .project-grid-container .projects-box .image-wrapper {
   flex: 1;
@@ -1287,19 +1327,23 @@ footer .container p {
 }
 .project-grid-container .projects-box .image-wrapper img {
   object-fit: cover;
-  aspect-ratio: 3/2;
+  aspect-ratio: 4/3;
   overflow: hidden;
 }
 .project-grid-container .projects-box .text-wrapper {
   flex: 1;
   display: grid;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto auto auto;
   padding: 0.5rem 1rem;
+}
+.project-grid-container .projects-box .text-wrapper .ingress {
+  padding: 0;
 }
 .project-grid-container .projects-box .text-wrapper h4 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin: 0;
 }
 .project-grid-container .projects-box .text-wrapper .fa-calendar-days {
   margin: 0 1rem 0 0;
@@ -1419,46 +1463,54 @@ footer .container p {
   }
 }
 
-#contact-page-form .container {
+#contact-us .container {
   position: relative;
 }
-#contact-page-form .container .form-wrapper {
+#contact-us .container .form-wrapper {
   background-color: var(--color-light) !important;
+  margin-bottom: 2rem;
 }
 @media (min-width: 768px) {
-  #contact-page-form .container .form-wrapper {
+  #contact-us .container .form-wrapper {
     padding-bottom: 3rem;
   }
 }
 @media (min-width: 1400px) {
-  #contact-page-form .container .form-wrapper {
+  #contact-us .container .form-wrapper {
     position: absolute;
     z-index: 100;
-    top: 10.5rem;
+    top: 8rem;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     padding-bottom: 4rem;
-  }
-}
-#contact-page-form .container .form-wrapper .form-header {
-  margin-bottom: -2rem;
-}
-@media (min-width: 1400px) {
-  #contact-page-form .container .form-wrapper .form-header {
     margin-bottom: 0;
   }
 }
-#contact-page-form .container .form-wrapper .form-header p, #contact-page-form .container .form-wrapper .form-header h2 {
+#contact-us .container .form-wrapper .form-header {
+  margin-bottom: -3rem;
+}
+@media (min-width: 1400px) {
+  #contact-us .container .form-wrapper .form-header {
+    margin-bottom: 0;
+    padding: 4rem 0 0;
+  }
+}
+#contact-us .container .form-wrapper .form-header p, #contact-us .container .form-wrapper .form-header h2 {
   display: none;
 }
 @media (min-width: 1400px) {
-  #contact-page-form .container .form-wrapper .form-header p, #contact-page-form .container .form-wrapper .form-header h2 {
+  #contact-us .container .form-wrapper .form-header p, #contact-us .container .form-wrapper .form-header h2 {
     display: block;
-    padding: 0 20%;
+    padding: 0 28%;
   }
 }
-#contact-page-form .container .form-wrapper form {
+@media (min-width: 1400px) {
+  #contact-us .container .form-wrapper .form-header p {
+    font-size: 14px;
+  }
+}
+#contact-us .container .form-wrapper form {
   background-color: var(--color-light) !important;
   display: grid;
   grid-template-columns: auto;
@@ -1466,36 +1518,36 @@ footer .container p {
   border: none;
 }
 @media (min-width: 768px) {
-  #contact-page-form .container .form-wrapper form {
-    grid-template-columns: auto auto;
+  #contact-us .container .form-wrapper form {
+    grid-template-columns: 1fr 1fr;
     align-items: last baseline;
   }
 }
-#contact-page-form .container .form-wrapper form button {
+#contact-us .container .form-wrapper form button {
   background-color: var(--color-primary);
   color: var(--color-secondary);
 }
 @media (min-width: 768px) {
-  #contact-page-form .container .form-wrapper form button {
+  #contact-us .container .form-wrapper form button {
     position: absolute;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
   }
 }
-#contact-page-form .container .form-wrapper form .form-success {
+#contact-us .container .form-wrapper form .form-success {
   position: absolute;
   top: 2.5rem;
 }
 @media (min-width: 768px) {
-  #contact-page-form .container .form-wrapper form .form-success {
+  #contact-us .container .form-wrapper form .form-success {
     left: 50%;
     transform: translateX(-50%);
     top: 2.5rem;
   }
 }
 @media (min-width: 1400px) {
-  #contact-page-form .container .form-wrapper form .form-success {
+  #contact-us .container .form-wrapper form .form-success {
     top: 15rem;
   }
 }

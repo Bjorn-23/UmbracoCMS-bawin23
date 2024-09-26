@@ -1,9 +1,10 @@
-#contact-page-form {
+#contact-us {
     .container {
         position: relative;
 
         .form-wrapper {
             background-color: var(--color-light) !important;
+            margin-bottom: 2rem;
 
             @include tablet {
                 padding-bottom: 3rem;
@@ -12,22 +13,23 @@
             @include desktop {
                 position: absolute;
                 z-index: 100;
-                top: 10.5rem;
+                top: 8rem;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 100%;
                 padding-bottom: 4rem;
+                margin-bottom: 0;
             }
             
             .form-header {
-                margin-bottom: -2rem;
+                margin-bottom: -3rem;
 
                 @include desktop {
                     margin-bottom: 0;
+                    padding: 4rem 0 0;
                 }
 
                 h6 {
-
                     @include desktop {
                     }
                 }
@@ -37,7 +39,13 @@
 
                     @include desktop {
                         display: block;
-                        padding: 0 20%;
+                        padding: 0 28%;
+                    }
+                }
+                
+                p {
+                    @include desktop {
+                        font-size: 14px;
                     }
                 }
             }
@@ -50,7 +58,7 @@
                 border: none;
 
                 @include tablet {
-                    grid-template-columns: auto auto;
+                    grid-template-columns: 1fr 1fr;
                     align-items: last baseline;
                 }
 
