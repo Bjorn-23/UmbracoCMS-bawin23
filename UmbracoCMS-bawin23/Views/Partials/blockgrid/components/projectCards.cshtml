@@ -3,7 +3,7 @@
 @{
 	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))
     .ChildrenOfType("projectItemTemplate")
-    .Where(x => x.IsVisible());
+    .Where(x => x.IsVisible()).Take(4);
 }
 
 	<div class="element-project-grid-container">
@@ -22,7 +22,7 @@
                 <div class="text-box-bottom bg-primary">
                     <div class="text">
                         <span class="title">@item?.Name></span>
-                        <p class="@category"></p>
+                        <p class="category">@category</p>
                     </div>
                     <div class="arrow-right">
                         <i class="fa-solid fa-angle-right"></i>

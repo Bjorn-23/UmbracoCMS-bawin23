@@ -1208,6 +1208,8 @@ footer .container p {
   position: relative;
   width: 100%;
   max-width: 100%;
+  transition: 0.25s ease-out;
+  overflow: hidden;
 }
 .element-project-grid-container .grid-box img {
   transition: 0.25s ease-out;
@@ -1226,12 +1228,12 @@ footer .container p {
 .element-project-grid-container .grid-box .text-box-bottom .text p, .element-project-grid-container .grid-box .text-box-bottom .text span {
   font-size: 18px;
   color: var(--color-light);
-  opacity: 200%;
 }
 .element-project-grid-container .grid-box .text-box-bottom .arrow-right {
   display: none;
 }
 .element-project-grid-container .grid-box:hover img {
+  transform: scale(106%, 106%);
   opacity: 50%;
   transition: 0.25s ease-in;
 }
@@ -1502,7 +1504,7 @@ footer .container p {
   #contact-us .container .form-wrapper {
     position: absolute;
     z-index: 100;
-    top: 8rem;
+    top: 14rem;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
@@ -1571,7 +1573,7 @@ footer .container p {
 }
 @media (min-width: 1400px) {
   #contact-us .container .form-wrapper form .form-success {
-    top: 15rem;
+    top: 16rem;
   }
 }
 

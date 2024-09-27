@@ -17,6 +17,8 @@
         position: relative;
         width: 100%; // to make sure text-box-bottom stretches the whole image.
         max-width: 100%;
+        transition: 0.25s ease-out;
+        overflow: hidden;
 
         img {
             transition: 0.25s ease-out;
@@ -37,7 +39,6 @@
                 p, span {
                     font-size: 18px;
                     color: var(--color-light);
-                    opacity: 200%;
                 }
             }
 
@@ -47,9 +48,8 @@
         }
 
         &:hover {
-
             img {
-                // sort out a zoom function for the picture withut affeting the size of the box.
+                transform: scale(106%, 106%);
                 opacity: 50%;
                 transition: 0.25s ease-in;
             }

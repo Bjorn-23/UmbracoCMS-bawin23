@@ -10,7 +10,8 @@ public class FormServices
     {
         if (form != null && Services != null)
         {
-            //logic for saving to database or other solution here
+            //This s a simple storage solution for demonstratation purposes
+            //Ideally there should be logic for sending service to the relevant department here coupled with saving item to for instance a SQL DB.
             var contentService = Services.ContentService;
             var nodeGuid = new Guid("ef54effc-afff-4973-81f8-50aaa55c8bf9");
             var nodeId = contentService!.GetById(nodeGuid);
@@ -35,7 +36,8 @@ public class FormServices
     {
         if (form != null && Services != null)
         {
-            //logic for saving to database or other solution here
+            //This s a simple storage solution for demonstratation purposes
+            //Ideally there should be logic for sending service to the relevant department here coupled with saving item to for instance a SQL DB.
             var contentService = Services.ContentService;
             var nodeGuid = new Guid("aed20760-f81e-4325-bcc3-d6796dd299f2");
             var nodeId = contentService!.GetById(nodeGuid);
@@ -59,7 +61,8 @@ public class FormServices
     {
         if (form != null && Services != null)
         {
-            //logic for saving to database or other solution here
+            //This s a simple storage solution for demonstratation purposes
+            //Ideally there should be logic for sending service to the relevant department here coupled with saving item to for instance a SQL DB.
             var contentService = Services.ContentService;
             var nodeGuid = new Guid("548aed22-3430-4a5f-8172-619e43867214");
             var nodeId = contentService!.GetById(nodeGuid);

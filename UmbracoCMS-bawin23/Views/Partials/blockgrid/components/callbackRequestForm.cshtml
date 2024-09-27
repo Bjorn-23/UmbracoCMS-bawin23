@@ -47,7 +47,7 @@
             <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a phone number</span>
         </div>
 
-        @if (ViewBag.Title != "Home")
+        @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
         {
             <div class="input-group">
                 <label class="form-label" for="formMessage">Message</label>

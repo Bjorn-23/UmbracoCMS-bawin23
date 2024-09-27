@@ -13,7 +13,7 @@
             @include desktop {
                 position: absolute;
                 z-index: 100;
-                top: 8rem;
+                top: 14rem;
                 left: 50%;
                 transform: translateX(-50%);
                 width: 100%;
@@ -86,7 +86,7 @@
                     }
 
                     @include desktop {
-                        top: 15rem;
+                        top: 16rem;
                     }
                 }
             }
