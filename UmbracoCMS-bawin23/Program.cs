@@ -1,4 +1,9 @@
+using UmbracoCMS_bawin23.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<FormServices>();
+builder.Services.AddScoped<EmailServices>();
 
 builder.CreateUmbracoBuilder()
 	.AddBackOffice()

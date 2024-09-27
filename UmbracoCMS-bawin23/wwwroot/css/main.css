@@ -737,9 +737,10 @@ a[target=_blank]::after {
   margin: 0 0 0.5rem;
 }
 .container .sidebar .online-support {
+  position: relative;
   max-width: calc(100vw - 2rem);
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 2.5rem;
 }
 .container .sidebar .online-support h3 {
   font-size: 16px;
@@ -764,6 +765,28 @@ a[target=_blank]::after {
   background-color: transparent;
   border: none;
   color: var(--color-default);
+}
+.container .sidebar .online-support form .form-input-error {
+  display: none;
+}
+.container .sidebar .online-support form .form-invalid-input {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  font-size: 12px;
+  display: inline-block;
+  color: red;
+}
+.container .sidebar .online-support .form-success {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 1rem;
+  right: 1rem;
+  background-color: rgba(127, 218, 107, 0.6274509804);
+  border: 1px solid #7fda6b;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0.2rem 1rem;
 }
 
 .review-stars {

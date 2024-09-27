@@ -27,7 +27,8 @@
 
     @using (Html.BeginUmbracoForm("HandleCallbackRequestSubmit", "ContactSurface", FormMethod.Post))
     {
-        @if (ViewBag.Title == "Home"){
+        @if (ViewBag.Title == "Home")
+        {
             <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
         }
         <div class="input-group">
@@ -72,9 +73,9 @@
 
         <button class="btn-accent" type="submit">Submit</button>
 
-        @if (ViewData["form-success"]?.ToString() == "true")
+        @if (TempData["form-success"]?.ToString() == "true")
         {
-            <p class="form-success">Form submitted succesfully</p>
+            <p class="form-success">Form submitted succesfully!</p>
         }
     }
 </div>
