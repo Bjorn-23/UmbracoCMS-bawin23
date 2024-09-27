@@ -104,9 +104,10 @@
         }
 
         .online-support {
+            position: relative;
             max-width: calc(100vw - 2rem);
             margin-bottom: 1rem;
-            padding: 1rem;
+            padding: 1rem 1rem 2.5rem;
 
             h3 {
                 font-size: 16px;
@@ -135,6 +136,31 @@
                     border: none;
                     color: var(--color-default);
                 }
+
+                .form-input-error {
+                    display: none;
+                }
+
+                .form-invalid-input {
+                    position: absolute;
+                    top: -0.5rem;
+                    right: 0;
+                    font-size: 12px;
+                    display: inline-block;
+                    color: red;
+                }
+            }
+
+            .form-success {
+                position: absolute;
+                bottom: 0.6rem;
+                left: 1rem;
+                right: 1rem;
+                background-color: #7fda6ba0;
+                border: 1px solid #7fda6b;
+                border-radius: 8px;
+                text-align: center;
+                padding: 0.2rem 1rem;
             }
         }
     }

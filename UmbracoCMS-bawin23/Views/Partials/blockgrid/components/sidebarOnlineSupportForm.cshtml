@@ -9,6 +9,8 @@
 
     var customHeader = Model?.Content.Value<string>("formCustomHeader") ?? null;
     var header = (!string.IsNullOrEmpty(customHeader) ? customHeader : "How can we help you?");
+
+    bool.TryParse(ViewData["online-support-error"]?.ToString()!, out bool error_online_supportl);
 }
 
 <div class="online-support @backgroundColorClass">
@@ -18,6 +20,12 @@
     @using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
     {
         <input id="email" type="text" name="email" placeholder="E-mail address">
+        <span class="form-input-error @((error_online_supportl) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
         <button type="submit"><i class="fa-thin fa-envelope"></i></button>
+    }
+
+    @if (TempData["form-success"]?.ToString() == "true")
+    {
+        <p class="form-success">Form submitted succesfully!</p>
     }
 </div>

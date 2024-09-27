@@ -93,9 +93,9 @@
             <div class="form-wrapper">
                 <div class="form-header">
                     <h4>Have a question?</h4>
-                    @if (ViewData["form-success"]?.ToString() == "true")
+                    @if (TempData["form-success"]?.ToString() == "true")
                     {
-                        <p class="form-success">Form submitted succesfully</p>
+                        <p class="form-success">Form submitted succesfully!</p>
                     }
                 </div>
 

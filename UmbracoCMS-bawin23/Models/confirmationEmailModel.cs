@@ -1,6 +1,6 @@
 ﻿namespace UmbracoCMS_bawin23.Models;
 
-public class confirmationEmailModel
+public class ConfirmationEmailModel
 {
     public string To { get; set; } = null!;
     public string Subject { get; set; } = null!;
