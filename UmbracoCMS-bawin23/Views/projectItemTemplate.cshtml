@@ -1,14 +1,21 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@using System.Globalization;
+﻿@using System.Globalization;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "mainLayout.cshtml";
     var pageTitle = Model?.Value<string>("pageTitle") ?? "";
     var pageName = Model?.Name;
     ViewBag.Title = (!string.IsNullOrEmpty(pageTitle)) ? pageTitle : pageName;
-    var dateArticlePublished = Model?.Value<DateTime>
-    ("datePublished").ToString("MMMM dd, yyyy") ?? null;
+
+    var dateArticlePublished = Model?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
     var articleTags = Model?.Value<IEnumerable<string>>("projectTags") ?? null;
+
+    var sidebarBlockGrid = Model?.Value<BlockGridModel>("sidebarBlockEditor");
+    var placeSideBarToLeft = (Model?.Value<bool>("placeSideBarToLeft") == true) ? "sidebar-left" : "";
+
+    var contactInfoHub = Model?.Value<BlockGridModel>("contactInfoSection");
 
     var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
         .ChildrenOfType("projectItemTemplate")?
@@ -20,12 +27,15 @@
 @await Html.PartialAsync("./partials/static/breadcrumbs.cshtml")
 
 <section id="project-details" class="project-details list-page bg-light">
-    <div class="container">
+    <div class="container @placeSideBarToLeft">
 
         @if (Model != null)
         {
             <div class="article-wrapper">
-                <p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@dateArticlePublished</p>
+                <div class="date">
+                    <i class="fa-duotone fa-solid fa-calendar-days"></i>
+                    <p>@dateArticlePublished</p>
+                </div>
                 <div class="rich-text-main">
                     @Model.Value("pageContent")
                 </div>
@@ -43,61 +53,19 @@
             </div>
         }
 
+        @if (sidebarBlockGrid != null)
+        {
         <div class="sidebar-divider"></div>
+        }
 
-        <div class="sidebar bg-light">
-            <div class="recent-projects-wrapper">
-                @if (selection != null)
-                {
-                    foreach (var item in selection)
-                    {
-                        var link = item?.Url().TrimEnd("/");
-                        var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
-                        var datePublished = item?.Value<DateTime>("datePublished").ToString("MMMM dd, yyyy") ?? null;
-
-                        <a href="@link" class="projects-box">
-                            <div class="image-wrapper">
-                                <img src="@image" alt="@item?.Name">
-                            </div>
-                            <div class="text-wrapper">
-                                <h4>@item?.Name</h4>
-                                <p class="date"><i class="fa-duotone fa-solid fa-calendar-days"></i>@datePublished</p>
-                            </div>
-                        </a>
-
-                        @if (item != null)
-                        {
-                            var tags = item.Value<IEnumerable<string>>("projectTags") ?? null;
-
-                            foreach (string tag in tags!)
-                            {
-                                string trimmedTag = tag.Trim();
-                                if (!sortedTags.Any(t => t.Equals(trimmedTag, StringComparison.OrdinalIgnoreCase)))
-                                {
-                                    sortedTags.Add(trimmedTag);
-                                }
-                            }
-                        }
-                    }
-                }
-            </div>
-
-            <div class="tag-wrapper">
-                <h4>Tags</h4>
-                <div class="tag-grid">
-                    @if (selection != null)
-                    {
-                        @foreach (string sortedTag in sortedTags)
-                        {
-                            //Implement logic to sort articles according to tag in the selection query and connect to Href.
-                            <a class="tag" href="#">@sortedTag</a>
-                        }
-                    }
-                </div>
-            </div>
-
-            @await Html.PartialAsync("partials/static/onlineSupportForm.cshtml")
-
-        </div>
+        @if (sidebarBlockGrid != null)
+        {
+            @await Html.GetBlockGridHtmlAsync(sidebarBlockGrid)
+        }
     </div>
 </section>
+
+@if (contactInfoHub != null)
+{
+    @await Html.GetBlockGridHtmlAsync(contactInfoHub)
+}

@@ -1,6 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
-@* @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage *@
 
 @{
     bool.TryParse(ViewData["name-error"]?.ToString()!, out bool error_name);
@@ -13,13 +12,24 @@
 
 <div class="form-wrapper">
 
-    <div class="form-header bg-primary">
-        <h3>Request a call back</h3>
-    </div>
+    @if (ViewBag.Title == "Home"){
+        <div class="form-header bg-primary">
+            <h3>Request a call back</h3>
+        </div>
+    }
+    else {
+        <div class="form-header text-align-center">
+            <h6>Request a call back</h6>
+            <h2>Let us know about your next project</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consectetur, ligula semper sagittis lobortis, eros metus efficitur purus</p>
+        </div>
+    }
 
     @using (Html.BeginUmbracoForm("HandleCallbackRequestSubmit", "ContactSurface", FormMethod.Post))
     {
-        <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
+        @if (ViewBag.Title == "Home"){
+            <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
+        }
         <div class="input-group">
             <label class="form-label" for="formName">Name</label>
             <input id="formName" name="name" type="text" placeholder="Name" value="@ViewData["name"]" />

@@ -1,6 +1,32 @@
-// This is styling for pages that list items. Includes: /projects, /projects/yourProjectNameHere, /service/yourServiceNameHere. --- DOES NOT INCLUDE: /service --- 
+// This is styling for pages that list items. Includes: /projects, /projects/yourProjectNameHere, /service/yourServiceNameHere. --- DOES NOT INCLUDE: /service ---
 
 .list-page {
+    // These max-widths sets the ratio between sidebar and articles/projects listings.
+    .project-grid-container {
+        @include tablet {
+            max-width: 75%;
+        }
+    }
+
+    .article-wrapper {
+        @include tablet {
+            max-width: 75%;
+        }
+    }
+
+    .umb-block-grid {
+        //This lets the sidebar use all available width in mobile but limits it to 25% in tablet and above as the display format changes to flex-direction: row;.
+        max-width: 100%;
+
+        @include tablet {
+            max-width: 25%;
+        }
+
+        @include desktop {
+            min-width: 25%;
+        }
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -18,6 +44,12 @@
         }
         // This resets the width of the rich text-main element when an article has a date coming from the Model and not the rich text content.
         .article-wrapper {
+            .date {
+                display: flex;
+                align-items: baseline;
+                gap: 0.5rem;
+            }
+
             .rich-text-main {
                 max-width: 100%;
             }

@@ -1,13 +1,9 @@
 // Sets style for any rich text areas added via Modular page.
 
 .rich-text-main {
-    @include tablet {
-        max-width: 75%;
-    }
-
     p:first-child {
         //hides the first p element which is a formatting tag for rich text.
-        display: none;
+    //    display: none;
     }
 
     figure {
@@ -24,6 +20,12 @@
 
         @include tablet {
             margin: 2rem 0;
+        }
+    }
+
+    img:first-child {
+        @include tablet {
+            margin-top: 0;
         }
     }
 
