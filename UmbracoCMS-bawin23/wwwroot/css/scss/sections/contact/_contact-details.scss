@@ -1,29 +1,32 @@
 #contact-details {
     padding: 2rem 0 0 0;
+
     @include desktop {
         padding: 4rem 0 0 0;
     }
+
     .container {
         @include desktop {
             display: flex;
             justify-content: space-between;
         }
-        
+
         .image-wrapper {
-            background-image: url(/img/dottedBg-1.svg);
-            background-repeat: no-repeat;
-            background-size: 75%;
-            background-position: bottom left;
+            //background-image: url(/img/dottedBg-1.svg);
+            //background-repeat: no-repeat;
+            //background-size: 75%;
+            //background-position: bottom left;
 
             img {
+                margin-left: 1rem;
                 width: 50%;
 
                 @include desktop {
+                    margin-left: unset;
                     width: 100%;
-
                 }
             }
-                        
+
             @include desktop {
                 background-position: bottom left;
                 flex: 1;
@@ -31,22 +34,22 @@
             }
         }
 
-        .text-wrapper {            
-            padding: 1rem 10%;
+        .text-wrapper {
+            padding: 1rem 1rem 0;
 
             @include desktop {
                 flex: 1;
                 padding: 15% 1%;
             }
-            
+
             .contact-box {
                 display: flex;
                 gap: 0 1rem;
 
                 p {
-                    font-size: 12px;    
+                    font-size: 12px;
                 }
-                
+
                 @include tablet {
                     margin: 0 0 1rem;
                 }

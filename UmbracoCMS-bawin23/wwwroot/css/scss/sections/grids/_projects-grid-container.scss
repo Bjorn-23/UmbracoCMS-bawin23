@@ -1,10 +1,8 @@
 .project-grid-container {
-    //grid-area: main;
-    //max-width: 75%;
-    //grid-template-columns: auto;
-
     .projects-box {
-        padding: 1rem 0;
+        // In the padding, the last value offsets for the vertical alignmen
+        //of the .read-more element being offset from bottom roughly +4 px;
+        padding: 1.5rem 0 calc(1.5rem - 4px);
         border-bottom: 1px solid var(--color-border-gray);
 
         @include tablet {
@@ -37,6 +35,12 @@
                 object-fit: cover;
                 aspect-ratio: 4 / 3;
                 overflow: hidden;
+                border-radius: 4px 4px 0 0;
+
+
+                @include tablet {
+                    border-radius: 4px 0 0 4px;
+                }
             }
         }
 
@@ -44,10 +48,23 @@
             flex: 1;
             display: grid;
             grid-template-rows: auto auto auto auto;
-            padding: 0.5rem 1rem;
+            padding: 1rem 0 0;
+
+            @include tablet {
+                padding: 0.5rem 1rem;
+            }
 
             .ingress {
                 padding: 0;
+                font-size: 12px;
+
+                @include tablet {
+                    font-size: 14px;
+                }
+
+                @include desktop {
+                    font-size: 16px;
+                }
             }
 
             h4 {
@@ -55,6 +72,14 @@
                 white-space: nowrap;
                 overflow: hidden;
                 margin: 0;
+            }
+
+            .read-more {
+                margin: 0.5rem 0 0;
+
+                @include tablet {
+                    margin: initial;
+                }
             }
 
             .fa-calendar-days {

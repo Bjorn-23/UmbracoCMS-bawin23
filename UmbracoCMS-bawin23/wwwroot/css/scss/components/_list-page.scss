@@ -1,6 +1,7 @@
 // This is styling for pages that list items. Includes: /projects, /projects/yourProjectNameHere, /service/yourServiceNameHere. --- DOES NOT INCLUDE: /service ---
 
 .list-page {
+    padding: 1rem 0 0;
     // These max-widths sets the ratio between sidebar and articles/projects listings.
     .project-grid-container {
         @include tablet {
@@ -50,14 +51,15 @@
                 gap: 0.5rem;
             }
 
-            .rich-text-main {
-                max-width: 100%;
-            }
+            //.rich-text-main {
+            //    max-width: 100%;
+            //}
 
             .tag-wrapper {
                 display: flex;
                 align-items: first baseline;
                 flex-wrap: wrap;
+                margin: 0 0 1.5rem;
 
                 h4 {
                     margin: 0 1rem 0 0;

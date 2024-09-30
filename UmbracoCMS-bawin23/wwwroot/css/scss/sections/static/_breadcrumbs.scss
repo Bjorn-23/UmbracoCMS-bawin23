@@ -1,5 +1,5 @@
 #breadcrumbs {
-    //display: none; // totally removed from mobile design.
+    //display: none; // If you don't want breadcrumbs displayed in mobile design.
 
     @include tablet {
         display: block;
@@ -63,25 +63,31 @@
             }
         }
     }
-
+    // This is for changing styles only in mobile design.
     @media (max-width: 767px) {
         .container {
-            padding: 1rem 0;
+            max-width: calc(100vw - 1rem) !important;
+            padding: 1rem;
 
             h1 {
                 font-size: 20px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
 
-            .breadcrumb{
-                margin: 0.5rem 0;
-                
+            .breadcrumb {
+
                 a, li {
                     font-size: 12px;
+                    white-space: nowrap;
                 }
 
+                .active {
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
             }
-
         }
-
     }
 }

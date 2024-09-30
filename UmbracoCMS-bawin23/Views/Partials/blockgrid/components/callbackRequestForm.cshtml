@@ -5,9 +5,6 @@
     bool.TryParse(ViewData["name-error"]?.ToString()!, out bool error_name);
     bool.TryParse(ViewData["email-error"]?.ToString()!, out bool error_email);
     bool.TryParse(ViewData["phone-error"]?.ToString()!, out bool error_phone);
-
-   //  var id = Model?.ContentUdi;
-   // int i = 0;
 }
 
 <div class="form-wrapper">
@@ -33,7 +30,7 @@
         }
         <div class="input-group">
             <label class="form-label" for="formName">Name</label>
-            <input id="formName" name="name" type="text" placeholder="Name" value="@ViewData["name"]" />
+            <input id="formName" name="name" type="text" placeholder="Enter your name" value="@ViewData["name"]" />
             <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
         </div>
         <div class="input-group">
