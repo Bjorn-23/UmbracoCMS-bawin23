@@ -1,0 +1,64 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var sectionTitle = Model?.Content.Value<string>("sectionTitle") ?? "";
+    var sectionId = sectionTitle?.ToString().ToLower().Trim().Replace(" ", "-");
+
+    var spacingTopClass = (Model?.Content.Value<bool>("addSpaceToTop") == true) ? "spacing-top" : "";
+    var spacingBottomClass = (Model?.Content.Value<bool>("addSpaceToBottom") == true) ? "spacing-bottom" : "";
+    var negativeSpacingBottom = (Model?.Content.Value<bool>("addNegativeSpacingBottom") == true) ? "background-absolute-negative-spacing-bottom" : "";
+    var centerContentClass = (Model?.Content.Value<bool>("centerContentOnPage") == true) ? "center" : "";
+    var alignText = (Model?.Content.Value<bool>("alignAllTextCenter") == true ) ? "text-align-center" : "";
+
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
+
+    var sectionBackgroundImage = Model?.Content?.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? "";
+    var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-image-absolute" : "background-image";
+    var imgBottom = (Model?.Content.Value<bool>("setImgBottom") == true) ? "set-img-bottom" : "";
+    var imgRight = (Model?.Content.Value<bool>("setImgRight") == true) ? "set-img-right" : "";
+    var imgLeft = (Model?.Content.Value<bool>("setImgLeft") == true) ? "set-img-left" : "";
+    var backGroundHeight = Model?.Content?.Value<int>("sectionBackgroundHeight") ?? 0;
+    var sectionMinimumHeight = backGroundHeight.ToString() + "px";
+
+    @*style="min-height: @sectionMinimumHeight"*@
+
+    var hideSection = (Model?.Content.Value<bool>("hideSection") == true) ? "hide" : "";
+
+}
+
+@if (Model?.Content.Value<bool>("SetBackgroundColorAbsolute") == true)
+{
+   <section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText @hideSection">
+
+        @if (!string.IsNullOrEmpty(backgroundColorClass))
+        {
+            <div class="background @backgroundColorClass @negativeSpacingBottom"></div>
+        }
+
+        @if (!string.IsNullOrEmpty(sectionBackgroundImage))
+        {
+            <img class="@isBackgroundImageAbsolute @imgBottom @imgRight @imgLeft" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+        }
+
+        <div class="container @centerContentClass">
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+        </div>
+    </section> 
+}
+else
+{
+    <section id="@sectionId" class="@spacingTopClass @spacingBottomClass @alignText @backgroundColorClass @hideSection" >
+
+        @if (!string.IsNullOrEmpty(sectionBackgroundImage))
+        {
+            <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+        }
+        <div class="container @centerContentClass">
+            @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+        </div>
+    </section>
+}

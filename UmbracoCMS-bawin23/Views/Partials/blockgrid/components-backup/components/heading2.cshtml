@@ -1,0 +1,25 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var headingContent2 = Model?.Content.Value<string>("headingContent2") ?? null;
+    var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";
+    
+    if (Model?.Content.Value<bool>("alignCenter") == false)
+    {
+        textAlign = (Model?.Content.Value<bool>("alignLeft") == true) ? "text-align-start" : "";
+    }
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel} bg" : "";
+
+    var textColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("textColor") ?? null;
+}
+
+@if(!string.IsNullOrEmpty(headingContent2))
+{
+    <h2 class="@textAlign @backgroundColorClass" style="color: @textColor;">@headingContent2</h2>
+}
+
+    

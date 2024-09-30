@@ -1,0 +1,31 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("formHeaderColor")?.Label.ToLower() ?? null;
+    var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "bg-primary";
+
+    var customHeader = Model?.Content.Value<string>("formCustomHeader") ?? null;
+    var header = (!string.IsNullOrEmpty(customHeader) ? customHeader : "How can we help you?");
+
+    bool.TryParse(ViewData["online-support-error"]?.ToString()!, out bool error_online_supportl);
+}
+
+<div class="online-support @backgroundColorClass">
+    <h3>@header</h3>
+    <p>online support 24/7, we are here to help you.</p>
+
+    @using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
+    {
+        <input id="email" type="text" name="email" placeholder="E-mail address">
+        <span class="form-input-error @((error_online_supportl) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
+        <button type="submit"><i class="fa-thin fa-envelope"></i></button>
+    }
+
+    @if (TempData["form-success"]?.ToString() == "true")
+    {
+        <p class="form-success">Form submitted succesfully!</p>
+    }
+</div>

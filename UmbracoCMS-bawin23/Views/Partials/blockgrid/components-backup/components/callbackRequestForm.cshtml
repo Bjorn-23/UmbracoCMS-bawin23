@@ -1,0 +1,78 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+
+@{
+    bool.TryParse(ViewData["name-error"]?.ToString()!, out bool error_name);
+    bool.TryParse(ViewData["email-error"]?.ToString()!, out bool error_email);
+    bool.TryParse(ViewData["phone-error"]?.ToString()!, out bool error_phone);
+}
+
+<div class="form-wrapper">
+
+    @if (ViewBag.Title == "Home"){
+        <div class="form-header bg-primary">
+            <h3>Request a call back</h3>
+        </div>
+    }
+    else {
+        <div class="form-header text-align-center">
+            <h6>Request a call back</h6>
+            <h2>Let us know about your next project</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas consectetur, ligula semper sagittis lobortis, eros metus efficitur purus</p>
+        </div>
+    }
+
+    @using (Html.BeginUmbracoForm("HandleCallbackRequestSubmit", "ContactSurface", FormMethod.Post))
+    {
+        @if (ViewBag.Title == "Home")
+        {
+            <p>Dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat</p>
+        }
+        <div class="input-group">
+            <label class="form-label" for="formName">Name</label>
+            <input id="formName" name="name" type="text" placeholder="Enter your name" value="@ViewData["name"]" />
+            <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
+        </div>
+        <div class="input-group">
+            <label class="form-label" for="formEmail">E-mail</label>
+            <input id="formEmail" name="email" type="email" placeholder="Enter your e-mail address" value="@ViewData["email"]" />
+            <span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
+        </div>
+        <div class="input-group">
+            <label class="form-label" for="formPhone">Phone</label>
+            <input id="formPhone" name="phone" type="text" placeholder="Enter your phone number" value="@ViewData["phone"]"/>
+            <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a phone number</span>
+        </div>
+
+        @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
+        {
+            <div class="input-group">
+                <label class="form-label" for="formMessage">Message</label>
+                <textarea id="formMessage" name="message" type="text" placeholder="Enter your message">@ViewData["message"]</textarea>
+                <span class="form-input-error">You must enter a message</span>
+            </div>
+        }
+
+        <div class="input-group">
+            <label class="form-label" for="formConsulting">Consulting Type</label>
+            <select id="formConsulting" name="subject">
+                <option value="financialConsulting">Financial Consulting</option>
+                <option value="riskManagement">Risk Management</option>
+                <option value="bondsCommodities">Bonds & Commodities</option>
+                <option value="assuranceAudits">Assurance & Audits</option>
+                <option value="taxAndTrusts">Tax and Trusts</option>
+                <option value="statisticAdvisors">Statistic Advisors</option>
+                <option value="investmentPortfolio">Investment Portfolio</option>
+                <option value="longTermInterest">Long Term Interest</option>
+            </select>
+            <span class="form-input-error">You must select a consulting type</span>
+        </div>
+
+        <button class="btn-accent" type="submit">Submit</button>
+
+        @if (TempData["form-success"]?.ToString() == "true")
+        {
+            <p class="form-success">Form submitted succesfully!</p>
+        }
+    }
+</div>

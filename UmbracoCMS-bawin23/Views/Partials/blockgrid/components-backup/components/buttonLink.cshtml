@@ -1,0 +1,31 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+
+@{
+    var buttonLinkText = Model?.Content.Value<string>("buttonLinkText");
+    var buttonLinkUrl = Model?.Content.Value<string>("buttonLinkUrl" ?? "#");
+    var buttonLinkColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("buttonLinkColor")?.Label.ToLower() ?? null;
+    var isExternal = (Model?.Content?.Value<bool>("isExternal") == true) ? "_blank" : "";
+
+    var alignButton = (Model?.Content.Value<bool>("alignCenter") == true) ? "btn-align-center" : "";
+    
+    if (Model?.Content.Value<bool>("alignCenter") == false)
+    {
+        alignButton = (Model?.Content.Value<bool>("alignLeft") == true) ? "btn-align-start" : "";
+    }
+}
+
+@if (!string.IsNullOrEmpty(buttonLinkColor))
+{
+    <div class="@alignButton">
+        <a href="@buttonLinkUrl" class="btn btn-@buttonLinkColor" target="@isExternal" >@buttonLinkText</a>
+    </div>
+}
+else
+{
+    <div class="@alignButton">
+        <a href="@buttonLinkUrl" class="btn" target="@isExternal" >@buttonLinkText</a>
+    </div>
+}

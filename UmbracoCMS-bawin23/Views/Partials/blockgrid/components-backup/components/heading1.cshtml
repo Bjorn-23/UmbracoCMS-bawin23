@@ -1,0 +1,27 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
+@using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var headingContent1 = Model?.Content.Value<string>("headingContent1") ?? null;
+    var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";
+    
+    if (Model?.Content.Value<bool>("alignCenter") == false)
+    {
+        textAlign = (Model?.Content.Value<bool>("alignLeft") == true) ? "text-align-start" : "";
+    }
+    
+    var textColor = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("textColor")?.Label.ToLower() ?? null;
+    var style = "";
+
+    if(textColor != null)
+    {
+        style = "color: var(--color-" + @textColor +"); !important";
+    }
+}
+
+@if(!string.IsNullOrEmpty(headingContent1))
+{
+    <h1 class="@textAlign" style="@style">@headingContent1</h1>
+}

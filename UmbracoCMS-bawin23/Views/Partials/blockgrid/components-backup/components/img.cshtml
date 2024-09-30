@@ -1,0 +1,36 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+
+@{
+    var selectedImage = Model?.Content?.Value<IPublishedContent>("selectedImage")?.Url().ToLower().Trim() ?? "";
+    var imageDescription = Model?.Content.Value<string>("imageDescription") ?? "";
+    
+    var marginTop = (Model?.Content.Value<bool>("addMarginTop") == true) ? "img-margin-top" : "";
+    var marginBottom = (Model?.Content.Value<bool>("addMarginBottom") == true) ? "img-margin-bottom" : "";
+    var centerImage = (Model?.Content.Value<bool>("centerImage") == true) ? "center-image" : "";
+@*    var imageWidth = Model?.Content.Value<int>("imageWidth");
+    var imageStyleWidth = imageWidth.ToString() + "%";
+     style="width: @imageStyleWidth *@
+
+    var setImgAbsolute = (Model?.Content.Value<bool>("setImgAbsolute") == true) ? "set-img-absolute" : "";
+    var imgTop = (Model?.Content.Value<bool>("setImgTop") == true) ? "set-img-top" : "";
+    var imgBottom = (Model?.Content.Value<bool>("setImgBottom") == true) ? "set-img-bottom" : "";
+    var imgRight = (Model?.Content.Value<bool>("setImgRight") == true) ? "set-img-right" : "";
+    var imgLeft = (Model?.Content.Value<bool>("setImgLeft") == true) ? "set-img-left" : "";
+
+    var roundedBorders = (Model?.Content.Value<bool>("roundedBorders") == true) ? "image-borders-rounded" : "";
+}
+
+@if (!string.IsNullOrEmpty(selectedImage) && Model?.Content.Value<bool>("setImgAbsolute") != true)
+{
+    <div class="image-formatting @centerImage">
+        <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
+    </div>
+}
+else
+{
+    <div class="image-formatting @centerImage @setImgAbsolute @imgTop @imgBottom @imgRight @imgLeft">
+        <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
+    </div>
+}

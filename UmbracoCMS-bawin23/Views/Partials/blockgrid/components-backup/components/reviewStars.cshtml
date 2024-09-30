@@ -1,0 +1,22 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>;
+
+@{
+    int.TryParse(Model?.Content.Value<string>("addStars"), out int starCount);
+}
+
+<div class="review-stars">
+    @if (starCount != 0)
+    {
+        for (int i = 0; i < starCount; i++)
+        {
+            <i class="fa-solid fa-star"></i>
+        }
+    }
+    else
+    {
+        <p>Something isnt working</p>
+    }
+</div>
+
