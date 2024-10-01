@@ -1,17 +1,40 @@
-﻿@using Umbraco.Cms.Core.Models.Blocks;
+﻿@using System.Web
+@using Umbraco.Cms.Core.Models.Blocks;
 @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "mainLayout.cshtml";
     ViewBag.Title = Model?.Value("pageTitle") ?? null;
-    var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
 
+    var queryString = UmbracoContext.CleanedUmbracoUrl.Query;
+
+    queryString = queryString.TrimStart('?');
+    var queryParams = queryString.Split('&');
+    var queryDictionary = new Dictionary<string, string>();
+
+    foreach (var param in queryParams)
+    {
+        var keyValue = param.Split('=');
+        if (keyValue.Length == 2)
+        {
+            queryDictionary[keyValue[0]] = keyValue[1];
+        }
+    }
+
+    var queryTag = queryDictionary.ContainsKey("tag") ? HttpUtility.UrlDecode(queryDictionary["tag"]) : "";
+
+    var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
     var sidebarBlockGrid = Model?.Value<BlockGridModel>("sidebarBlockEditor");
     var contactInfoHub = Model?.Value<BlockGridModel>("contactInfoSection");
 
     var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))?
     .ChildrenOfType("projectItemTemplate")?
     .Where(x => x.IsVisible());
+
+    if (!string.IsNullOrEmpty(queryTag))
+    {
+        selection = selection.Where(x => x.Value<IEnumerable<string>>("projectTags").Count() > 0 && x.Value<IEnumerable<string>>("projectTags").Any(tag => tag.Contains(queryTag)));
+    }
 
     var name = "";
     var link = "";
