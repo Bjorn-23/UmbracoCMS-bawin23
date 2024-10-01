@@ -21,7 +21,7 @@
         }
     }
 
-    var queryTag = queryDictionary.ContainsKey("tag") ? HttpUtility.UrlDecode(queryDictionary["tag"]) : "";
+    var queryTag = queryDictionary.ContainsKey("tag") ? HttpUtility.UrlDecode(queryDictionary["tag"]) : "all";
 
     var centerHeadLine = (Model?.Value<bool>("centerHeadlineText") == true) ? "center-headline" : "";
     var sidebarBlockGrid = Model?.Value<BlockGridModel>("sidebarBlockEditor");
@@ -31,7 +31,7 @@
     .ChildrenOfType("projectItemTemplate")?
     .Where(x => x.IsVisible());
 
-    if (!string.IsNullOrEmpty(queryTag))
+    if (selection != null && !string.IsNullOrEmpty(queryTag) && queryTag != "all")
     {
         selection = selection.Where(x => x.Value<IEnumerable<string>>("projectTags").Count() > 0 && x.Value<IEnumerable<string>>("projectTags").Any(tag => tag.Contains(queryTag)));
     }

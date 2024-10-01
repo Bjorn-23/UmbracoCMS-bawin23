@@ -36,12 +36,16 @@
     <div class="tag-grid">
         @if (selection != null)
         {
+            <a class="tag" href="/projects">Show All</a>
+
             @foreach (string sortedTag in sortedTags)
             {
                 var queryString = $"?tag={sortedTag}" ?? "";
                 var url = $"/projects" + queryString;
                 <a class="tag" href="@url">@sortedTag</a>
             }
+
+
         }
     </div>
 </div>
