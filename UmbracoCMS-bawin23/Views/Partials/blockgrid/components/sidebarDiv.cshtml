@@ -8,6 +8,9 @@
     var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 }
 
-<div class="sidebar @backgroundColorClass">
-    @await Html.GetBlockGridItemAreasHtmlAsync(Model)
-</div>
+@if (Model != null)
+{
+    <div class="sidebar @backgroundColorClass">
+        @await Html.GetBlockGridItemAreasHtmlAsync(Model)
+    </div>    
+}
