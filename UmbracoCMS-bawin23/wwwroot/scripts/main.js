@@ -38,14 +38,15 @@ function setParentHeightFromFormHeight() {
     let windowWidth = window.innerWidth
 
     if (section.id == "about-us" && windowWidth > 1399) {
+        console.log("if")
         let formHeight = parseFloat(window.getComputedStyle(form).height);
         //This adds a fractional margin to the space between the section end and bottom of the form.
-        let calulatedSectionHeight = Math.ceil(formHeight + (formHeight / 12))
-        section.style.height = calulatedSectionHeight + "px";
+        //let calulatedSectionHeight = Math.ceil(formHeight + (formHeight / 30))
+        section.style.height = formHeight + "px";
     }
     else {
+        console.log("else")
         section.style.height = "inherit";
     }
-
 }
 
