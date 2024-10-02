@@ -304,9 +304,18 @@ span {
 
 blockquote {
   font-style: italic;
+  padding-bottom: 1rem;
+  margin: 0 0 1rem;
+  padding: 0 1rem !important;
+}
+@media (min-width: 768px) {
+  blockquote {
+    padding: 0 1.5rem !important;
+  }
 }
 blockquote span {
   position: relative;
+  color: var(--color-default);
 }
 blockquote span::before, blockquote span::after {
   position: absolute;
@@ -315,12 +324,12 @@ blockquote span::before, blockquote span::after {
   font-weight: 500;
 }
 blockquote span::before {
-  content: "\f10d";
+  content: "\f10e";
   top: 0;
   left: -1.5rem;
 }
 blockquote span::after {
-  content: "\f10e";
+  content: "\f10d";
   bottom: 0;
   right: -1.5rem;
 }
@@ -1578,11 +1587,7 @@ footer .container p {
     z-index: 10;
     top: -10rem;
     right: 0;
-  }
-}
-@media (min-width: 1400px) {
-  #about-us {
-    min-height: 600px;
+    margin-left: 1rem;
   }
 }
 

@@ -4,7 +4,7 @@
 
 @{
     var blockquoteContent = Model?.Content.Value<string>("blockquoteContent") ?? "";
-    var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";
+    var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";    
     
     if (Model?.Content.Value<bool>("alignCenter") == false)
     {
@@ -14,5 +14,5 @@
 
 @if(!string.IsNullOrEmpty(blockquoteContent))
 {
-    <p class="@textAlign">@blockquoteContent</p>
+    <blockquote class="@textAlign"><span>@blockquoteContent</span></blockquote>
 }

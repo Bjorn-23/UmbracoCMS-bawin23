@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     openMenu();
-    setAbsoluteBackgroundParentContainerHeight()
+    setParentHeightFromFormHeight()
+})
+
+window.addEventListener("resize", function () {
+    setParentHeightFromFormHeight()
 })
 
 
@@ -28,17 +32,20 @@ function openMenu() {
     })
 }
 
-//function setAbsoluteBackgroundParentContainerHeight() {
-//    console.log("inside function")
-//    let backgrounds = document.querySelectorAll(".background-image-absolute");
+function setParentHeightFromFormHeight() {
+    let form = document.querySelector(".form-wrapper");
+    let section = form.closest('section');
+    let windowWidth = window.innerWidth
 
-//    backgrounds.forEach(background => {
-//        console.log("looping through backgrounds")
-//        let imgHeight = window.getComputedStyle(background).height;
-//        console.log(imgHeight + "working");
-//        let section = background.closest('section');
+    if (section.id == "about-us" && windowWidth > 1399) {
+        let formHeight = parseFloat(window.getComputedStyle(form).height);
+        //This adds a fractional margin to the space between the section end and bottom of the form.
+        let calulatedSectionHeight = Math.ceil(formHeight + (formHeight / 12))
+        section.style.height = calulatedSectionHeight + "px";
+    }
+    else {
+        section.style.height = "inherit";
+    }
 
-//        section.style.height = imgHeight
-//    })
+}
 
-//}

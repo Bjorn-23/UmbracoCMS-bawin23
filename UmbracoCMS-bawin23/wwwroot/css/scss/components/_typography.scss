@@ -28,9 +28,17 @@ span {
 
 blockquote {
     font-style: italic;
+    padding-bottom: 1rem;
+    margin: 0 0 1rem;
+    padding: 0 1rem !important;
+
+    @include tablet {
+        padding: 0 1.5rem !important;
+    }
 
     span {
         position: relative;
+        color: var(--color-default);
 
         &::before, &::after {
             position: absolute;
@@ -40,13 +48,13 @@ blockquote {
         }
 
         &::before {
-            content: "\f10d";
+            content: "\f10e";
             top: 0;
             left: -1.5rem;
         }
 
         &::after {
-            content: "\f10e";
+            content: "\f10d";
             bottom: 0;
             right: -1.5rem;
         }
