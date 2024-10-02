@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     openMenu();
-    setParentHeightFromFormHeight()
 })
+
+window.onload = function () {
+    setParentHeightFromFormHeight()
+}
 
 window.addEventListener("resize", function () {
     setParentHeightFromFormHeight()

@@ -1,4 +1,4 @@
-@import 'css/umbraco-blockgridlayout.css';
+@import '~/wwwroot/css/umbraco-blockgridlayout.css';
 
 .umb-block-grid__layout-container {
     position: relative;
