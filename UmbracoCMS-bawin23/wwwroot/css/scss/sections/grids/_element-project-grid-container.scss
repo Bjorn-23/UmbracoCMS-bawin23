@@ -7,10 +7,12 @@
 
     @include tablet {
         grid-template-columns: auto auto;
+        gap: 1rem;
     }
 
     @include desktop {
         grid-template-columns: auto auto auto auto;
+        gap: 0;
     }
 
     .grid-box {

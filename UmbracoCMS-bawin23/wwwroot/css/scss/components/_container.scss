@@ -31,3 +31,73 @@
         max-width: 1920px;
     }
 }
+
+.pad-right {
+    padding: 0 35% 0 0;
+}
+
+.pad-left {
+    padding: 0 0  0 35%;
+}
+
+.pad-none {
+    padding: 0;
+}
+
+.pad-right, .pad-left {
+    .btn {
+        display: inline-block;
+    }
+
+    @include tablet {
+        padding: 0;
+
+        .btn {
+            display: initial;
+        }
+    }
+}
+
+.limit-dynamic-container-width-mobile {
+    @media (max-width: 1023px) {
+        .rich-text-main {
+            max-width: 50%;
+        }
+
+        [data-content-element-type-alias="dynamicContainer"] {
+            max-width: 50%;
+            // if multipledynamic containers are nestled then max-width is reset to prevent multiple passes.
+            .dynamic-container {
+                .rich-text-main {
+                    max-width: 100%;
+                }
+
+                [data-content-element-type-alias="dynamicContainer"] {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.limit-dynamic-container-width-tablet {
+    @media (max-width: 1023px) and (min-width: 768px) {
+        .rich-text-main {
+            max-width: 50%;
+        }
+
+        [data-content-element-type-alias="dynamicContainer"] {
+            max-width: 50%;
+             //if multipledynamic containers are nestled then max-width is reset to prevent multiple passes.
+            .dynamic-container {
+                .rich-text-main {
+                    max-width: 100%;
+                }
+
+                [data-content-element-type-alias="dynamicContainer"] {
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

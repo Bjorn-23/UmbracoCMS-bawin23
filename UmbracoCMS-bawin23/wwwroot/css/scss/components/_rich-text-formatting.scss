@@ -27,12 +27,22 @@
         }
     }
 
+    p {
+        padding-left: 0 !important;
+    }
+
     span {
         margin: 0 0.5rem 0 0;
         color: var(--color-default);
+        font-weight: 400 !important;
     }
 
     blockquote {
         margin: 0 0 1rem;
-    }
+        padding: 0 1rem !important;
+
+        @include tablet {
+            padding: 0 !important;
+        }
+    }    
 }

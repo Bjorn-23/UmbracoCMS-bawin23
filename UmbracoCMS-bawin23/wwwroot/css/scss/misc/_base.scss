@@ -38,3 +38,11 @@ body {
 .hide {
     display: none !important;
 }
+
+.hide-from-mobile-design {
+    display: none;
+
+    @include tablet {        
+        display: inherit;
+    }
+}

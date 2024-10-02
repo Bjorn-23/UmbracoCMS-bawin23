@@ -71,11 +71,32 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool AddSpaceToTop => this.Value<bool>(_publishedValueFallback, "addSpaceToTop");
 
 		///<summary>
+		/// Hide Background In Mobile Design
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("hideBackgroundInMobileDesign")]
+		public virtual bool HideBackgroundInMobileDesign => this.Value<bool>(_publishedValueFallback, "hideBackgroundInMobileDesign");
+
+		///<summary>
 		/// Hide Section
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
 		[ImplementPropertyType("hideSection")]
 		public virtual bool HideSection => this.Value<bool>(_publishedValueFallback, "hideSection");
+
+		///<summary>
+		/// Limit Dynamic Container Width In Mobile: Sets the max-width for dynamic container to 50%. Works up to 1023px wide
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("limitDynamicContainerWidthInMobile")]
+		public virtual bool LimitDynamicContainerWidthInMobile => this.Value<bool>(_publishedValueFallback, "limitDynamicContainerWidthInMobile");
+
+		///<summary>
+		/// Limit Dynamic Container Width In Tablet: Sets the max-width for dynamic container to 50%. Works between 768 -1023px wide
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("limitDynamicContainerWidthInTablet")]
+		public virtual bool LimitDynamicContainerWidthInTablet => this.Value<bool>(_publishedValueFallback, "limitDynamicContainerWidthInTablet");
 
 		///<summary>
 		/// Section Background Color

@@ -55,5 +55,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
 		[ImplementPropertyType("alignTextCenter")]
 		public virtual bool AlignTextCenter => this.Value<bool>(_publishedValueFallback, "alignTextCenter");
+
+		///<summary>
+		/// Hide In Mobile Design
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("hideInMobileDesign")]
+		public virtual bool HideInMobileDesign => this.Value<bool>(_publishedValueFallback, "hideInMobileDesign");
+
+		///<summary>
+		/// Pad Content In Mobile Design
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("padContentInMobileDesign")]
+		public virtual string PadContentInMobileDesign => this.Value<string>(_publishedValueFallback, "padContentInMobileDesign");
 	}
 }

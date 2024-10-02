@@ -5,13 +5,15 @@
 @{
     var selectedImage = Model?.Content?.Value<IPublishedContent>("selectedImage")?.Url().ToLower().Trim() ?? "";
     var imageDescription = Model?.Content.Value<string>("imageDescription") ?? "";
-    
+
     var marginTop = (Model?.Content.Value<bool>("addMarginTop") == true) ? "img-margin-top" : "";
+    var marginRight = (Model?.Content.Value<bool>("addMarginRight") == true) ? "img-margin-right" : "";
     var marginBottom = (Model?.Content.Value<bool>("addMarginBottom") == true) ? "img-margin-bottom" : "";
+    var marginLeft = (Model?.Content.Value<bool>("addMarginLeft") == true) ? "img-margin-left" : "";
+
     var centerImage = (Model?.Content.Value<bool>("centerImage") == true) ? "center-image" : "";
-@*    var imageWidth = Model?.Content.Value<int>("imageWidth");
-    var imageStyleWidth = imageWidth.ToString() + "%";
-     style="width: @imageStyleWidth *@
+    var imageWidth = Model?.Content.Value<int>("imageMaxWidth");
+    var imageWStyleWidth = (imageWidth > 0 )? $"max-width: {imageWidth.ToString()}px;" : "";
 
     var setImgAbsolute = (Model?.Content.Value<bool>("setImgAbsolute") == true) ? "set-img-absolute" : "";
     var imgTop = (Model?.Content.Value<bool>("setImgTop") == true) ? "set-img-top" : "";
@@ -24,13 +26,13 @@
 
 @if (!string.IsNullOrEmpty(selectedImage) && Model?.Content.Value<bool>("setImgAbsolute") != true)
 {
-    <div class="image-formatting @centerImage">
-        <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
+    <div class="image-formatting @centerImage @marginTop @marginRight @marginBottom @marginLeft">
+        <img class="@roundedBorders" style="@imageWStyleWidth" src="@selectedImage" alt="@imageDescription">
     </div>
 }
 else
 {
-    <div class="image-formatting @centerImage @setImgAbsolute @imgTop @imgBottom @imgRight @imgLeft">
-        <img class="@marginTop @marginBottom @roundedBorders" src="@selectedImage" alt="@imageDescription" >
+    <div class="image-formatting @centerImage @setImgAbsolute @imgTop @imgBottom @imgRight @imgLeft @marginTop @marginRight @marginBottom @marginLeft">
+        <img class="@roundedBorders" style="@imageWStyleWidth" src="@selectedImage" alt="@imageDescription">
     </div>
 }

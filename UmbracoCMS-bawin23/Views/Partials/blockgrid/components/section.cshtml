@@ -12,11 +12,15 @@
     var negativeSpacingBottom = (Model?.Content.Value<bool>("addNegativeSpacingBottom") == true) ? "background-absolute-negative-spacing-bottom" : "";
     var centerContentClass = (Model?.Content.Value<bool>("centerContentOnPage") == true) ? "center" : "";
     var alignText = (Model?.Content.Value<bool>("alignAllTextCenter") == true ) ? "text-align-center" : "";
+    var limitDynamicContainerWidthInMobile = (Model?.Content.Value<bool>("limitDynamicContainerWidthInMobile") == true) ? "limit-dynamic-container-width-mobile" : "";
+    var limitDynamicContainerWidthInTablet = (Model?.Content.Value<bool>("limitDynamicContainerWidthInTablet") == true) ? "limit-dynamic-container-width-tablet" : "";
+
 
     var sectionBackgroundColorLabel = Model?.Content?.Value<ColorPickerValueConverter.PickedColor>("sectionBackGroundColor")?.Label.ToLower() ?? null;
     var backgroundColorClass = (!string.IsNullOrEmpty(sectionBackgroundColorLabel) && sectionBackgroundColorLabel != "none") ? $"bg-{sectionBackgroundColorLabel}" : "";
 
     var sectionBackgroundImage = Model?.Content?.Value<IPublishedContent>("sectionBackgroundImage")?.Url() ?? "";
+    var hideBackgroundInMobileDesign = (Model?.Content?.Value<bool>("hideBackgroundInMobileDesign") == true) ? "hide-from-mobile-design" : "";
     var isBackgroundImageAbsolute = (!string.IsNullOrEmpty(sectionBackgroundImage)) ? "background-image-absolute" : "background-image";
     var imgBottom = (Model?.Content.Value<bool>("setImgBottom") == true) ? "set-img-bottom" : "";
     var imgRight = (Model?.Content.Value<bool>("setImgRight") == true) ? "set-img-right" : "";
@@ -41,10 +45,10 @@
 
         @if (!string.IsNullOrEmpty(sectionBackgroundImage))
         {
-            <img class="@isBackgroundImageAbsolute @imgBottom @imgRight @imgLeft" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
+            <img class="@isBackgroundImageAbsolute @hideBackgroundInMobileDesign @imgBottom @imgRight @imgLeft" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
         }
 
-        <div class="container @centerContentClass">
+        <div class="container @limitDynamicContainerWidthInMobile @limitDynamicContainerWidthInTablet @centerContentClass">
             @await Html.GetBlockGridItemAreasHtmlAsync(Model)
         </div>
     </section> 
@@ -57,7 +61,7 @@ else
         {
             <img class="@isBackgroundImageAbsolute" src="@sectionBackgroundImage" alt="@sectionTitle background image" />
         }
-        <div class="container @centerContentClass">
+        <div class="container @limitDynamicContainerWidthInMobile @limitDynamicContainerWidthInTablet @centerContentClass">
             @await Html.GetBlockGridItemAreasHtmlAsync(Model)
         </div>
     </section>

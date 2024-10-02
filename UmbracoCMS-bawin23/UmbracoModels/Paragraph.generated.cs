@@ -64,6 +64,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool AlignLeft => this.Value<bool>(_publishedValueFallback, "alignLeft");
 
 		///<summary>
+		/// Hide From Mobile Design
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("hideFromMobileDesign")]
+		public virtual bool HideFromMobileDesign => this.Value<bool>(_publishedValueFallback, "hideFromMobileDesign");
+
+		///<summary>
 		/// Paragraph Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]

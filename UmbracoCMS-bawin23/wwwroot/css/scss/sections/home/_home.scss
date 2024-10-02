@@ -1,0 +1,15 @@
+#about-us {
+    //Make this styling settable in the form menu
+    .form-wrapper {
+        @include desktop {
+            position: absolute;
+            z-index: 10;
+            top: -10rem;
+            right: 0;
+        }
+    }
+
+    @include desktop {
+        min-height: 600px;
+    }
+}

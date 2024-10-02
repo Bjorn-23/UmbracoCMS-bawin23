@@ -1,22 +1,27 @@
 ﻿.background-image-absolute {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    background-repeat: no-repeat;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    max-width: 100vw;
+    height: auto;
+    transform: translateX(-50%);
+    overflow-x: hidden;
+
+    @include tablet {
+        //overflow: hidden;
+        height: 100%;
+    }
 
     @media (min-width: 1024px) {
-        max-width: 100vw;
-        max-height: 100%;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1;
-        background-repeat: no-repeat;
-        object-fit: cover;
-        height: auto;
-
-        @include desktop {
-            max-width: 1920px;
-        }
+        aspect-ratio: initial;
+    }
+    
+    @include desktop {
+        max-width: 1920px;
     }
 }
 
@@ -25,9 +30,15 @@
 }
 
 .set-img-right {
+    //Since default style for background image is left 50% and transform: translate-X(-50%), this resets the translate and sets image to left 50% only.
     transform: translateX(0);
 
+    @include tablet {
+        max-width: 50vw;
+    }
+
     @include desktop {
+        // Half of the max design width of 1920px
         max-width: 960px;
     }
 }
@@ -38,5 +49,15 @@
 
     @include desktop {
         max-width: 960px;
+    }
+}
+
+#hero {
+    .background-image-absolute {
+        max-height: 210px;
+
+        @include tablet {
+            max-height: 100%;
+        }
     }
 }

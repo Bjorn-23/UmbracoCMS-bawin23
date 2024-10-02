@@ -68,10 +68,13 @@
                     
                     @include tablet {
                         position: absolute;
-                        bottom: 2rem;
+                        bottom: 4rem;
                         left: 50%;
                         transform: translateX(-50%);
+                    }
 
+                    @include desktop {
+                        bottom: 2rem;
                     }
                 }
 

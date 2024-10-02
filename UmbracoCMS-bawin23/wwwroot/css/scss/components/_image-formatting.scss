@@ -16,10 +16,22 @@
     }
 }
 
+.img-margin-right {
+    @include desktop {
+        margin-right: 2rem;
+    }
+}
+
 .img-margin-bottom {
     margin-bottom: 1rem;
 
     @include tablet {
         margin-bottom: 2rem;
+    }
+}
+
+.img-margin-left {
+    @include desktop {
+        margin-left: 2rem;
     }
 }

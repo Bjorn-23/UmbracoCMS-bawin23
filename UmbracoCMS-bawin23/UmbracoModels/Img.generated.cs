@@ -57,6 +57,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool AddMarginBottom => this.Value<bool>(_publishedValueFallback, "addMarginBottom");
 
 		///<summary>
+		/// Add Margin Left
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("addMarginLeft")]
+		public virtual bool AddMarginLeft => this.Value<bool>(_publishedValueFallback, "addMarginLeft");
+
+		///<summary>
+		/// Add Margin Right
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("addMarginRight")]
+		public virtual bool AddMarginRight => this.Value<bool>(_publishedValueFallback, "addMarginRight");
+
+		///<summary>
 		/// Add Margin Top
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
@@ -79,11 +93,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string ImageDescription => this.Value<string>(_publishedValueFallback, "imageDescription");
 
 		///<summary>
-		/// Image Width: Enter a positive integer. recommended range: 25-200.
+		/// Image Max Width: Enter a positive integer. Will be set in pixels.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
-		[ImplementPropertyType("imageWidth")]
-		public virtual int ImageWidth => this.Value<int>(_publishedValueFallback, "imageWidth");
+		[ImplementPropertyType("imageMaxWidth")]
+		public virtual int ImageMaxWidth => this.Value<int>(_publishedValueFallback, "imageMaxWidth");
 
 		///<summary>
 		/// Rounded Borders

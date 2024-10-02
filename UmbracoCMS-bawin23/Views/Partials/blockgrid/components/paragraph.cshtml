@@ -5,6 +5,8 @@
 
 @{
     var paragraphContent = Model?.Content.Value<string>("paragraphContent") ?? "";
+    var hideFromMobileDesign = (Model?.Content?.Value<bool>("hideFromMobileDesign") == true) ? "hide-from-mobile-design" : "";
+
     var textAlign = (Model?.Content.Value<bool>("alignCenter") == true) ? "text-align-center" : "";
     
     if (Model?.Content.Value<bool>("alignCenter") == false)
@@ -17,6 +19,6 @@
 
 @if(!string.IsNullOrEmpty(paragraphContent))
 {
-    <p class="@textAlign @backgroundColorClass">@paragraphContent</p>
+    <p class="@hideFromMobileDesign @textAlign @backgroundColorClass">@paragraphContent</p>
 
 }
