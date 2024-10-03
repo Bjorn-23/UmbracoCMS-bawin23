@@ -1,12 +1,15 @@
-﻿window.onload = function () {
-    createdProjectCarousel();
+﻿document.addEventListener('DOMContentLoaded', function () {
+    projectCarousel();
+})
+window.onload = function () {
+    projectCarousel();
 }
 
 window.addEventListener("resize", function () {
-    createdProjectCarousel();
+    projectCarousel();
 })
 
-function createdProjectCarousel() {
+function projectCarousel() {
     const projectContainer = document.querySelector(".element-project-grid-container");
     const project = document.querySelector(".grid-box-wrapper");
     const slides = document.querySelectorAll(".grid-box-wrapper");
