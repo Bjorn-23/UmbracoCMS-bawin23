@@ -1,9 +1,9 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-@using Umbraco.Cms.Core.Routing
+﻿@using Umbraco.Cms.Core.Routing
 @using Umbraco.Extensions
 
 @inject IPublishedUrlProvider PublishedUrlProvider
 @inject Umbraco.Cms.Web.Common.UmbracoHelper UmbracoHelper
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     var rootContent = UmbracoHelper.ContentAtRoot();
     var settings = rootContent.FirstOrDefault(x => x.ContentType.Alias == "settingsPage") ?? null;

@@ -1,11 +1,11 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
-@using Umbraco.Cms.Core
+﻿@using Umbraco.Cms.Core
 @using Umbraco.Cms.Core.Models.PublishedContent
 @using Umbraco.Cms.Core.Routing
 @using Umbraco.Extensions
 
 @inject IPublishedValueFallback PublishedValueFallback
 @inject IPublishedUrlProvider PublishedUrlProvider
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 @{
     var selection = Model.Root().Children.Where(x => x.IsVisible(PublishedValueFallback)).ToArray();

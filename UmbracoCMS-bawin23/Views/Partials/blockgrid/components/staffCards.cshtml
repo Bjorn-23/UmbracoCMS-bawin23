@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @{
 	int.TryParse(Model?.Content.Value<string>("displayCount"), out int displayCount);
