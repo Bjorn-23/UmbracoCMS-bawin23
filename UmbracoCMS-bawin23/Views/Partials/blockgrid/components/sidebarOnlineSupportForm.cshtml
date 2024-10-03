@@ -17,7 +17,7 @@
     <h3>@header</h3>
     <p>online support 24/7, we are here to help you.</p>
 
-    @using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post))
+    @using (Html.BeginUmbracoForm("HandleOnlineSupportFormSubmit", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
     {
         <input id="email" type="text" name="email" placeholder="E-mail address">
         <span class="form-input-error @((error_online_supportl) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>

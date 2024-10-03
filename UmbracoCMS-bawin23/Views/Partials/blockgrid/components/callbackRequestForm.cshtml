@@ -23,7 +23,7 @@
         </div>
     }
 
-    @using (Html.BeginUmbracoForm("HandleCallbackRequestSubmit", "ContactSurface", FormMethod.Post))
+    @using (Html.BeginUmbracoForm("HandleCallbackRequestSubmit", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
     {
         @if (ViewBag.Title == "Home")
         {

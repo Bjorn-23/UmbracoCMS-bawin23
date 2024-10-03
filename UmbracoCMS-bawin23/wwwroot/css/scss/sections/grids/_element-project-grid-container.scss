@@ -5,10 +5,8 @@
     grid-template-columns: auto;
     justify-content: center;
     position: relative;
-    
-    //code to make carousel work.
-    height: inherit;
-    //end of code to make carousel
+    //height: inherit;
+
 
     @include tablet {
         grid-template-columns: auto auto;
@@ -19,7 +17,7 @@
         grid-template-columns: auto auto auto auto;
         gap: 0;
     }
-
+    // Start of code to make carousel work.
     .grid-box-wrapper {
         position: absolute;
         top: 0;
@@ -44,8 +42,8 @@
         transform: translateY(-50%);
         z-index: 1000;
         display: block;
-        background-color: #f4f4f4af;
         background-color: #d5d1c2cc;
+        background-color: #424946cc;
         width: 4rem;
         height: 4rem;
         border-radius: 50%;
@@ -62,6 +60,7 @@
         z-index: 100;
         font-size: 3rem;
         color: var(--color-primary);
+        color: var(--color-secondary);
 
         @include tablet {
             display: none;
@@ -75,6 +74,7 @@
     .fa-angle-right, .next-slide {
         right: 1rem;
     }
+    //end of code to make carousel
 
     .grid-box {
         position: relative;

@@ -101,7 +101,7 @@
                     }
                 </div>
 
-                    @using (Html.BeginUmbracoForm("HandleContactRequestSubmit", "ContactSurface", FormMethod.Post))
+                @using (Html.BeginUmbracoForm("HandleContactRequestSubmit", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
                     {
                          <div class="input-group form-name">
                              <label class="form-label" for="formName">Name</label>

@@ -1321,7 +1321,6 @@ footer .container p {
   grid-template-columns: auto;
   justify-content: center;
   position: relative;
-  height: inherit;
 }
 @media (min-width: 768px) {
   .element-project-grid-container {
@@ -1359,8 +1358,8 @@ footer .container p {
   transform: translateY(-50%);
   z-index: 1000;
   display: block;
-  background-color: rgba(244, 244, 244, 0.6862745098);
   background-color: rgba(213, 209, 194, 0.8);
+  background-color: rgba(66, 73, 70, 0.8);
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -1377,6 +1376,7 @@ footer .container p {
   z-index: 100;
   font-size: 3rem;
   color: var(--color-primary);
+  color: var(--color-secondary);
 }
 @media (min-width: 768px) {
   .element-project-grid-container .fa-angle-left, .element-project-grid-container .fa-angle-right {

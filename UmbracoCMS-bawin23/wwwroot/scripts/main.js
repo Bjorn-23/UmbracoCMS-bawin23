@@ -38,7 +38,7 @@ function openMenu() {
 }
 
 function setParentHeightFromFormHeight() {
-    let form = document.querySelector(".form-wrapper");
+    const form = document.querySelector(".form-wrapper");
     let section = form.closest('section');
     let windowWidth = window.innerWidth
 
@@ -56,15 +56,15 @@ function setParentHeightFromFormHeight() {
 }
 
 function createdProjectCarousel() {
-    let projectContainer = document.querySelector(".element-project-grid-container");
-    let project = document.querySelector(".grid-box-wrapper");
-    let slides = document.querySelectorAll(".grid-box-wrapper");
-    let nextSlide = document.querySelector(".next-slide");
-    let prevSlide = document.querySelector(".prev-slide");
+    const projectContainer = document.querySelector(".element-project-grid-container");
+    const project = document.querySelector(".grid-box-wrapper");
+    const slides = document.querySelectorAll(".grid-box-wrapper");
+    const nextSlide = document.querySelector(".next-slide");
+    const prevSlide = document.querySelector(".prev-slide");
     let windowWidth = window.innerWidth
 
     if (windowWidth < 768 && slides.length > 0) {
-        console.log("if")
+        //console.log("if")
         let projectHeight = parseFloat(window.getComputedStyle(project).height);
         projectContainer.style.height = projectHeight + "px";
         let i = 0;
@@ -132,6 +132,3 @@ function HideSlides(slides, currentSlide) {
         //console.log(slide)
     })
 }
-
-
-
