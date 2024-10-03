@@ -102,26 +102,26 @@
                 </div>
 
                 @using (Html.BeginUmbracoForm("HandleContactRequestSubmit", "ContactSurface", FormMethod.Post, new { novalidate = "novalidate" }))
-                    {
-                         <div class="input-group form-name">
-                             <label class="form-label" for="formName">Name</label>
-                             <input id="formName" name="name" type="text" placeholder="Name" value="@ViewData["name"]">
-                             <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
-                         </div>
-                         <div class="input-group form-email">
-                             <label class="form-label" for="formEmail">E-mail</label>
-                             <input id="formEmail" name="email" type="text" placeholder="Email" value="@ViewData["email"]">
-                             <span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
+                {
+                    <div class="input-group form-name">
+                        <label class="form-label" for="formName">Name</label>
+                        <input id="formName" name="name" type="text" placeholder="Name" value="@ViewData["name"]">
+                        <span for="formName" class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
+                    </div>
+                    <div class="input-group form-email">
+                        <label class="form-label" for="formEmail">E-mail</label>
+                        <input id="formEmail" name="email" type="email" placeholder="Email" value="@ViewData["email"]">
+                        <span for="formEmail" class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
 
-                         </div>
-                         <div class="input-group form-message">
-                             <label class="form-label" for="formMessage">Message</label>
-                             <textarea id="formMessage" name="message" rows="10" placeholder="Question">@ViewData["message"]</textarea>
-                             <span class="form-input-error @((error_message) ? "form-invalid-input" : null)">You must enter a message</span>
+                    </div>
+                    <div class="input-group form-message">
+                        <label class="form-label" for="formMessage">Message</label>
+                        <textarea id="formMessage" name="message" rows="10" placeholder="Question">@ViewData["message"]</textarea>
+                        <span for="formEmail" class="form-input-error @((error_message) ? "form-invalid-input" : null)">You must enter a message</span>
 
-                         </div>
-                         <button type="submit" class="btn-primary">Submit</button>
-                     }                
+                    </div>
+                    <button type="submit" class="btn-primary">Submit</button>
+                }
             </div>
         </div>
     </section>
@@ -131,3 +131,5 @@
 {
     @await Html.GetBlockGridHtmlAsync(contactInfoHub)
 }
+
+<script src="/scripts/validation.js"></script>

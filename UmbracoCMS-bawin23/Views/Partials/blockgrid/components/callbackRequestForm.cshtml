@@ -1,4 +1,5 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using System.Text.RegularExpressions
+@using Umbraco.Cms.Web.Common.PublishedModels;
 
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 
@@ -32,17 +33,17 @@
         <div class="input-group">
             <label class="form-label" for="formName">Name</label>
             <input id="formName" name="name" type="text" placeholder="Enter your name" value="@ViewData["name"]" />
-            <span class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
+            <span for="formName" class="form-input-error @((error_name) ? "form-invalid-input" : null)">You must enter your name</span>
         </div>
         <div class="input-group">
             <label class="form-label" for="formEmail">E-mail</label>
             <input id="formEmail" name="email" type="email" placeholder="Enter your e-mail address" value="@ViewData["email"]" />
-            <span class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
+            <span for="formEmail" class="form-input-error @((error_email) ? "form-invalid-input" : null)">You must enter a valid e-mail address</span>
         </div>
         <div class="input-group">
             <label class="form-label" for="formPhone">Phone</label>
             <input id="formPhone" name="phone" type="text" placeholder="Enter your phone number" value="@ViewData["phone"]"/>
-            <span class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a phone number</span>
+            <span for="formPhone" class="form-input-error @((error_phone) ? "form-invalid-input" : null)">You must enter a valid phone number</span>
         </div>
 
         @if (ViewBag.Title != "Home" && ViewBag.Title != "Contact Us")
@@ -77,3 +78,4 @@
         }
     }
 </div>
+<script src="/scripts/validation.js"></script>

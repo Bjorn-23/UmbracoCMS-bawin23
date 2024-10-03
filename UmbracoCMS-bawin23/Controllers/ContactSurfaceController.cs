@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -31,17 +32,23 @@ public class ContactSurfaceController(IUmbracoContextAccessor umbracoContextAcce
             ViewData["phone"] = form.Phone;
             //ViewData["message"] = form.Message;
 
-            ViewData["name-error"] = string.IsNullOrEmpty(form.Name);
-            ViewData["email-error"] = string.IsNullOrEmpty(form.Email);
-            ViewData["phone-error"] = string.IsNullOrEmpty(form.Email);
+            Regex phoneRegEx = new Regex(@"^\+?\d[\d\s]{7,20}$"); // allows a + at the start then a mix of spaces and digits between 0-9.
+            Regex regExp = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,63}$");
 
-            //ViewData["message-error"] = string.IsNullOrEmpty(form.Message);
+            int minLength = 2;
+            int minPhoneLength = 8; // Accepts any phone number that isnt 112 / 90000.
+
+            ViewData["name-error"] = string.IsNullOrEmpty(form.Name) || form.Name.Length < minLength;
+            ViewData["email-error"] = string.IsNullOrEmpty(form.Email) || !regExp.IsMatch(form.Email);
+            ViewData["phone-error"] = string.IsNullOrEmpty(form.Phone) || form.Phone.Length < minPhoneLength || !phoneRegEx.IsMatch(form.Phone);
 
             ViewData["form-success"] = "false";
             return CurrentUmbracoPage();
         }
         else
         {
+
+
             var saveData = _formServices.SaveFormData(form, Services);
             if (saveData)
             {
@@ -75,7 +82,7 @@ public class ContactSurfaceController(IUmbracoContextAccessor umbracoContextAcce
         {
             currentPageUrl = currentPageUrl.Substring(0, queryIndex);
         }
-
+        Regex regExp = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,}$");
         var queryString = "";
 
         var fragmentId = "service-details-contact-form";
@@ -84,7 +91,7 @@ public class ContactSurfaceController(IUmbracoContextAccessor umbracoContextAcce
         if (!ModelState.IsValid || form.Message == null)
         {
             var paramName = !string.IsNullOrEmpty(form.Name) ? $"param={form.Name}" : "";
-            var paramEmail = !string.IsNullOrEmpty(form.Email) ? $"paramEmail={form.Email}" : "";
+            var paramEmail = !string.IsNullOrEmpty(form.Email) && regExp.IsMatch(form.Email) ? $"paramEmail={form.Email}" : "";
             var paramMessage = !string.IsNullOrEmpty(form.Message) ? $"paramMessage={form.Message}" : "";
             var paramFormSubmitted = "paramFormSubmitted=true";
 
@@ -136,10 +143,12 @@ public class ContactSurfaceController(IUmbracoContextAccessor umbracoContextAcce
 
     public async Task<IActionResult> HandleOnlineSupportFormSubmit(OnlineSupportFormModel form)
     {
+        Regex regExp = new Regex(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,}$");
+
         if (!ModelState.IsValid)
         {
             ViewData["online-support"] = form.Email;
-            ViewData["online-support-error"] = string.IsNullOrEmpty(form.Email);
+            ViewData["online-support-error"] = string.IsNullOrEmpty(form.Email) || !regExp.IsMatch(form.Email);
             return CurrentUmbracoPage();
         }
         else
