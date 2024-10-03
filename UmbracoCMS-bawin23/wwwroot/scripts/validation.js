@@ -10,8 +10,6 @@ function formValidation() {
 
         inputs.forEach(input => {
             input.addEventListener('keyup', (e) => {
-                //console.log(e)
-
                 switch (e.target.type) {
                     case 'text':
                         if (e.target.id === "formPhone") {

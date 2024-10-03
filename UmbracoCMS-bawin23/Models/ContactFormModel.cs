@@ -4,6 +4,7 @@ namespace UmbracoCMS_bawin23.Models;
 
 public class ContactFormModel
 {
+    [MinLength(2)]
     public string Name { get; set; } = null!;
 
     [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,}$", ErrorMessage = "You must enter a valid email address")]

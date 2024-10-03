@@ -4,6 +4,7 @@ namespace UmbracoCMS_bawin23.Models;
 
 public class CallbackRequestFormModel
 {
+    [MinLength(2, ErrorMessage = "You must enter a valid Name (min 2 chars)")]
     public string Name { get; set; } = null!;
 
     [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w{2,63}$", ErrorMessage = "You must enter a valid email address")]

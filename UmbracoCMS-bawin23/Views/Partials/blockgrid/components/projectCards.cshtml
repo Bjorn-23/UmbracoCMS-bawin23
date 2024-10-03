@@ -2,17 +2,17 @@
 
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem>
 @{
-	var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))
+    var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))
     .ChildrenOfType("projectItemTemplate")
     .Where(x => x.IsVisible()).Take(4);
 }
 
-	<div class="element-project-grid-container">
+<div class="element-project-grid-container">
     @if (selection != null)
     {
         <span class="prev-slide"><i class="fa-solid fa-angle-left"></i></span>
         <span class="next-slide"><i class="fa-solid fa-angle-right"></i></span>
-        
+
         foreach (var item in selection)
         {
             var link = item?.Url().TrimEnd("/");
@@ -23,7 +23,7 @@
 
             <div class="grid-box-wrapper">
                 <a class="grid-box" href="@link">
-                        <img src="@image" alt="@item?.Name">
+                    <img src="@image" alt="@item?.Name">
                     <div class="text-box-bottom bg-primary">
                         <div class="text">
                             <span class="title">@item?.Name</span>
@@ -35,9 +35,8 @@
                     </div>
                 </a>
             </div>
-
-        }        
+        }
     }
-
 </div>
 
+<script src="/scripts/projectCarousel.js"></script>
