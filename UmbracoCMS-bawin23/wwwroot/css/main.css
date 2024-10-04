@@ -507,6 +507,8 @@ a[target=_blank]::after {
   margin: 0.2rem;
   white-space: nowrap;
   font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
 }
 @media (min-width: 768px) {
   .tag {
@@ -518,6 +520,21 @@ a[target=_blank]::after {
   .tag {
     font-size: 16px;
   }
+}
+.tag:hover {
+  transition: 0.05s ease-in;
+  text-decoration: none;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-primary) !important;
+}
+
+.show-all-tag {
+  background-color: var(--color-accent);
+}
+.show-all-tag:hover {
+  transition: 0.05s ease-in;
+  background-color: var(--color-primary);
+  color: var(--color-secondary) !important;
 }
 
 .center-image {
