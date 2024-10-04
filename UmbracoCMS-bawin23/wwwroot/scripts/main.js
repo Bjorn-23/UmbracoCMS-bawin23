@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     openMobileMenu();
+    scrollToTop();
 })
 
 window.onload = function () {
-    setParentHeightFromFormHeight()
+    setParentHeightFromFormHeight();
+    scrollToTop();
 }
 
 window.addEventListener("resize", function () {
     setParentHeightFromFormHeight()
 })
 
+let windowWidth = window.innerWidth
 
 function openMobileMenu() {
     const mobileBtn = document.querySelector('#menuBars');
@@ -38,7 +41,6 @@ function openMobileMenu() {
 function setParentHeightFromFormHeight() {
     const form = document.querySelector(".form-wrapper");
     let section = form.closest('section');
-    let windowWidth = window.innerWidth
 
     if (section.id == "about-us" && windowWidth > 1399) {
         //console.log("if")
@@ -51,4 +53,23 @@ function setParentHeightFromFormHeight() {
         //console.log("else")
         section.style.height = "inherit";
     }
+}
+
+function scrollToTop() {
+
+    const scrollButton = document.querySelector("#scrollToTop")
+    window.addEventListener('scroll', function () {
+        if (window.scrollY >= 600 && scrollButton.classList.contains('hide-btn') && windowWidth > 1399) {
+            scrollButton.classList.remove('hide-btn')
+        }
+        if (window.scrollY <= 600 && !scrollButton.classList.contains('hide-btn')) {
+
+            scrollButton.classList.add('hide-btn')
+        }
+    })
+
+    scrollButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+
 }

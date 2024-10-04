@@ -537,6 +537,54 @@ a[target=_blank]::after {
   color: var(--color-secondary) !important;
 }
 
+.btn-scroll-to-top {
+  position: fixed;
+  z-index: 100;
+  padding: 1rem;
+  opacity: 0.5;
+  background-color: var(--color-secondary);
+  border-radius: 100%;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  transition: opacity 0.15s ease-out;
+}
+@media (min-width: 768px) {
+  .btn-scroll-to-top {
+    right: 2.5rem;
+    bottom: 2.5rem;
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 1400px) {
+  .btn-scroll-to-top {
+    right: 4rem;
+    bottom: 4rem;
+    padding: 2rem;
+  }
+}
+.btn-scroll-to-top:hover {
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+.btn-scroll-to-top i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--color-primary);
+}
+@media (min-width: 1400px) {
+  .btn-scroll-to-top i {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
+
+.hide-btn {
+  display: none;
+  transition: 0.3s ease-in;
+}
+
 .center-image {
   margin: 0 auto;
   display: flex;
