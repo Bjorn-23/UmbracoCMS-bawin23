@@ -1,13 +1,41 @@
+//These first 2 sections of code control the layout of services on "root/services" and "root/" (home)
+
+#our-services {
+    .service-grid-container {
+        @media (max-width: 767px) {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: auto;
+            justify-content: center;
+            gap: 1rem 0;
+        }
+    }
+}
+
+#our-services-index {
+    .service-grid-container {
+        @media (max-width: 767px) {
+            display: flex;
+            max-width: calc(100vw - 2rem);
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            gap: 0 1rem;
+            scroll-snap-type: x mandatory;
+
+            .service-card {
+                scroll-snap-align: start;
+                min-width: 100% !important
+            }
+        }
+    }
+}
 
 //----- THIS STYLING USED ON INDEX PAGE FOR SERVICES SECTION
 
 .service-grid-container {
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: center;
-    gap: 1rem 0;
-
     @include tablet {
+        display: grid;
+        justify-content: center;
         gap: 2rem;
         grid-template-columns: auto auto;
     }
@@ -25,7 +53,7 @@
         background-color: var(--color-light) !important;
 
         @include tablet {
-            max-width: 343px;
+            //max-width: 343px;
             padding: 1rem 0;
             max-width: calc((720px / 2) - 16px); // container width split in columns
         }

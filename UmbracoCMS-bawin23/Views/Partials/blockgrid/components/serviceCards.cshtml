@@ -16,7 +16,7 @@
             var image = item?.Value<IPublishedContent>("thumbnailImage")?.Url() ?? "";
             var preamble = item?.Value<string>("preamble") ?? "";
 
-            <a href="@link" class="grid-box bg-light">
+            <a href="@link" class="grid-box service-card bg-light">
                 <h4>@item?.Name</h4>
                 <div class="image-wrapper">
                     <img src="@image" alt="@item?.Name">
@@ -25,6 +25,6 @@
             </a>					
         }        
     }
-
 </div>
 
+<script src="/scripts/servicesSlider.js"></script>
