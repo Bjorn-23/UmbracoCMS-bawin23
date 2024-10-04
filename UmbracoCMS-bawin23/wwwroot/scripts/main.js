@@ -9,10 +9,9 @@ window.onload = function () {
 }
 
 window.addEventListener("resize", function () {
-    setParentHeightFromFormHeight()
+    setParentHeightFromFormHeight();
+    scrollToTop();
 })
-
-let windowWidth = window.innerWidth
 
 function openMobileMenu() {
     const mobileBtn = document.querySelector('#menuBars');
@@ -41,6 +40,7 @@ function openMobileMenu() {
 function setParentHeightFromFormHeight() {
     const form = document.querySelector(".form-wrapper");
     let section = form.closest('section');
+    let windowWidth = window.innerWidth
 
     if (section.id == "about-us" && windowWidth > 1399) {
         //console.log("if")
@@ -56,13 +56,14 @@ function setParentHeightFromFormHeight() {
 }
 
 function scrollToTop() {
-
     const scrollButton = document.querySelector("#scrollToTop")
+    let windowWidth = window.innerWidth
+
     window.addEventListener('scroll', function () {
         if (window.scrollY >= 600 && scrollButton.classList.contains('hide-btn') && windowWidth > 1399) {
             scrollButton.classList.remove('hide-btn')
         }
-        if (window.scrollY <= 600 && !scrollButton.classList.contains('hide-btn')) {
+        if (window.scrollY <= 600 && !scrollButton.classList.contains('hide-btn') || windowWidth < 768) {
 
             scrollButton.classList.add('hide-btn')
         }
