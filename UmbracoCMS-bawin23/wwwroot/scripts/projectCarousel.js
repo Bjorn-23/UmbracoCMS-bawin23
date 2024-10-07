@@ -10,61 +10,53 @@ window.addEventListener("resize", function () {
 })
 
 function projectCarousel() {
-    const projectContainer = document.querySelector(".element-project-grid-container");
-    const project = document.querySelector(".grid-box-wrapper");
-    const slides = document.querySelectorAll(".grid-box-wrapper");
-    const nextSlide = document.querySelector(".next-slide");
-    const prevSlide = document.querySelector(".prev-slide");
+    const projectContainer = document.querySelector(".project-carousel");
+    const project = document.querySelector(".carousel-item").firstElementChild;
+    const slides = projectContainer.querySelectorAll(".carousel-item");
+    const nextSlide = projectContainer.querySelector(".next-slide");
+    const prevSlide = projectContainer.querySelector(".prev-slide");
     let windowWidth = window.innerWidth
 
-    if (windowWidth < 768 && slides.length > 0) {
-        //console.log("if")
-        let projectHeight = parseFloat(window.getComputedStyle(project).height);
-        projectContainer.style.height = projectHeight + "px";
-        let i = 0;
-        let currentSlide = slides[i];
-
-        HideSlides(slides, currentSlide);
-
-        nextSlide.addEventListener("click", function (e) {
-            e.preventDefault();
-            //console.log("next")
-            //console.log(i)
-            if (i >= Math.ceil(slides.length - 1)) {
-                i = 0
-                currentSlide = slides[i]
-            }
-            else {
-                i = i + 1
-                currentSlide = slides[i];
-            }
-            //console.log(slides)
-            HideSlides(slides, currentSlide);
-        })
-
-        prevSlide.addEventListener("click", function (e) {
-            e.preventDefault();
-            //console.log("prev")
-            //console.log(i)
-            if (i <= 0) {
-                i = slides.length - 1
-                currentSlide = slides[i]
-            }
-            else {
-                i = i - 1;
-                currentSlide = slides[i];
-            }
-            //console.log(slides)
-            HideSlides(slides, currentSlide);
-        })
-    }
-    else {
-        //console.log("else")
+    if (windowWidth > 767 || slides.length <= 0) {
         projectContainer.style.height = "inherit";
         slides.forEach(slide => {
             if (slide.classList.contains("hide-project")) {
                 slide.classList.remove("hide-project")
             }
+        })
+    }
+    else {
+        let projectHeight = parseFloat(window.getComputedStyle(project).height);
+        projectContainer.style.height = projectHeight + "px";
+        let cardIndex = 0;
+        let currentSlide = slides[cardIndex];
+
+        HideSlides(slides, currentSlide);
+
+        nextSlide.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (cardIndex >= Math.ceil(slides.length - 1)) {
+                cardIndex = 0
+                currentSlide = slides[cardIndex]
+            }
+            else {
+                cardIndex = cardIndex + 1
+                currentSlide = slides[cardIndex];
+            }
+            HideSlides(slides, currentSlide);
+        })
+
+        prevSlide.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (cardIndex <= 0) {
+                cardIndex = slides.length - 1
+                currentSlide = slides[cardIndex]
+            }
+            else {
+                cardIndex = cardIndex - 1;
+                currentSlide = slides[cardIndex];
+            }
+            HideSlides(slides, currentSlide);
         })
     }
 }
@@ -83,6 +75,5 @@ function HideSlides(slides, currentSlide) {
             }
             slide.classList.add("hide-project")
         }
-        //console.log(slide)
     })
 }

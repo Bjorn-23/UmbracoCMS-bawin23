@@ -56,5 +56,12 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("cardName")]
 		public virtual string CardName => this.Value<string>(_publishedValueFallback, "cardName");
+
+		///<summary>
+		/// Show Projects As Carousel In Mobile
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "14.2.0+1b21caa")]
+		[ImplementPropertyType("showProjectsAsCarouselInMobile")]
+		public virtual bool ShowProjectsAsCarouselInMobile => this.Value<bool>(_publishedValueFallback, "showProjectsAsCarouselInMobile");
 	}
 }
