@@ -5,13 +5,20 @@
     var selection = Umbraco.Content(Guid.Parse("425d10f8-55b9-42a7-aa7b-d98e352433bc"))
     .ChildrenOfType("projectItemTemplate")
     .Where(x => x.IsVisible()).Take(4);
+
+    var isCarousel = Model?.Content.Value<bool>("showProjectsAsCarouselInMobile");
+    var carouselContainer = (isCarousel == true) ? "project-carousel" : "";
+    var projectWrapper = (isCarousel == true) ? "grid-box-wrapper carousel-item" : "grid-box-wrapper";
 }
 
-<div class="element-project-grid-container">
+<div class="element-project-grid-container @carouselContainer">
     @if (selection != null)
     {
-        <span class="prev-slide"><i class="fa-solid fa-angle-left"></i></span>
-        <span class="next-slide"><i class="fa-solid fa-angle-right"></i></span>
+        @if (isCarousel == true)
+        {
+            <span class="prev-slide"><i class="fa-solid fa-angle-left"></i></span>
+            <span class="next-slide"><i class="fa-solid fa-angle-right"></i></span>
+        }
 
         foreach (var item in selection)
         {
@@ -21,7 +28,7 @@
             var datePublished = item?.Value<DateTime>("datePublished").ToString() ?? "";
             var category = item?.Value<string>("category") ?? "";
 
-            <div class="grid-box-wrapper">
+            <div class="@projectWrapper">
                 <a class="grid-box" href="@link">
                     <img src="@image" alt="@item?.Name">
                     <div class="text-box-bottom bg-primary">
@@ -39,4 +46,6 @@
     }
 </div>
 
-<script src="/scripts/projectCarousel.js"></script>
+@if (isCarousel == true) {
+    <script src="/scripts/projectCarousel.js"></script>
+}
